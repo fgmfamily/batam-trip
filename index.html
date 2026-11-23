@@ -153,6 +153,17 @@ img:not(.ld){background:linear-gradient(90deg,#e9e3d3 25%,#f6f2e7 50%,#e9e3d3 75
 #payTot.allpaid{background:#e3f6ea;border-left-color:#1f9d55;animation:flash 1.2s 2}@keyframes flash{50%{background:#b9ecc9}}
 @media print{#nextStrip,#fxFab,#fxSheet,#picView{display:none!important}}
 </style>
+<style>
+#nowBar{margin:10px auto 0;max-width:1100px;padding:10px 14px;background:#fff;border:1px solid #e3dccb;border-radius:14px;color:#14343c;font-size:14px;line-height:1.4}
+#nowBar .nr{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center}
+#nowBar .nk{font-size:11px;text-transform:uppercase;letter-spacing:.04em;opacity:.65;display:block}
+#nowBar .nv{font-weight:700;font-size:17px}
+#nowBar .fc{display:flex;gap:8px;overflow-x:auto;margin-top:8px;padding-bottom:2px}
+#nowBar .fd{flex:0 0 auto;min-width:78px;background:#f5f1e8;border-radius:10px;padding:6px 8px;text-align:center;font-size:12px}
+#nowBar .fd b{display:block;font-size:12px}
+#nowBar .fm{font-size:11px;opacity:.65;margin-top:6px}
+@media print{#nowBar{display:none!important}}
+</style>
 </head>
 <body>
 <header class="hero">
@@ -163,6 +174,7 @@ img:not(.ld){background:linear-gradient(90deg,#e9e3d3 25%,#f6f2e7 50%,#e9e3d3 75
   <div class="zoom noprint"><span>Text size</span><button id="zm">A−</button><button id="zp">A+</button></div>
 </header>
 <nav id="tabs"></nav>
+<div id="nowBar" class="noprint"></div>
 <main>
 
 <section class="panel" id="p-trip"><h2>Trip plan</h2>
@@ -707,6 +719,25 @@ if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWor
  async function wx(){try{const c=new AbortController();setTimeout(()=>c.abort(),8000);const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude=1.12&longitude=104.03&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FSingapore&start_date=2026-12-09&end_date=2026-12-13',{signal:c.signal});if(!r.ok)return;const j=await r.json(),d=j.daily;if(!d||!d.time)return;const days=d.time.map((t,i)=>({d:new Date(t+'T00:00:00').toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'}),desc:WM[d.weathercode[i]]||'',lo:Math.round(d.temperature_2m_min[i]),hi:Math.round(d.temperature_2m_max[i]),pop:d.precipitation_probability_max[i]}));WX={days,ts:Date.now(),src:'Open-Meteo'};localStorage.setItem('batamWx',JSON.stringify(WX));renderWx()}catch(e){}}
  try{const o=JSON.parse(localStorage.getItem('batamWx')||'null');if(o&&o.days&&o.days.length){WX=o;renderWx()}}catch(e){}
  wx();setInterval(wx,36e5);
+})();
+</script>
+<script>
+(function(){
+ const el=document.getElementById('nowBar');if(!el)return;
+ const WM={0:'Clear',1:'Mostly clear',2:'Partly cloudy',3:'Cloudy',45:'Fog',48:'Fog',51:'Light drizzle',53:'Drizzle',55:'Heavy drizzle',61:'Light rain',63:'Rain',65:'Heavy rain',80:'Showers',81:'Showers',82:'Heavy showers',95:'Thunderstorm',96:'Thunderstorm',99:'Thunderstorm'};
+ let W=null;try{W=JSON.parse(localStorage.getItem('batamNow')||'null')}catch(e){}
+ const tm=tz=>new Date().toLocaleTimeString('en-GB',{timeZone:tz,hour:'2-digit',minute:'2-digit'});
+ const dt=()=>new Date().toLocaleDateString('en-GB',{timeZone:'Asia/Singapore',weekday:'long',day:'numeric',month:'long',year:'numeric'});
+ const ago=t=>{const m=Math.round((Date.now()-t)/6e4);return m<1?'just now':m<60?m+' min ago':Math.round(m/60)+' h ago'};
+ function draw(){
+  let h=`<div class="nr"><div><span class="nk">Today</span><span class="nv">${dt()}</span></div><div><span class="nk">Batam (WIB)</span><span class="nv">${tm('Asia/Jakarta')}</span></div><div><span class="nk">Singapore (SGT)</span><span class="nv">${tm('Asia/Singapore')}</span></div>`;
+  if(W&&W.cur)h+=`<div><span class="nk">Batam weather now</span><span class="nv">${W.cur.t}°C · ${WM[W.cur.c]||''}</span></div>`;
+  h+='</div>';
+  if(W&&W.days&&W.days.length)h+='<div class="fc">'+W.days.map(d=>`<div class="fd"><b>${d.d}</b>${WM[d.c]||''}<br>${d.lo}–${d.hi}°C<br>Rain ${d.p}%</div>`).join('')+'</div>';
+  h+=`<div class="fm">${W&&W.ts?'Weather updated '+ago(W.ts)+' · Open-Meteo':(navigator.onLine?'Loading weather…':'Weather needs internet')}. Batam is 1 hour behind Singapore.</div>`;
+  el.innerHTML=h}
+ async function load(){try{const c=new AbortController();setTimeout(()=>c.abort(),8000);const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude=1.12&longitude=104.03&current=temperature_2m,weathercode&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FSingapore&forecast_days=5',{signal:c.signal});if(!r.ok)return;const j=await r.json(),d=j.daily;W={ts:Date.now(),cur:{t:Math.round(j.current.temperature_2m),c:j.current.weathercode},days:d.time.map((t,i)=>({d:new Date(t+'T00:00:00').toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'}),c:d.weathercode[i],lo:Math.round(d.temperature_2m_min[i]),hi:Math.round(d.temperature_2m_max[i]),p:d.precipitation_probability_max[i]}))};localStorage.setItem('batamNow',JSON.stringify(W));draw()}catch(e){}}
+ draw();setInterval(draw,3e4);load();setInterval(load,6e5);addEventListener('online',load);
 })();
 </script>
 </body>
