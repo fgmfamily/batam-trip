@@ -139,7 +139,7 @@ body.easy{--mut:#22343b}body.easy .hero::before{animation:none}body.easy .quick{
 details{border-bottom:1px solid var(--line);padding:8px 0}summary{cursor:pointer;padding:6px 0;list-style:none}summary::-webkit-details-marker{display:none}summary::before{content:'▸ ';color:var(--coral)}details[open]>summary::before{content:'▾ '}
 @media(max-width:640px){#p-transport div.card:first-of-type thead{display:none}#p-transport div.card:first-of-type :is(table,tbody,tfoot){display:block;width:100%}#p-transport div.card:first-of-type tr{display:flex;flex-wrap:wrap;gap:2px 12px;padding:10px 0;border-bottom:1px solid var(--line)}#p-transport div.card:first-of-type td{padding:0;border:0}#p-transport div.card:first-of-type td:nth-child(1),#p-transport div.card:first-of-type td:nth-child(2){font-weight:700;color:var(--teal)}#p-transport div.card:first-of-type td:nth-child(3),#p-transport div.card:first-of-type td:nth-child(4){flex:1 1 100%;text-align:left}#p-transport div.card:first-of-type tfoot td{flex:1 1 100%;font-weight:700}}
 .hero{transition:padding .35s}body.sub .hero{padding:14px 18px 12px}body.sub .hero p,body.sub .hero .chips,body.sub .hero .fxline{display:none}body.sub .hero h1{font-size:26px}
-#nextStrip{margin:0;padding:9px 16px;background:linear-gradient(90deg,#0a4655,#0a6577);color:#fff;font-size:15px;line-height:1.35}#nextStrip .nl{background:#ee6a35;border-radius:99px;padding:1px 10px;font-weight:700;margin-right:6px;font-size:13px}#nextStrip .nt{opacity:.85;font-size:13px}
+#nextStrip{margin:0 0 12px;padding:10px 14px;background:#fff;border:1px solid #e3dccb;border-left:5px solid #ee6a35;border-radius:12px;color:#14343c;font-size:15px;line-height:1.4}#nextStrip .nl{background:#ee6a35;color:#fff;border-radius:99px;padding:1px 10px;font-weight:700;margin-right:6px;font-size:13px}#nextStrip .nt{opacity:.75;font-size:13px}
 #fxFab{position:fixed;right:12px;bottom:100px;z-index:35;border-radius:99px;padding:11px 15px;font-size:15px;background:linear-gradient(135deg,#ee6a35,#f59a52);box-shadow:var(--sh2)}
 #fxSheet,#picView{position:fixed;inset:0;z-index:90;background:rgba(7,22,28,.7);display:none;align-items:flex-end;justify-content:center}#fxSheet.on,#picView.on{display:flex;animation:fade .25s both}
 .fxin,.pin{background:#fff;width:min(100%,520px);border-radius:24px 24px 0 0;padding:18px 18px 26px;max-height:92vh;overflow:auto;position:relative;animation:rise .35s both}
@@ -163,10 +163,10 @@ img:not(.ld){background:linear-gradient(90deg,#e9e3d3 25%,#f6f2e7 50%,#e9e3d3 75
   <div class="zoom noprint"><span>Text size</span><button id="zm">A−</button><button id="zp">A+</button></div>
 </header>
 <nav id="tabs"></nav>
-<div id="nextStrip" class="noprint hidden"></div>
 <main>
 
 <section class="panel" id="p-trip"><h2>Trip plan</h2>
+<div id="nextStrip" class="noprint hidden"></div>
   <div class="row noprint" style="margin-bottom:10px"><button class="ghost" id="copyPlan">Copy plan as text (for WhatsApp)</button><a class="btn wa" id="waPlan" target="_blank" rel="noopener">Send plan by WhatsApp</a><span class="small mut" id="copyMsg"></span></div>
   <div class="card"><h3>Key facts</h3><table><tbody>
     <tr><td class="b">Resort</td><td><ul class="pts"><li>HARRIS Resort Barelang Batam</li><li>Booking under <b>Mrs Samirah</b></li><li>Confirmation no. <b>100991</b></li></ul></td></tr>
