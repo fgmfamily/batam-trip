@@ -233,7 +233,7 @@ html body{display:block!important}header.hero,#tabs,main{box-sizing:border-box;w
   <div class="note" id="fxNote"></div>
   <div class="tiles" id="tiles"></div>
   <div class="card"><div class="sub" id="pieSel"></div><div class="pieWrap" id="pie"></div></div>
-  <div class="row noprint" style="margin-bottom:10px"><a class="btn wa" id="waCosts" target="_blank" rel="noopener">Send cost summary by WhatsApp</a></div>
+  <div class="row noprint" style="margin-bottom:10px"><a class="btn wa" id="waCosts" target="_blank" rel="noopener">Send cost summary by WhatsApp</a><button class="btn" id="xlsBtn" type="button">Download Excel (.xlsx)</button></div><p class="small mut noprint" id="xlsMsg"></p>
   <div id="dpCard"></div>
   <div id="famCosts"></div>
   <div class="note"><b>About these figures</b><ul class="pts"><li>They follow what each family has chosen in the Activities, Resort and Barelang tabs</li><li>They change when a family leader adds, removes or edits something</li><li>Barelang food is an estimate (seafood is charged by weight)</li><li>Barelang tax uses the rate set in Info</li></ul></div>
@@ -814,6 +814,55 @@ if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWor
   W={ts:Date.now(),cur:{t:Math.round(cu.temperature_2m),c:cu.weathercode,day:!!cu.is_day,fl:Math.round(cu.apparent_temperature),h:cu.relative_humidity_2m,w:Math.round(cu.wind_speed_10m)},days:d.time.map((t,i)=>({d:new Date(t+'T00:00:00').toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'}),c:d.weathercode[i],lo:Math.round(d.temperature_2m_min[i]),hi:Math.round(d.temperature_2m_max[i]),p:d.precipitation_probability_max[i],hr:Array.from({length:24},(_,k)=>({t:String(k).padStart(2,'0')+':00',tp:Math.round(hr.temperature_2m[i*24+k]),c:hr.weathercode[i*24+k],p:hr.precipitation_probability[i*24+k]||0}))}))};
   localStorage.setItem('batamNow2',JSON.stringify(W));build()}catch(e){}}
  build();addEventListener('resize',()=>{size()});requestAnimationFrame(frame);setInterval(tick,1000);load();loadSolat();setInterval(load,6e5);setInterval(loadSolat,36e5);addEventListener('online',load);
+})();
+</script>
+<script>
+/* ---- Excel export: builds a real .xlsx file (no libraries) ---- */
+(function(){
+ const btn=document.getElementById('xlsBtn');if(!btn)return;
+ const enc=new TextEncoder(),T=[];for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;T[n]=c>>>0}
+ const crc=b=>{let c=~0;for(let i=0;i<b.length;i++)c=T[(c^b[i])&255]^(c>>>8);return ~c>>>0};
+ function zip(files){const parts=[],cen=[];let off=0;const u16=v=>[v&255,v>>8&255],u32=v=>[v&255,v>>8&255,v>>16&255,v>>24&255];
+  for(const [name,txt] of files){const nb=enc.encode(name),d=enc.encode(txt),c=crc(d);
+   const lh=[0x50,0x4b,3,4,...u16(20),...u16(0),...u16(0),...u16(0),...u16(0x21),...u32(c),...u32(d.length),...u32(d.length),...u16(nb.length),...u16(0)];
+   parts.push(new Uint8Array(lh),nb,d);
+   cen.push([0x50,0x4b,1,2,...u16(20),...u16(20),...u16(0),...u16(0),...u16(0),...u16(0x21),...u32(c),...u32(d.length),...u32(d.length),...u16(nb.length),...u16(0),...u16(0),...u16(0),...u16(0),...u32(0),...u32(off)],nb);
+   off+=lh.length+nb.length+d.length}
+  let cs=0;const cp=[];for(let i=0;i<cen.length;i+=2){cp.push(new Uint8Array(cen[i]),cen[i+1]);cs+=cen[i].length+cen[i+1].length}
+  const end=new Uint8Array([0x50,0x4b,5,6,0,0,0,0,...u16(files.length),...u16(files.length),...u32(cs),...u32(off),0,0]);
+  return new Blob([...parts,...cp,end],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'})}
+ const esc=x=>String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+ const col=i=>String.fromCharCode(65+i);
+ /* cell: {v, f, s} ; s: 1 bold, 2 number, 3 bold number, 4 header fill */
+ function sheet(rows,widths){let x='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetViews><sheetView workbookViewId="0"/></sheetViews><cols>'+widths.map((w,i)=>`<col min="${i+1}" max="${i+1}" width="${w}" customWidth="1"/>`).join('')+'</cols><sheetData>';
+  rows.forEach((r,ri)=>{x+=`<row r="${ri+1}">`;r.forEach((c,ci)=>{if(c==null||c==='')return;if(typeof c!=='object')c={v:c};const a=col(ci)+(ri+1),st=c.s?` s="${c.s}"`:'';
+   if(c.f)x+=`<c r="${a}"${st}><f>${esc(c.f)}</f><v>${c.v}</v></c>`;else if(typeof c.v==='number')x+=`<c r="${a}"${st}><v>${c.v}</v></c>`;else x+=`<c r="${a}"${st} t="inlineStr"><is><t xml:space="preserve">${esc(c.v)}</t></is></c>`});x+='</row>'});
+  return x+'</sheetData></worksheet>'}
+ function build(){
+  const per={};FAMS.forEach(f=>per[f.id]=costs(f.id));const rate=FX.rate,H=t=>({v:t,s:4}),N=v=>({v:Math.round(v),s:2});
+  const shared=CATS.filter(c=>c[0]!=='pers'),pers=CATS.find(c=>c[0]==='pers');
+  const r1=[[{v:'Batam Family Trip · Costs by family (estimates, IDR)',s:1}],[{v:'S$1 = IDR'},{v:rate,s:2},{v:FX.date||''}],[],[H('Item'),...FAMS.map(f=>H(f.name)),H('Whole group')]];
+  shared.forEach((c,i)=>{const rn=5+i;r1.push([c[1],...FAMS.map(f=>N(per[f.id].v[c[0]])),{v:Math.round(FAMS.reduce((a,f)=>a+per[f.id].v[c[0]],0)),f:`SUM(B${rn}:D${rn})`,s:2}])});
+  const first=5,last=4+shared.length,tr=last+1;
+  const tot=f=>shared.reduce((a,c)=>a+per[f.id].v[c[0]],0),cs=[...FAMS.map((f,i)=>({v:Math.round(tot(f)),f:`SUM(${col(i+1)}${first}:${col(i+1)}${last})`,s:3})),{v:Math.round(FAMS.reduce((a,f)=>a+tot(f),0)),f:`SUM(B${tr}:D${tr})`,s:3}];
+  r1.push([{v:'TOTAL (IDR)',s:1},...cs]);
+  r1.push([{v:'TOTAL (SGD)',s:1},...cs.map((c,i)=>({v:Math.round(c.v/rate),f:`ROUND(${col(i+1)}${tr}/$B$2,0)`,s:3}))]);
+  r1.push([]);r1.push([{v:pers[1]+' (not shared, not in totals)'},...FAMS.map(f=>N(per[f.id].v.pers)),{v:Math.round(FAMS.reduce((a,f)=>a+per[f.id].v.pers,0)),f:`SUM(B${tr+3}:D${tr+3})`,s:2}]);
+  r1.push([]);r1.push(['Notes: prices include tax and service charge. Seafood is charged by actual weight. Ferry tickets are to be bought together on Sat 28 Nov. Change the rate in B2 and the SGD row updates.']);
+  const r2=[[H('Family'),H('Item'),H('Amount (IDR)'),H('Details')]];
+  FAMS.forEach(f=>CATS.forEach(c=>{const v=per[f.id].v[c[0]];if(v)r2.push([f.name,c[1],N(v),per[f.id].det[c[0]]||''])}));
+  const r3=[[H('Who pays Abah'),H('Amount (IDR)'),H('Amount (SGD)'),H('Paid?')]],pd=ls.get('paid',{});
+  DP().forEach((r,i)=>r3.push([r.t.replace(' (deposit share)',''),N(r.a),{v:Math.round(r.a/rate),f:`ROUND(B${i+2}/'Costs by family'!$B$2,0)`,s:2},pd[r.id]?'Yes':'Not yet']));
+  const ct='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>'+[1,2,3].map(i=>`<Override PartName="/xl/worksheets/sheet${i}.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>`).join('')+'<Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/></Types>';
+  const rels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>';
+  const wb='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets><sheet name="Costs by family" sheetId="1" r:id="rId1"/><sheet name="Details" sheetId="2" r:id="rId2"/><sheet name="Pay Abah" sheetId="3" r:id="rId3"/></sheets></workbook>';
+  const wr='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+[1,2,3].map(i=>`<Relationship Id="rId${i}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet${i}.xml"/>`).join('')+'<Relationship Id="rId4" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>';
+  const st='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><numFmts count="1"><numFmt numFmtId="164" formatCode="#,##0"/></numFmts><fonts count="3"><font><sz val="11"/><name val="Calibri"/></font><font><b/><sz val="11"/><name val="Calibri"/></font><font><b/><sz val="11"/><color rgb="FFFFFFFF"/><name val="Calibri"/></font></fonts><fills count="3"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill><fill><patternFill patternType="solid"><fgColor rgb="FF0A6577"/></patternFill></fill></fills><borders count="1"><border/></borders><cellStyleXfs count="1"><xf/></cellStyleXfs><cellXfs count="5"><xf/><xf fontId="1" applyFont="1"/><xf numFmtId="164" applyNumberFormat="1"/><xf numFmtId="164" fontId="1" applyNumberFormat="1" applyFont="1"/><xf fontId="2" fillId="2" applyFont="1" applyFill="1"/></cellXfs></styleSheet>';
+  return zip([['[Content_Types].xml',ct],['_rels/.rels',rels],['xl/workbook.xml',wb],['xl/_rels/workbook.xml.rels',wr],['xl/styles.xml',st],['xl/worksheets/sheet1.xml',sheet(r1,[38,18,18,18,18])],['xl/worksheets/sheet2.xml',sheet(r2,[20,34,16,80])],['xl/worksheets/sheet3.xml',sheet(r3,[40,16,16,12])]])}
+ btn.onclick=async()=>{const m=document.getElementById('xlsMsg');try{const blob=build(),name='Batam-Trip-Costs.xlsx';let ok=0;
+  try{if(window.DLS||typeof DLS!=='undefined'&&DLS){await DLS.save({filename:name,data:blob});ok=1}}catch(e){try{await DLS.save({filename:name,data:new Uint8Array(await blob.arrayBuffer())});ok=1}catch(e2){}}
+  if(!ok){const u=URL.createObjectURL(blob),a=document.createElement('a');a.href=u;a.download=name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000)}
+  m.textContent='Excel file saved: Batam-Trip-Costs.xlsx (3 sheets: Costs by family, Details, Pay Abah). Totals use formulas.'}catch(e){m.textContent='Could not make the Excel file: '+e.message}};
 })();
 </script>
 </body>
