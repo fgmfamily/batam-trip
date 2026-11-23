@@ -286,7 +286,7 @@ html body{display:block!important}header.hero,#tabs,main{box-sizing:border-box;w
     <div class="card"><label>Notes for the restaurant (allergies, spice level, time to serve)</label><textarea id="oNote"></textarea></div>
     <div class="sum" id="oSum"></div>
     <div class="row noprint" style="margin:8px 0"><div class="f"><label>Food budget for this order (IDR, optional)</label><input type="number" id="bud" step="50000" placeholder="e.g. 1500000"></div></div><div class="note hidden" id="budMsg"></div>
-    <div class="row noprint"><button id="oSave">Save order</button><button class="ghost" id="oCopy">Copy order</button><button class="ghost" id="oPic">Save as picture</button><a class="btn wa" id="oWa" target="_blank" rel="noopener">Send by WhatsApp</a><button class="warn" id="oClear">Clear</button></div>
+    <div class="row noprint"><button id="oSave">Save order</button><button class="ghost" id="oCopy">Copy order</button><button class="ghost" id="oPic">Save as picture</button><a class="btn wa" id="oWa" target="_blank" rel="noopener">Send by WhatsApp</a><button class="warn" id="oClear">Clear</button><button class="warn" id="oReset">Reset this order</button></div>
     <p class="small" id="oMsg"></p>
     <div class="note"><b>Please note</b><ul class="pts"><li>Seafood is sold by weight, so the final price follows the weight at the restaurant</li><li>Prices shown are estimates</li><li>Tax and service rates are set in the Info tab</li><li>Confirm the rates with the restaurant when you order</li></ul></div>
   </div>
@@ -489,6 +489,12 @@ const confirm_=()=>{if($('#oClear').dataset.arm){delete $('#oClear').dataset.arm
 $('#oSave').onclick=async()=>{const key=ord.fam+'|'+ord.date,mine=ls.get('mine',{});if(Object.keys(ord.q).length)mine[key]={...JSON.parse(JSON.stringify(ord)),ts:Date.now()};else delete mine[key];ls.set('mine',mine);renderCosts();
  if(!DB||!UID){$('#oMsg').textContent='Saved on this device only. Use Copy or WhatsApp to send it.';return}
  try{await DB.doc('orders/'+UID).set({orders:mine,ts:Date.now()});$('#oMsg').textContent='Saved for the whole family to see (All orders tab).'}catch(e){$('#oMsg').textContent='Saved on this device. The shared list refused it (your access may be view-only). Use Copy or WhatsApp to send it.'}};
+
+$('#oReset').onclick=async()=>{const b=$('#oReset');if(!b.dataset.arm){b.dataset.arm=1;b.textContent='Tap again: delete saved order';setTimeout(()=>{delete b.dataset.arm;b.textContent='Reset this order'},4000);return}
+ delete b.dataset.arm;b.textContent='Reset this order';const key=ord.fam+'|'+ord.date,mine=ls.get('mine',{});delete mine[key];ls.set('mine',mine);
+ ord.q={};ord.ln={};ord.note='';ord.name='';$('#oNote').value='';$('#oName').value='';persist();renderOrder();renderCosts();
+ if(!DB||!UID){$('#oMsg').textContent='Order reset on this device.';return}
+ try{await DB.doc('orders/'+UID).set({orders:mine,ts:Date.now()});$('#oMsg').textContent='Order reset for everyone (saved list updated).'}catch(e){$('#oMsg').textContent='Reset on this device. The shared list could not be updated.'}};
 
 /* packages + menu sub-tabs */
 $('#pkgList').innerHTML=PKGS.map(p=>`<div class="card pkg"><span class="tag c">per table · 10 pax</span><h3 style="margin-top:6px">Paket ${p[0]} · ${rp(p[1])}</h3><ul>${p[2].map(x=>`<li>${esc(x)}${AGE[x]?' <span class="mut">(age '+AGE[x]+')</span>':''}</li>`).join('')}</ul></div>`).join('');
