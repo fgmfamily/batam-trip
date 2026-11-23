@@ -379,7 +379,7 @@ const DAYS=[
  {d:'Sun 13 Dec',t:'Going home',e:[['9:30am','Driver picks us up at the resort','Batam time · IDR 350,000'],['After','Drive to Batam Centre ferry terminal'],['1:00pm','Majestic ferry to Tanah Merah','Batam time'],['Note','Standard check-out time is 12:00']]}];
 const TRANS=[['Wed 9 Dec','9:30am','One way: Batam Centre Ferry Terminal → HARRIS Resort Barelang',350000],['Fri 11 Dec','10:00am','Full day: shooting range + Batam Grand Mall',1100000],['Sun 13 Dec','9:30am','One way: HARRIS Resort Barelang → Batam Centre Ferry Terminal',350000]];
 const ROOM={A:{n:'Sea View',rate:1377000},B:{n:'Suite',rate:3087000},C:{n:'Villa',rate:4959000}};
-const FERRY_PP=87,NIGHTS=4,DEPOSIT=250000*NIGHTS,DRIVER_TOTAL=TRANS.reduce((a,t)=>a+t[3],0),HEAD={A:2,B:4,C:5};
+const FERRY_PP=87,NIGHTS=4,DEPOSIT=250000*NIGHTS,DRIVER_TOTAL=TRANS.reduce((a,t)=>a+t[3],0),HEAD={A:2,B:4,C:5},FERRYN={A:3,B:4,C:4};
 const DEFAULT={A:{lines:[],ts:0},
  B:{lines:[{n:'Jet ski single · 15 min (weekday)',w:'Abg Hairul, Kakak',p:550000,q:2,r:1},{n:'ATV single · 15 min',w:'Sarah, Abg Hairul + Khalid, Kakak (3 ATVs)',p:425000,q:3,r:1}],ts:0},
  C:{lines:[{n:'Jet ski single · 15 min (weekday)',w:'Muhammad',p:550000,q:1,r:1},{n:'ATV single · 15 min',w:'Samirah + Adam, Muhammad + Ammar (2 ATVs)',p:425000,q:2,r:1},{n:'Electric bike · 1 hour',w:'Adam, Ammar, Muhammad',p:150000,q:3,r:1},{n:'Shooting range · handgun, 50 bullets',w:'Muhammad (pays himself)',p:2000000,q:1,r:0,pers:1},{n:'Shooting range · rifle, 20 bullets',w:'Muhammad (pays himself)',p:1000000,q:1,r:0,pers:1}],ts:0}};
@@ -532,8 +532,8 @@ function costs(fid){const f=FAMS.find(x=>x.id===fid),pl=planOf(fid),det={};let a
  det.rdp=fid==='A'?'':ROOM[fid].n+': '+rpt(ROOM[fid].rate)+' × '+NIGHTS+' nights ÷ 2'+(bfH?' + extra breakfast ÷ 2 ('+rpt(bfH)+')':'')+'. Paid to Abah, who paid the booking deposit';
  if(fid!=='A'){det.room=det.room+'. Half is in the deposit above; this is the other half, paid at the resort';det.bf=det.bf+(bfH?' (half of the extra breakfast is in the deposit above)':'')}
  det.dep='IDR 250,000 × '+NIGHTS+' nights, collected by the resort at check-in';
- det.ferry=HEAD[fid]+' travellers × S$'+FERRY_PP+' return (Premium cabin). Estimate: tickets to be bought together on Sat 28 Nov';
- return{v:{cafe,ferry:FERRY_PP*FX.rate*HEAD[fid],rdp:rmH+bfH,room:ROOM[fid].rate*NIGHTS-rmH,bf:bfn+extra-bfH,dep:0,drv:DRIVER_TOTAL/3,act,food,pers},det}}
+ det.ferry=FERRYN[fid]+' tickets × S$'+FERRY_PP+' return (Premium cabin)'+(fid==='A'?'. Includes Nia\'s ticket, paid by Abah':fid==='C'?'. Nia\'s ticket is paid by Abah':'')+'. Estimate: tickets to be bought together on Sat 28 Nov';
+ return{v:{cafe,ferry:FERRY_PP*FX.rate*FERRYN[fid],rdp:rmH+bfH,room:ROOM[fid].rate*NIGHTS-rmH,bf:bfn+extra-bfH,dep:0,drv:DRIVER_TOTAL/3,act,food,pers},det}}
 function slicePath(cx,cy,R,r,a0,a1){const p=(rad,a)=>[cx+rad*Math.cos(a),cy+rad*Math.sin(a)],l=a1-a0>Math.PI?1:0,[x0,y0]=p(R,a0),[x1,y1]=p(R,a1),[x2,y2]=p(r,a1),[x3,y3]=p(r,a0);return`M${x0} ${y0}A${R} ${R} 0 ${l} 1 ${x1} ${y1}L${x2} ${y2}A${r} ${r} 0 ${l} 0 ${x3} ${y3}Z`}
 function renderCosts(){renderDp();const per={};FAMS.forEach(f=>per[f.id]=costs(f.id));const sum=ids=>{const t={};CATS.forEach(c=>t[c[0]]=ids.reduce((a,i)=>a+per[i].v[c[0]],0));return t};
  const scope=pieScope==='all'?FAMS.map(f=>f.id):[pieScope],tv=sum(scope),tot=Object.values(tv).reduce((a,b)=>a+b,0);
