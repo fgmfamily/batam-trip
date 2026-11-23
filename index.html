@@ -186,7 +186,7 @@ img:not(.ld){background:linear-gradient(90deg,#e9e3d3 25%,#f6f2e7 50%,#e9e3d3 75
 .wx .wxh i{display:block;flex:1;min-height:3px;border-radius:2px 2px 0 0;background:rgba(255,255,255,.55);transition:height .5s,background .2s;cursor:pointer}
 .wx .wxh i:hover,.wx .wxh i.on{background:#fff}
 .wx .hn{font-size:11.5px;margin-top:3px;min-height:15px;font-weight:600}
-.wx.cmp .fc,.wx.cmp .wxh,.wx.cmp .hn,.wx.cmp .fm{display:none}
+.wx .pr{display:flex;gap:6px;margin-top:8px}.wx .pr div{flex:1;background:rgba(255,255,255,.15);border-radius:10px;padding:4px 2px;text-align:center;font-size:10.5px;line-height:1.25;transition:background .3s}.wx .pr div b{display:block;font-size:13px;font-variant-numeric:tabular-nums}.wx .pr div.nx{background:rgba(255,255,255,.4);box-shadow:0 0 0 2px rgba(255,255,255,.85)}.wx.cmp .fc,.wx.cmp .wxh,.wx.cmp .hn,.wx.cmp .fm,.wx.cmp .pr{display:none}
 .wx .fm{font-size:10.5px;opacity:.9;margin-top:3px}
 html body{display:block!important}header.hero,#tabs,main{box-sizing:border-box;width:100%}
 @media(max-width:560px){.wx .tm{margin-left:0;width:100%}.wx .ck{flex:1}}
@@ -767,14 +767,23 @@ if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWor
  const clock=(id)=>`<svg viewBox="0 0 100 100" id="${id}"><circle cx="50" cy="50" r="46" fill="rgba(255,255,255,.2)" stroke="#fff" stroke-width="2.5"/>${[0,1,2,3,4,5,6,7,8,9,10,11].map(i=>`<line x1="50" y1="${i%3?9:7}" x2="50" y2="${i%3?13:15}" stroke="#fff" stroke-width="${i%3?1.5:2.5}" transform="rotate(${i*30} 50 50)"/>`).join('')}<line class="h" x1="50" y1="50" x2="50" y2="26" stroke="#fff" stroke-width="4" stroke-linecap="round"/><line class="m" x1="50" y1="50" x2="50" y2="14" stroke="#fff" stroke-width="3" stroke-linecap="round"/><line class="s" x1="50" y1="56" x2="50" y2="12" stroke="#ff7a45" stroke-width="1.6"/><circle cx="50" cy="50" r="3" fill="#ff7a45"/></svg>`;
  const dateOf=()=>new Date().toLocaleDateString('en-GB',{timeZone:'Asia/Singapore',weekday:'long',day:'numeric',month:'long',year:'numeric'});
  const cd=()=>{const n=Math.ceil((Date.UTC(2026,11,8,23,15)-Date.now())/864e5);return n>1?n+' days to the trip':n===1?'Trip starts tomorrow':n===0?'Trip day!':'On the trip'};
+ const PN=['Subuh','Zuhur','Asar','Maghrib','Isya'];
+ const bNow=()=>{const p=Object.fromEntries(new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Jakarta',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(new Date()).map(x=>[x.type,x.value]));return{d:p.year+'-'+p.month+'-'+p.day,m:(+p.hour%24)*60+ +p.minute}};
+ const mins=t=>{const a=t.split(':');return +a[0]*60+ +a[1]};
+ function prayers(d){try{const c=JSON.parse(localStorage.getItem('batamSolat.'+d)||'null');if(c)return c}catch(e){}
+  const k=['2026-12-09','2026-12-10','2026-12-11','2026-12-12','2026-12-13'].indexOf(d);if(k>=0&&typeof SOLAT!=='undefined'){const r=SOLAT[k];return{Subuh:r[1],Zuhur:r[3],Asar:r[4],Maghrib:r[5],Isya:r[6]}}return null}
+ function nextPr(){const n=bNow(),P=prayers(n.d);if(!P)return null;for(const k of PN)if(mins(P[k])>n.m)return{k,t:P[k],in:mins(P[k])-n.m,P};return{k:'Subuh',t:P.Subuh,in:1440-n.m+mins(P.Subuh),P,tom:1}}
+ const inTxt=m=>m<60?m+' min':Math.floor(m/60)+' h '+(m%60)+' min';
+ async function loadSolat(){try{const n=bNow();if(localStorage.getItem('batamSolat.'+n.d))return;const a=n.d.split('-'),c=new AbortController();setTimeout(()=>c.abort(),9000);const r=await fetch(`https://api.aladhan.com/v1/timings/${a[2]}-${a[1]}-${a[0]}?latitude=1.12&longitude=104.03&method=20&timezonestring=Asia/Jakarta`,{signal:c.signal});if(!r.ok)return;const t=(await r.json()).data.timings,f=x=>String(x).slice(0,5);localStorage.setItem('batamSolat.'+n.d,JSON.stringify({Subuh:f(t.Fajr),Zuhur:f(t.Dhuhr),Asar:f(t.Asr),Maghrib:f(t.Maghrib),Isya:f(t.Isha)}));build()}catch(e){}}
  let cv,ctx,parts=[],pk='',day=true,flash=0;
  function build(){
   const d=W&&W.days&&W.days[sel],cur=W&&W.cur,show=sel===0&&cur?{c:cur.c,t:cur.t,day:cur.day}:d?{c:d.c,t:Math.round((d.hi+d.lo)/2),day:true}:null;
-  let h=`<div class="wx${cmp?' cmp':''}" id="wxBox"><canvas></canvas><div class="in"><div class="top"><div class="big"><div class="ic">${show?ICO(show.c,show.day):''}</div><div><div class="t">${show?show.t:'--'}<sup>°C</sup> <span class="d">${show?WN[show.c]||'':(navigator.onLine?'Loading…':'Needs internet')}</span></div><div class="s">${d?(sel===0?'Today':d.d)+' · '+d.lo+'–'+d.hi+'°C · Rain '+d.p+'%':'Batam'}${sel===0&&cur&&cur.fl!=null?' · Feels '+cur.fl+'°':''}</div></div></div>
+  let h=`<div class="wx${cmp?' cmp':''}" id="wxBox"><canvas></canvas><div class="in"><div class="top"><div class="big"><div class="ic">${show?ICO(show.c,show.day):''}</div><div><div class="t">${show?show.t:'--'}<sup>°C</sup> <span class="d">${show?WN[show.c]||'':(navigator.onLine?'Loading…':'Needs internet')}</span></div><div class="s">Batam weather · ${d?(sel===0?'Today':d.d)+' · '+d.lo+'–'+d.hi+'°C · Rain '+d.p+'%':'Batam'}${sel===0&&cur&&cur.fl!=null?' · Feels '+cur.fl+'°':''}</div></div></div>
   <div class="tm"><div class="ck" data-z="Asia/Jakarta"><b id="ct1"></b><span>Batam</span></div><div class="ck" data-z="Asia/Singapore"><b id="ct2"></b><span>Singapore</span></div><button class="tg" id="wxTg">${cmp?'More ▾':'Less ▴'}</button></div></div>
-  <div class="dateln"><span id="wxDate">${dateOf()}</span><span class="pill">${cd()}</span><span class="pill">Batam is 1 hour behind</span></div>`;
+  <div class="dateln"><span id="wxDate">${dateOf()}</span><span class="pill">${cd()}</span><span class="pill" id="wxPr"></span><span class="pill">Batam is 1 hour behind</span></div>`;
   if(W&&W.days)h+='<div class="fc">'+W.days.map((x,i)=>`<button class="fd${i===sel?' on':''}" data-i="${i}" style="animation-delay:${i*70}ms"><b>${i===0?'Today':x.d}</b>${ICO(x.c,true)}${x.lo}–${x.hi}°C<br>Rain ${x.p}%</button>`).join('')+'</div>';
   if(d&&d.hr){const hh=d.hr;h+='<div class="wxh">'+hh.map((p,i)=>`<i data-h="${i}" style="height:${Math.max(6,p.p*.56)}px"></i>`).join('')+'</div><div class="hn" id="wxHn">Tap a bar: rain chance by hour (Batam time)</div>'}
+  h+='<div class="pr" id="wxPrRow"></div>';
   h+=`<div class="fm">${W&&W.ts?'Updated '+ago(W.ts)+' · Open-Meteo':''}${W&&W.ts?' · ':''}Tap a day or a bar</div></div></div>`;
   el.innerHTML=h;cv=el.querySelector('canvas');ctx=cv.getContext('2d');paint(show);
   el.querySelector('#wxTg').onclick=()=>{cmp=!cmp;localStorage.setItem('wxCmp',cmp?'1':'0');build()};
@@ -799,11 +808,12 @@ if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWor
   if(parts.k==='storm'){if(Math.random()<.006)flash=1;if(flash>0){ctx.fillStyle=`rgba(255,255,255,${flash*.45})`;ctx.fillRect(0,0,w,h);flash-=.07}}}
  function hand(id,a,b,c){const s=el.querySelector('#'+id);if(!s)return;s.querySelector('.h').setAttribute('transform',`rotate(${a} 50 50)`);s.querySelector('.m').setAttribute('transform',`rotate(${b} 50 50)`);s.querySelector('.s').setAttribute('transform',`rotate(${c} 50 50)`)}
  function tick(){const n=new Date();[['ck1','Asia/Jakarta','ct1'],['ck2','Asia/Singapore','ct2']].forEach(([id,z,t])=>{const p=Object.fromEntries(new Intl.DateTimeFormat('en-GB',{timeZone:z,hour:'numeric',minute:'numeric',second:'numeric',hour12:false}).formatToParts(n).map(x=>[x.type,+x.value]));const hh=p.hour%12,m=p.minute,s=p.second;hand(id,hh*30+m/2,m*6+s/10,s*6);const e=el.querySelector('#'+t);if(e&&!e.dataset.hold)e.textContent=tmz(z)});
-  const dd=el.querySelector('#wxDate');if(dd)dd.textContent=dateOf()}
+  const dd=el.querySelector('#wxDate');if(dd)dd.textContent=dateOf();prTick()}
+ function prTick(){const n=nextPr(),pl=el.querySelector('#wxPr'),row=el.querySelector('#wxPrRow');if(!pl)return;if(!n){pl.style.display='none';if(row)row.style.display='none';return}pl.style.display='';pl.textContent='Next solat: '+n.k+' '+n.t+(n.tom?' (tomorrow)':'')+' · in '+inTxt(n.in);if(row){row.style.display='';row.innerHTML=PN.map(k=>`<div class="${k===n.k&&!n.tom?'nx':k==='Subuh'&&n.tom?'nx':''}"><b>${n.P[k]}</b>${k}</div>`).join('')}}
  async function load(){try{const c=new AbortController();setTimeout(()=>c.abort(),9000);const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude=1.12&longitude=104.03&current=temperature_2m,weathercode,is_day,apparent_temperature,relative_humidity_2m,wind_speed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max&hourly=temperature_2m,weathercode,precipitation_probability&timezone=Asia%2FJakarta&forecast_days=5',{signal:c.signal});if(!r.ok)return;const j=await r.json(),d=j.daily,cu=j.current,hr=j.hourly;
   W={ts:Date.now(),cur:{t:Math.round(cu.temperature_2m),c:cu.weathercode,day:!!cu.is_day,fl:Math.round(cu.apparent_temperature),h:cu.relative_humidity_2m,w:Math.round(cu.wind_speed_10m)},days:d.time.map((t,i)=>({d:new Date(t+'T00:00:00').toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'}),c:d.weathercode[i],lo:Math.round(d.temperature_2m_min[i]),hi:Math.round(d.temperature_2m_max[i]),p:d.precipitation_probability_max[i],hr:Array.from({length:24},(_,k)=>({t:String(k).padStart(2,'0')+':00',tp:Math.round(hr.temperature_2m[i*24+k]),c:hr.weathercode[i*24+k],p:hr.precipitation_probability[i*24+k]||0}))}))};
   localStorage.setItem('batamNow2',JSON.stringify(W));build()}catch(e){}}
- build();addEventListener('resize',()=>{size()});requestAnimationFrame(frame);setInterval(tick,1000);load();setInterval(load,6e5);addEventListener('online',load);
+ build();addEventListener('resize',()=>{size()});requestAnimationFrame(frame);setInterval(tick,1000);load();loadSolat();setInterval(load,6e5);setInterval(loadSolat,36e5);addEventListener('online',load);
 })();
 </script>
 </body>
