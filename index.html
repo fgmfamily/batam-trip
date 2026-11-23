@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icons/apple-touch-icon.png"><meta name="theme-color" content="#0a6577"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><title>Batam Family Trip · 9–13 Dec 2026</title>
+<style>
+:root{--ink:#16313a;--mut:#5d727a;--bg:#f6f1e7;--card:#fff;--line:#e4dccb;--teal:#0f5b6b;--teal2:#d8ecef;--coral:#d9541e;--coral2:#fde6da;--ok:#1d7a4a;--warn:#8a5a00;--warn2:#fff3d6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:18px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.hero{background:linear-gradient(135deg,rgba(15,91,107,.84),rgba(11,63,75,.92)),url(img/resort-aerial.jpg) center/cover;color:#fff;padding:22px 16px 18px}
+.hero h1{margin:0 0 4px;font-size:26px;line-height:1.2}.hero p{margin:0;opacity:.9;font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}.chip{background:rgba(255,255,255,.16);border-radius:99px;padding:3px 11px;font-size:15px}
+nav{position:sticky;top:0;z-index:5;background:#fff;border-bottom:1px solid var(--line);display:flex;overflow-x:auto;scrollbar-width:none}
+nav button{flex:0 0 auto;border:0;background:none;padding:13px 14px;font:600 16px inherit;color:var(--mut);border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap}
+nav button.on{color:var(--teal);border-color:var(--coral)}
+main{max-width:900px;margin:0 auto;padding:14px 12px 60px}
+.panel{display:none}.panel.on{display:block}
+h2{font-size:22px;margin:6px 0 10px}h3{font-size:18px;margin:0 0 6px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;margin:0 0 12px;break-inside:avoid}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.mut{color:var(--mut)}.small{font-size:15px}.right{text-align:right}.b{font-weight:700}
+.note{background:var(--warn2);border-left:4px solid #e0a100;color:#5a3d00;padding:9px 12px;border-radius:8px;font-size:16px;margin:0 0 12px}
+.ok{background:#e6f5ec;border-color:#2f9e63;color:#14532d}
+.tag{display:inline-block;font-size:14px;padding:1px 8px;border-radius:99px;background:var(--teal2);color:var(--teal);font-weight:600;margin-right:4px}
+.tag.c{background:var(--coral2);color:var(--coral)}
+table{width:100%;border-collapse:collapse;font-size:16px}th,td{padding:7px 6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{font-size:14px;color:var(--mut);text-transform:uppercase;letter-spacing:.03em}td.r,th.r{text-align:right}
+tfoot td{font-weight:700;border-top:2px solid var(--ink)}
+.day{border-left:4px solid var(--coral);padding-left:12px;margin:0 0 14px}.day h3{color:var(--teal)}
+.ev{display:flex;gap:10px;padding:5px 0;border-bottom:1px dashed var(--line)}.ev:last-child{border:0}.ev .t{flex:0 0 78px;font-weight:700;font-size:16px;color:var(--coral)}
+button,.btn{font:600 16px inherit;border:1px solid var(--teal);background:var(--teal);color:#fff;border-radius:8px;padding:8px 13px;cursor:pointer;text-decoration:none;display:inline-block}
+button.ghost,.btn.ghost{background:#fff;color:var(--teal)}button.warn{background:#fff;color:#b42318;border-color:#b42318}
+button.wa,.btn.wa{background:#1f9d55;border-color:#1f9d55}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+input,select,textarea{font:inherit;border:1px solid #c9c0ad;border-radius:8px;padding:8px;background:#fff;color:var(--ink);max-width:100%}
+textarea{width:100%;min-height:60px}label{display:block;font-size:15px;font-weight:600;color:var(--mut);margin:0 0 3px}
+.f{flex:1 1 160px}
+.it{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.it .nm{flex:1 1 170px}.it .nm small{display:block;color:var(--mut)}.it .pr{flex:0 0 auto;font-size:15px;color:var(--mut);text-align:right}
+.st{display:flex;align-items:center;gap:6px}.st button{width:34px;height:34px;padding:0;font-size:20px}.st span{min-width:54px;text-align:center;font-weight:700}
+.ln{flex:1 1 100%}.ln input{width:100%;font-size:16px;padding:5px 8px}
+.cat{background:var(--teal2);color:var(--teal);font-weight:700;padding:6px 10px;border-radius:8px;margin:14px 0 2px;font-size:16px}
+.sum{background:var(--coral2);border-radius:12px;padding:12px;margin:12px 0}.sum .l{display:flex;justify-content:space-between;padding:2px 0}.sum .tot{font-size:20px;font-weight:800;border-top:2px solid var(--coral);margin-top:4px;padding-top:6px}
+.imgs{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}.imgs figure{margin:0}.imgs img{width:100%;border-radius:8px;border:1px solid var(--line);display:block}.imgs figcaption{font-size:15px;margin-top:4px}
+.sub{display:flex;gap:6px;margin:0 0 12px;flex-wrap:wrap}.sub button{background:#fff;color:var(--teal)}.sub button.on{background:var(--teal);color:#fff}
+.hidden{display:none!important}
+.pkg ul{margin:6px 0 0;padding-left:18px;font-size:16px}
+details summary{cursor:pointer;color:var(--teal);font-weight:600;font-size:16px}
+.file{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid var(--line);flex-wrap:wrap}.file .nm{flex:1 1 200px}
+@media print{
+ body{background:#fff;font-size:14px}nav,.noprint,button,.hero .chips,.st button,.sub{display:none!important}
+ .hero{background:#fff;color:#000;padding:0 0 6px}.panel{display:block!important;margin-bottom:18px}
+ main{padding:0;max-width:none}.card{border:1px solid #999}.zero{display:none!important}.imgs{grid-template-columns:repeat(3,1fr)}
+ .panel>h2{break-before:page}#p-trip>h2{break-before:auto}.st span:before{content:"× "}
+}
+td.r{white-space:nowrap}td small{display:block;color:var(--mut);font-weight:400}.sgd{color:var(--mut);font-size:.88em;font-weight:500;white-space:nowrap}
+.fxline{margin-top:10px;font-size:15px;background:rgba(255,255,255,.14);border-radius:8px;padding:6px 10px;display:inline-block}
+.tiles{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin:0 0 14px}
+.tile{background:#fff;border:1px solid var(--line);border-top:4px solid var(--coral);border-radius:12px;padding:10px 12px}.tile small{color:var(--mut);display:block;font-size:14px}.tile b{font-size:19px;display:block}.tile .sgd{font-size:15px;white-space:normal}
+.pcard{background:#fff;border:1px solid var(--line);border-radius:12px;margin:0 0 10px;overflow:hidden;break-inside:avoid}
+.pcard>summary{padding:11px 14px;font-weight:700;color:var(--teal);background:var(--teal2);list-style:none;display:flex;justify-content:space-between}
+.pcard>summary::after{content:'▾'}.pcard[open]>summary::after{content:'▴'}
+.pcard table{margin:0}.pcard td,.pcard th{padding:7px 12px}.pcard td small{display:block;color:var(--mut)}
+.pgrid{columns:1}@media(min-width:760px){.pgrid{columns:2;column-gap:12px}}.pgrid .pcard{display:block}
+.pl{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:9px 0;border-bottom:1px solid var(--line);align-items:end}.pl .full{grid-column:1/-1}.pl input{width:100%}.pl .tot{font-weight:700;text-align:right}
+.pieWrap{display:flex;gap:16px;align-items:center;flex-wrap:wrap;justify-content:center}.pieWrap svg{width:210px;height:210px;flex:0 0 auto}.leg{flex:1 1 230px;font-size:16px}.leg .r{display:flex;gap:8px;align-items:center;padding:3px 0}.leg i{width:12px;height:12px;border-radius:3px;flex:0 0 12px}.leg .n{flex:1}.leg .a{text-align:right;white-space:nowrap}
+.banner{width:100%;max-height:230px;object-fit:cover;border-radius:12px;display:block;margin:0 0 12px}.th{width:56px;height:56px;border-radius:10px;object-fit:cover;flex:0 0 56px}.catimg{width:100%;height:130px;object-fit:cover;border-radius:10px;margin:6px 0;display:block}
+.thumbs{display:flex;gap:6px;margin:0 0 8px}.thumbs img{width:56px;height:56px;border-radius:10px;object-fit:cover}.actrow{display:flex;gap:8px;align-items:flex-end}.actrow .th{margin-bottom:0}
+.pts{margin:4px 0 8px;padding-left:20px}.pts li{margin:3px 0}.ev small{display:block;color:var(--mut)}.btns{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0 12px}
+@media print{body{zoom:1!important}}.zoom{display:flex;gap:8px;align-items:center;margin-top:10px;font-size:15px}.zoom button{background:rgba(255,255,255,.2);border-color:#fff;color:#fff;padding:4px 14px}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style id="premium">
+:root{--ink:#10303a;--mut:#5b7079;--bg:#f5f1e8;--line:#e8e0cf;--teal:#0a6577;--teal2:#dcedf0;--coral:#ee6a35;--coral2:#fde8dc;--sh1:0 1px 2px rgba(16,48,58,.06),0 8px 22px rgba(16,48,58,.07);--sh2:0 2px 4px rgba(16,48,58,.1),0 18px 38px rgba(16,48,58,.18)}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Plus Jakarta Sans',system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:radial-gradient(1100px 480px at 50% -120px,#e2eff1,transparent),var(--bg);animation:fade .6s both}
+svg.i{width:1.15em;height:1.15em;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:0 0 auto}
+h2,.display{font-family:'Fraunces',Georgia,serif;letter-spacing:-.01em}
+h2{font-size:31px;display:flex;align-items:center;gap:12px;margin:12px 0 16px}
+.ic{width:44px;height:44px;flex:0 0 44px;border-radius:14px;display:inline-grid;place-items:center;background:linear-gradient(135deg,var(--teal),#10899f);color:#fff;box-shadow:0 8px 16px rgba(10,101,119,.28)}.ic svg.i{width:23px;height:23px}
+.hero{position:relative;overflow:hidden;background:#0b3f4b;padding:26px 18px 22px;border-radius:0 0 26px 26px;box-shadow:var(--sh2)}
+.hero::before{content:'';position:absolute;inset:-6%;background:url(img/resort-aerial.jpg) center/cover;animation:kb 26s ease-in-out infinite alternate}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(10,101,119,.78),rgba(8,40,52,.9))}
+.hero>*{position:relative;z-index:1}
+.hero h1{font-family:'Fraunces',Georgia,serif;font-size:34px;display:flex;gap:10px;align-items:center;letter-spacing:-.01em}.hero h1 svg.i{width:34px;height:34px;color:#ffb27e}
+.chip{backdrop-filter:blur(8px);background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);display:inline-flex;gap:6px;align-items:center}
+.chip.pulse{background:linear-gradient(135deg,#ee6a35,#f59a52);border-color:transparent;font-weight:700;animation:pulse 2.8s ease-in-out infinite}
+nav{backdrop-filter:blur(14px) saturate(1.4);background:rgba(255,255,255,.88);box-shadow:0 1px 0 var(--line),0 8px 20px rgba(16,48,58,.05);padding:0 6px}
+nav button{display:flex;align-items:center;gap:8px;margin:7px 2px;padding:9px 14px;border:0;border-radius:13px;background:none;box-shadow:none;color:var(--mut);transition:background .25s,color .25s,transform .15s}
+nav button:hover{background:var(--teal2);filter:none}nav button.on{background:var(--teal2);color:var(--teal);border:0;box-shadow:inset 0 -3px 0 var(--coral)}
+main{padding-bottom:110px}
+.panel.on{animation:fade .35s both}
+.card{border-radius:18px;box-shadow:var(--sh1);border:1px solid rgba(232,224,207,.9);transition:transform .25s,box-shadow .25s}
+@media(hover:hover){.card:hover{transform:translateY(-2px);box-shadow:var(--sh2)}.imgs img{transition:transform .35s}.imgs a:hover img{transform:scale(1.04)}.imgs figure{overflow:hidden;border-radius:10px}}
+.rv{animation:rise .55s var(--d,0ms) cubic-bezier(.2,.7,.2,1) backwards}
+button,.btn{background:linear-gradient(135deg,#0a6577,#0e8197);border:0;border-radius:13px;padding:11px 17px;box-shadow:0 5px 14px rgba(10,101,119,.25);transition:transform .15s,box-shadow .2s,filter .2s}
+button:hover,.btn:hover{filter:brightness(1.08);box-shadow:0 8px 18px rgba(10,101,119,.32)}button:active,.btn:active{transform:scale(.96)}
+button.ghost,.btn.ghost{background:#fff;color:var(--teal);box-shadow:inset 0 0 0 1.6px var(--teal)}button.warn{background:#fff;color:#b42318;box-shadow:inset 0 0 0 1.6px #b42318}
+button.wa,.btn.wa{background:linear-gradient(135deg,#1f9d55,#27b865);box-shadow:0 5px 14px rgba(31,157,85,.3)}
+.st button{width:42px;height:42px;border-radius:12px}.sub button{background:#fff;color:var(--teal);box-shadow:inset 0 0 0 1.5px var(--line)}.sub button.on{background:linear-gradient(135deg,#0a6577,#0e8197);color:#fff;box-shadow:0 5px 14px rgba(10,101,119,.25)}
+button:focus-visible,.btn:focus-visible,a:focus-visible{outline:3px solid #f5a15b;outline-offset:2px}
+input:focus,select:focus,textarea:focus{outline:0;border-color:var(--teal);box-shadow:0 0 0 4px rgba(10,101,119,.15)}input,select,textarea{border-radius:11px;transition:box-shadow .2s,border-color .2s}
+.note{border-radius:14px;border-left-width:5px}
+.tile{border-top:0;border-radius:18px;box-shadow:var(--sh1);position:relative;overflow:hidden}.tile::before{content:'';position:absolute;left:0;right:0;top:0;height:5px;background:linear-gradient(90deg,var(--coral),#f5b06b)}
+.day{border-left:0;position:relative;padding-left:16px}.day::before{content:'';position:absolute;left:0;top:14px;bottom:14px;width:5px;border-radius:5px;background:linear-gradient(var(--coral),#f5b06b)}
+.day.today{box-shadow:0 0 0 2px var(--coral),var(--sh2)}.day.today::after{content:'Today';position:absolute;right:14px;top:14px;background:var(--coral);color:#fff;border-radius:99px;padding:2px 12px;font-size:14px;font-weight:700}
+.ev .t{background:var(--coral2);border-radius:9px;padding:2px 8px;align-self:flex-start;text-align:center;font-size:14px}
+.dash{display:flex;gap:16px;align-items:center;background:linear-gradient(135deg,#0a6577,#0a4655);color:#fff;border-radius:22px;padding:18px;margin:0 0 14px;box-shadow:var(--sh2)}
+.count{flex:0 0 96px;height:96px;border-radius:50%;display:grid;place-content:center;text-align:center;background:radial-gradient(circle at 30% 25%,#ffb27e,#ee6a35);box-shadow:0 10px 24px rgba(238,106,53,.45)}.count b{font:700 38px/1 'Fraunces',Georgia,serif}.count span{font-size:13px;font-weight:600;line-height:1.15;padding:0 6px}
+.dash h3{font-size:21px;margin:0 0 4px}.dash .pts{margin:0;font-size:15px;opacity:.95}
+.quick{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:0 0 16px}
+.q{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 8px;background:#fff;color:var(--ink);border-radius:18px;box-shadow:var(--sh1);font-weight:700;font-size:15px;text-align:center;text-decoration:none;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.q:hover{transform:translateY(-3px);box-shadow:var(--sh2);filter:none}.q .ic{width:48px;height:48px;border-radius:15px}
+.quick>:nth-child(4n+2) .ic{background:linear-gradient(135deg,#ee6a35,#f59a52);box-shadow:0 8px 16px rgba(238,106,53,.3)}.quick>:nth-child(4n+3) .ic{background:linear-gradient(135deg,#1f9d55,#3cc479);box-shadow:0 8px 16px rgba(31,157,85,.3)}.quick>:nth-child(4n) .ic{background:linear-gradient(135deg,#6b4fbb,#8f73e0);box-shadow:0 8px 16px rgba(107,79,187,.3)}
+#catChips{display:flex;gap:8px;overflow-x:auto;padding:6px 2px 10px;position:sticky;top:64px;z-index:4;background:linear-gradient(var(--bg) 75%,transparent);scrollbar-width:none}
+#catChips button{background:#fff;color:var(--teal);box-shadow:inset 0 0 0 1.5px var(--line);white-space:nowrap;padding:8px 15px}.cat{scroll-margin-top:120px}
+.stack{display:flex;height:11px;border-radius:99px;overflow:hidden;margin:8px 0 12px;background:var(--line)}.stack i{display:block;height:100%;transform-origin:left;animation:grow .9s cubic-bezier(.2,.7,.2,1) both}
+#pie svg path,#pie svg circle{transform-box:view-box;transform-origin:100px 100px;animation:pop .8s cubic-bezier(.2,.8,.2,1) both}#pie svg path:nth-of-type(2){animation-delay:.07s}#pie svg path:nth-of-type(3){animation-delay:.14s}#pie svg path:nth-of-type(4){animation-delay:.21s}#pie svg path:nth-of-type(5){animation-delay:.28s}#pie svg path:nth-of-type(6){animation-delay:.35s}#pie svg path:nth-of-type(7){animation-delay:.42s}
+.st span.bump{animation:bump .35s}
+#orderBar{position:fixed;left:50%;bottom:14px;z-index:30;width:min(94vw,520px);transform:translate(-50%,160%);transition:transform .4s cubic-bezier(.2,.8,.2,1);display:flex;align-items:center;justify-content:space-between;gap:10px;background:linear-gradient(135deg,#0a4655,#0a6577);color:#fff;border-radius:20px;padding:10px 12px 10px 18px;box-shadow:var(--sh2)}#orderBar.on{transform:translate(-50%,0)}#orderBar b{display:block}#orderBar span{font-size:15px;opacity:.92}#orderBar small{color:#cfe8ee!important;opacity:1}#orderBar span *{color:inherit}#orderBar button{background:linear-gradient(135deg,#ee6a35,#f59a52)}
+#toasts{position:fixed;left:50%;bottom:92px;transform:translateX(-50%);z-index:60;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none;width:92vw}
+.toast{display:flex;gap:10px;align-items:center;background:#10303a;color:#fff;padding:12px 18px;border-radius:16px;box-shadow:var(--sh2);font-size:16px;animation:rise .35s both}.toast.out{opacity:0;transform:translateY(8px);transition:.4s}.toast svg{color:#6ee7a0}
+.sr{display:none}
+#lb{position:fixed;inset:0;z-index:80;background:rgba(7,22,28,.94);display:none;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px}#lb.on{display:flex;animation:fade .25s both}
+#lb img{max-width:94vw;max-height:74vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.5)}#lb .cap{color:#fff;font-weight:600}#lb .x{position:absolute;top:14px;right:14px;width:46px;height:46px;padding:0;border-radius:50%;background:rgba(255,255,255,.16);box-shadow:none}
+#lb .nv{position:absolute;top:50%;width:46px;height:46px;padding:0;border-radius:50%;background:rgba(255,255,255,.16);box-shadow:none;font-size:28px}#lb .p{left:8px}#lb .n{right:8px}
+@keyframes fade{from{opacity:0}to{opacity:1}}@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}@keyframes kb{from{transform:scale(1.04)}to{transform:scale(1.16) translate(-2%,-1.5%)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(245,154,82,.55)}50%{box-shadow:0 0 0 9px rgba(245,154,82,0)}}@keyframes pop{from{opacity:0;transform:scale(.6) rotate(-25deg)}to{opacity:1;transform:none}}@keyframes grow{from{transform:scaleX(0)}to{transform:none}}@keyframes bump{40%{transform:scale(1.45);color:var(--coral)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+@media print{.quick,#orderBar,#toasts,#lb,#catChips,.zoom{display:none!important}.hero::before,.hero::after{display:none}.hero{background:#fff;box-shadow:none;border-radius:0}.hero h1 svg{display:none}.dash{box-shadow:none;border:1px solid #999;color:#000;background:#fff}.count{box-shadow:none}.card,.tile,.day{animation:none!important}}
+</style>
+<style>
+.pay{display:flex;gap:12px;align-items:flex-start;padding:10px 4px;border-bottom:1px solid var(--line);cursor:pointer}.pay input{width:26px;height:26px;margin-top:2px;accent-color:var(--teal);flex:0 0 auto}.pay small{display:block;color:var(--mut)}
+.pay input:checked+span{opacity:.55;text-decoration:line-through}
+#solat td{white-space:nowrap;padding:8px 6px;text-align:center}#solat td:first-child{text-align:left}#solat thead td{font-weight:700;color:var(--teal)}
+.zoom{display:flex;flex-wrap:wrap;align-items:center;gap:8px}#easy[aria-pressed=true],#lang:hover{box-shadow:0 0 0 3px #f5a15b}
+body.easy{--mut:#22343b}body.easy .hero::before{animation:none}body.easy .quick{display:none}body.easy .card{box-shadow:none;border:2px solid #b9c9cd}body.easy nav button{font-size:1.05em}
+@media print{#waPlan,#waCosts,.pay input{display:none}}
+details{border-bottom:1px solid var(--line);padding:8px 0}summary{cursor:pointer;padding:6px 0;list-style:none}summary::-webkit-details-marker{display:none}summary::before{content:'▸ ';color:var(--coral)}details[open]>summary::before{content:'▾ '}
+@media(max-width:640px){#p-transport div.card:first-of-type thead{display:none}#p-transport div.card:first-of-type :is(table,tbody,tfoot){display:block;width:100%}#p-transport div.card:first-of-type tr{display:flex;flex-wrap:wrap;gap:2px 12px;padding:10px 0;border-bottom:1px solid var(--line)}#p-transport div.card:first-of-type td{padding:0;border:0}#p-transport div.card:first-of-type td:nth-child(1),#p-transport div.card:first-of-type td:nth-child(2){font-weight:700;color:var(--teal)}#p-transport div.card:first-of-type td:nth-child(3),#p-transport div.card:first-of-type td:nth-child(4){flex:1 1 100%;text-align:left}#p-transport div.card:first-of-type tfoot td{flex:1 1 100%;font-weight:700}}
+.hero{transition:padding .35s}body.sub .hero{padding:14px 18px 12px}body.sub .hero p,body.sub .hero .chips,body.sub .hero .fxline{display:none}body.sub .hero h1{font-size:26px}
+#nextStrip{margin:0;padding:9px 16px;background:linear-gradient(90deg,#0a4655,#0a6577);color:#fff;font-size:15px;line-height:1.35}#nextStrip .nl{background:#ee6a35;border-radius:99px;padding:1px 10px;font-weight:700;margin-right:6px;font-size:13px}#nextStrip .nt{opacity:.85;font-size:13px}
+#fxFab{position:fixed;right:12px;bottom:100px;z-index:35;border-radius:99px;padding:11px 15px;font-size:15px;background:linear-gradient(135deg,#ee6a35,#f59a52);box-shadow:var(--sh2)}
+#fxSheet,#picView{position:fixed;inset:0;z-index:90;background:rgba(7,22,28,.7);display:none;align-items:flex-end;justify-content:center}#fxSheet.on,#picView.on{display:flex;animation:fade .25s both}
+.fxin,.pin{background:#fff;width:min(100%,520px);border-radius:24px 24px 0 0;padding:18px 18px 26px;max-height:92vh;overflow:auto;position:relative;animation:rise .35s both}
+.fxin h3{margin:0 0 10px;font-size:22px}.fxin .x{position:absolute;right:12px;top:12px;width:42px;height:42px;padding:0;border-radius:50%;background:#eef3f4;color:var(--ink);box-shadow:none}
+.fxdir{display:flex;gap:8px;margin-bottom:10px}.fxdir button{flex:1;background:#fff;color:var(--teal);box-shadow:inset 0 0 0 1.6px var(--teal)}.fxdir button.on{background:linear-gradient(135deg,#0a6577,#0e8197);color:#fff}
+#fxAmt{width:100%;font-size:26px;font-weight:700;padding:12px}.fxq{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.fxq button{background:#fff;color:var(--teal);box-shadow:inset 0 0 0 1.5px var(--line);padding:8px 13px}
+.fxres{background:var(--teal2);border-radius:16px;padding:14px;margin:6px 0 10px}.fxres .big{font:700 32px/1.1 'Fraunces',Georgia,serif;color:var(--teal)}.fxres .sm{margin-top:6px;color:var(--mut);font-size:15px}
+.pin{text-align:center}.pin img{max-width:100%;border-radius:12px;border:1px solid var(--line)}.pin button{margin-top:10px}
+img:not(.ld){background:linear-gradient(90deg,#e9e3d3 25%,#f6f2e7 50%,#e9e3d3 75%);background-size:200% 100%;animation:shim 1.3s linear infinite}@keyframes shim{to{background-position:-200% 0}}
+.pay input:checked{animation:tick .4s}@keyframes tick{40%{transform:scale(1.5)}}
+#payTot.allpaid{background:#e3f6ea;border-left-color:#1f9d55;animation:flash 1.2s 2}@keyframes flash{50%{background:#b9ecc9}}
+@media print{#nextStrip,#fxFab,#fxSheet,#picView{display:none!important}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <h1>Batam Family Trip</h1>
+  <p>HARRIS Resort Barelang Batam · Wed 9 – Sun 13 Dec 2026 (4 nights)</p>
+  <div class="chips"><span class="chip">11 travellers</span><span class="chip">3 rooms</span><span class="chip">Majestic ferry · Tanah Merah</span></div>
+  <div class="fxline" id="fxLine"></div>
+  <div class="zoom noprint"><span>Text size</span><button id="zm">A−</button><button id="zp">A+</button></div>
+</header>
+<nav id="tabs"></nav>
+<div id="nextStrip" class="noprint hidden"></div>
+<main>
+
+<section class="panel" id="p-trip"><h2>Trip plan</h2>
+  <div class="row noprint" style="margin-bottom:10px"><button class="ghost" id="copyPlan">Copy plan as text (for WhatsApp)</button><a class="btn wa" id="waPlan" target="_blank" rel="noopener">Send plan by WhatsApp</a><span class="small mut" id="copyMsg"></span></div>
+  <div class="card"><h3>Key facts</h3><table><tbody>
+    <tr><td class="b">Resort</td><td><ul class="pts"><li>HARRIS Resort Barelang Batam</li><li>Booking under <b>Mrs Samirah</b></li><li>Confirmation no. <b>100991</b></li></ul></td></tr>
+    <tr><td class="b">Dates</td><td><ul class="pts"><li>Arrive: Wed 9 Dec 2026</li><li>Leave: Sun 13 Dec 2026</li><li>4 nights</li></ul></td></tr>
+    <tr><td class="b">Check-in / out</td><td><ul class="pts"><li>Check-in: 15:00 (Indonesia time)</li><li><b>Early check-in: requested</b> (waiting for the resort to confirm)</li><li>Check-out: 12:00</li></ul></td></tr>
+    <tr><td class="b">Deposit</td><td><ul class="pts"><li>IDR 250,000 per room per night</li><li>Held on Abah's credit card at check-in</li><li>3 rooms × 4 nights = IDR 3,000,000 held in total</li><li>Not a cost: each family pays its own charges directly</li></ul></td></tr>
+    <tr><td class="b">Included</td><td><ul class="pts"><li>Welcome drink</li><li>Swimming pool</li><li>Dino Kids Club</li><li>Free Wi-Fi</li><li>21% government tax &amp; service charge on the room rate</li><li>Breakfast at HARRIS Café: <b>Villa only</b></li></ul></td></tr>
+    <tr><td class="b">Booking terms</td><td><ul class="pts"><li>Non-refundable</li><li>No-show is charged 100%</li></ul></td></tr>
+    <tr><td class="b">Ferry fare</td><td><ul class="pts"><li>Majestic, Premium cabin, return</li><li>Ticket S$56 + surcharge S$11 per person</li><li>Terminal fees S$10 each way per person</li><li><b>S$87 per person</b> (S$348 for 4)</li><li>Not bought yet: booking together on Sat 28 Nov</li></ul></td></tr>
+    <tr><td class="b">Time zones</td><td><ul class="pts"><li>Batam (WIB) is 1 hour behind Singapore</li><li>Pick-up times are Batam time</li></ul></td></tr>
+  </tbody></table></div>
+  <div id="days"></div>
+  <div class="card"><h3>Contacts</h3><table><tbody>
+    <tr><td class="b">HARRIS front office</td><td><ul class="pts"><li>+62 778 409 1111</li><li>Active Wellness Spa: ext. 2212</li></ul></td></tr>
+    <tr><td class="b">Devi (HARRIS Resort)</td><td><ul class="pts"><li>+62 821-6828-0212</li><li><a href="https://wa.me/6282168280212" target="_blank" rel="noopener">WhatsApp</a></li></ul></td></tr>
+    <tr><td class="b">Donny (transport manager)</td><td><ul class="pts"><li>+62 853-6301-1991</li><li><a href="https://wa.me/6285363011991" target="_blank" rel="noopener">WhatsApp</a></li></ul></td></tr>
+    <tr><td class="b">Barelang Seafood</td><td><ul class="pts"><li>WhatsApp: <a href="https://wa.me/6281277559191?text=Hello%20Barelang%20Seafood" target="_blank" rel="noopener"><b>+62 812 7755 9191</b></a> (tap to chat)</li><li>Tel: (0778) 4093018</li><li>Email: barelangseafood@yahoo.com</li><li>Jl. Trans Barelang, before Jembatan 1 Barelang</li></ul></td></tr>
+    <tr><td class="b">Shooting range</td><td><a href="https://www.rad827.com/en/contact" target="_blank" rel="noopener">rad827.com/en/contact</a></td></tr>
+  </tbody></table></div>
+</section>
+
+<section class="panel" id="p-costs"><h2>Costs by family</h2>
+  <div class="note" id="fxNote"></div>
+  <div class="tiles" id="tiles"></div>
+  <div class="card"><div class="sub" id="pieSel"></div><div class="pieWrap" id="pie"></div></div>
+  <div class="row noprint" style="margin-bottom:10px"><a class="btn wa" id="waCosts" target="_blank" rel="noopener">Send cost summary by WhatsApp</a></div>
+  <div id="dpCard"></div>
+  <div id="famCosts"></div>
+  <div class="note"><b>About these figures</b><ul class="pts"><li>They follow what each family has chosen in the Activities, Resort and Barelang tabs</li><li>They change when a family leader adds, removes or edits something</li><li>Barelang food is an estimate (seafood is charged by weight)</li><li>Barelang tax uses the rate set in Info</li></ul></div>
+</section>
+
+<section class="panel" id="p-people"><h2>People &amp; rooms</h2>
+  <div class="grid" id="rooms"></div>
+  <div class="note"><b>Ages</b><ul class="pts"><li>Adam: 11</li><li>Ammar: 10</li><li>Sarah: 16</li><li>Khalid: 12</li></ul><b>Please ask the Harris front office</b><ul class="pts"><li>The letter lists room capacity as adults plus young children sharing a bed (under 6 or under 11)</li><li>How do these ages count for the Villa and the Suite?</li></ul></div>
+</section>
+
+<section class="panel" id="p-activities"><h2>Activities</h2>
+  <div class="note"><ul class="pts"><li>Jet ski and ATV are <b>weather permitting</b></li><li>Each family leader can change, add or remove activities below</li><li>The Costs tab updates straight away</li><li>Each family pays for its own activities</li><li>HARRIS café and in-room dishes are in the same list ("Café · …")</li></ul></div>
+  <div class="note"><b>All prices include tax and service</b><ul class="pts"><li>Activities, spa and café prices are final</li><li>Nothing extra is added in this app</li></ul></div>
+  <div id="planCards" style="margin-top:10px"></div>
+  <p class="small mut" id="planMsg"></p>
+</section>
+
+<section class="panel" id="p-transport"><h2>Transport</h2>
+  <div class="card"><table><thead><tr><th>Date</th><th>Time</th><th>Trip</th><th class="r">Price</th></tr></thead><tbody id="trBody"></tbody><tfoot><tr><td colspan="3">Total driver cost</td><td class="r" id="trTot"></td></tr></tfoot></table></div>
+  <div class="card" id="travel"></div>
+  <div class="card"><h3>Ferry · Majestic Fast Ferry</h3><b>Going: Wed 9 Dec</b><ul class="pts"><li>Departs Tanah Merah 8:15am (Singapore time)</li><li>Sailing is about 59 minutes</li><li>Arrive Batam Centre about 8:15am Batam time (9:15am Singapore time)</li><li>Breakfast at the terminal first, if time permits</li><li>Driver meets us at 9:30am</li></ul><b>Return: Sun 13 Dec</b><ul class="pts"><li>Departs Batam Centre 1:00pm (Batam time)</li><li>Driver picks us up at the resort at 9:30am</li></ul><p class="small mut">Please check the exact times on your ticket.</p></div>
+</section>
+
+<section class="panel" id="p-harris"><h2>HARRIS Resort</h2>
+  <img class="banner" src="img/resort-aerial.jpg" alt="HARRIS Resort Barelang from above">
+  <div class="card"><h3>HARRIS Café breakfast</h3><img class="banner" src="img/cafe.jpg" alt="HARRIS Café" style="max-height:150px"><ul class="pts"><li>IDR 140,000 per person per day</li><li>On request</li><li><b>Villa:</b> included</li><li><b>Sea View and Suite:</b> pay as below</li><li>Change the guests or days if needed</li></ul>
+    <table><thead><tr><th>Room</th><th>Guests paying</th><th>Days</th><th class="r">Total</th></tr></thead><tbody id="bfBody"></tbody></table>
+    <div class="btns noprint"><a class="btn ghost" href="files/1795415357384_image.png" target="_blank" rel="noopener">Open breakfast price</a></div></div>
+  <div class="card" id="hcMenu"></div>
+  <div class="grid">
+    <div class="card"><h3>Active Wellness Spa</h3><img class="catimg" src="img/spa-candles.jpg" alt="Spa" style="object-position:center 60%"><ul class="pts"><li>Sun–Thu: 10:00–23:00 (WIB)</li><li>Fri–Sat: 09:00–00:00 (WIB)</li><li>Front office: +62 778 409 1111, ext. 2212</li></ul><div class="btns"><a class="btn ghost" href="files/1795415411236_image.png" target="_blank" rel="noopener">Open spa price list</a></div></div>
+    <div class="card"><h3>Activities &amp; sport</h3><div class="thumbs"><img src="img/act-jetski.jpg" alt="Jet ski"><img src="img/act-atv.jpg" alt="ATV"><img src="img/act-archery.jpg" alt="Archery"><img src="img/act-beach.jpg" alt="Beach sports"></div><ul class="pts"><li>Jet ski, banana boat, kayak, ATV</li><li>Archery, e-bike and more</li><li>E-bike: 15% off for Ascott Star Rewards members</li></ul><div class="btns"><a class="btn ghost" href="files/1795415421662_image.png" target="_blank" rel="noopener">Open activities price list</a></div></div>
+  </div>
+  <div class="note"><b>Prices</b><ul class="pts"><li>All HARRIS activity, spa and café prices include tax and service</li></ul></div>
+</section>
+
+<section class="panel" id="p-barelang"><h2>Barelang Seafood</h2>
+  <img class="banner" src="img/bl-hero.jpg" alt="Barelang Seafood Restaurant">
+  <div class="btns noprint"><a class="btn ghost" href="files/MENU_BARELANG_SEAFOOD_RESTAURANT_1.pdf" target="_blank" rel="noopener">Open full menu (PDF)</a><a class="btn ghost" href="files/1795416370352_image.png" target="_blank" rel="noopener">Open food price list</a></div>
+  <div class="sub" id="bsub"><button data-s="order" class="on">Order</button><button data-s="pkg">Packages</button><button data-s="all">All orders</button><button data-s="menu">Menu images</button></div>
+
+  <div id="s-order">
+    <div class="card"><div class="row">
+      <div class="f"><label>Family</label><select id="oFam"></select></div>
+      <div class="f"><label>Meal date</label><select id="oDate"><option>10 Dec</option><option>12 Dec</option><option>Other</option></select></div>
+      <div class="f"><label>Where</label><select id="oPlace"><option>Eat at the Villa</option><option>Eat at the restaurant</option><option>Other</option></select></div>
+      <div class="f"><label>Name</label><input id="oName" placeholder="Who is ordering"></div></div></div>
+    <input id="oSearch" placeholder="Search the menu (e.g. udang, crab, rice)" style="width:100%;margin-bottom:6px">
+    <div id="oList"></div>
+    <div class="card"><label>Notes for the restaurant (allergies, spice level, time to serve)</label><textarea id="oNote"></textarea></div>
+    <div class="sum" id="oSum"></div>
+    <div class="row noprint" style="margin:8px 0"><div class="f"><label>Food budget for this order (IDR, optional)</label><input type="number" id="bud" step="50000" placeholder="e.g. 1500000"></div></div><div class="note hidden" id="budMsg"></div>
+    <div class="row noprint"><button id="oSave">Save order</button><button class="ghost" id="oCopy">Copy order</button><button class="ghost" id="oPic">Save as picture</button><a class="btn wa" id="oWa" target="_blank" rel="noopener">Send by WhatsApp</a><button class="warn" id="oClear">Clear</button></div>
+    <p class="small" id="oMsg"></p>
+    <div class="note"><b>Please note</b><ul class="pts"><li>Seafood is sold by weight, so the final price follows the weight at the restaurant</li><li>Prices shown are estimates</li><li>Tax and service rates are set in the Info tab</li><li>Confirm the rates with the restaurant when you order</li></ul></div>
+  </div>
+
+  <div id="s-pkg" class="hidden"><img class="banner" src="img/bl-special.jpg" alt="Barelang special menu"><div class="note"><ul class="pts"><li>Packages are priced <b>per table of 10 people</b></li><li>Our group is 11 people</li><li>One table plus extra dishes may suit</li><li>Add packages from the Order tab (top of the list)</li></ul></div><div id="pkgList"></div></div>
+
+  <div id="s-all" class="hidden"><p class="small mut" id="allMsg"></p><div id="allBody"></div></div>
+
+  <div id="s-menu" class="hidden"><div class="btns noprint"><a class="btn ghost" href="files/1795416349355_image.png" target="_blank" rel="noopener">Open packages menu</a><a class="btn ghost" href="files/1795416370352_image.png" target="_blank" rel="noopener">Open food price list</a><a class="btn ghost" href="files/MENU_BARELANG_SEAFOOD_RESTAURANT_1.pdf" target="_blank" rel="noopener">Open full menu (PDF)</a></div><div class="imgs" id="menuImgs"></div></div>
+</section>
+
+<section class="panel" id="p-tools"><h2>Trip tools</h2>
+  <div class="card"><h3>Prayer times · Batam</h3>
+    <ul class="pts"><li>Times are Batam time (WIB)</li><li>Singapore time is 1 hour ahead: add 1 hour</li><li>Source: Kemenag RI, via Liputan6</li></ul>
+    <table id="solat"></table>
+    <p class="small mut">Resort prayer-room location: ask the front office on arrival.</p></div>
+  <div class="card"><h3>Who pays what</h3>
+    <ul class="pts"><li>Tick each line when it is paid</li><li>Ticks are saved on this phone only</li></ul>
+    <div id="payList"></div><div class="note" id="payTot"></div></div>
+  <div class="card"><h3>Packing checklist</h3>
+    <div class="row"><div class="f"><label>Whose list?</label><select id="packWho"></select></div></div>
+    <div id="packList"></div><p class="small mut" id="packCount"></p></div>
+  <div class="card"><h3>Weather</h3><div id="wxBox"></div>
+    <div class="row noprint"><a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/search?q=Batam+weather+forecast">Open Batam forecast</a></div></div>
+  <div class="card"><h3>Currency converter</h3><ul class="pts"><li>S$ ⇄ IDR at today's rate</li><li>Also on the orange S$ ⇄ Rp button on every page</li></ul><div class="row noprint"><button id="fxOpen">Open converter</button></div></div>
+  <div class="card"><h3>Money tips</h3>
+    <ul class="pts"><li>Rates differ between money changers: compare 2–3 before changing</li><li>Use authorised money changers (look for the "KUPVA" sign)</li><li>Count notes before leaving the counter</li><li>Keep small notes for tips, parking and snacks</li><li>Ask each place first if cards are accepted</li><li>All S$ amounts in this app are guides only</li></ul></div>
+  <div class="card"><h3>Emergency numbers</h3>
+    <table><tbody>
+    <tr><td class="b">Emergency (Indonesia)</td><td>112</td></tr>
+    <tr><td class="b">Police</td><td>110</td></tr>
+    <tr><td class="b">Ambulance</td><td>118 / 119</td></tr>
+    <tr><td class="b">HARRIS front office</td><td>+62 778 409 1111</td></tr>
+    <tr><td class="b">Devi (HARRIS)</td><td><a href="https://wa.me/6282168280212" target="_blank" rel="noopener">+62 821-6828-0212</a></td></tr>
+    <tr><td class="b">Donny (transport)</td><td><a href="https://wa.me/6285363011991" target="_blank" rel="noopener">+62 853-6301-1991</a></td></tr>
+    </tbody></table>
+    <ul class="pts"><li>Nearest clinic: ask the front office on arrival</li><li>Keep your travel insurance hotline saved in your phone</li></ul></div>
+  <div class="card"><h3>Before you leave</h3>
+    <ul class="pts"><li>Open this app once on Wi-Fi</li><li>Screenshot the Trip plan, Costs and the menus</li><li>Download the PDFs from the Files tab</li><li>Save the link on your home screen:</li></ul>
+    <table><tbody><tr><td class="b">iPhone</td><td>Safari → Share → Add to Home Screen</td></tr><tr><td class="b">Android</td><td>Chrome → ⋮ menu → Add to Home screen</td></tr></tbody></table></div>
+</section>
+
+<section class="panel" id="p-files"><h2>Files &amp; downloads</h2>
+  <div class="note ok"><b>Saving and printing</b><ul class="pts"><li>Tap <b>Open</b> to view the original file</li><li>Save or share it from your browser</li><li>To print: Ctrl+P on a computer, or Share → Print on a phone</li><li>Every tab prints in order</li></ul></div>
+  <div class="card" id="fileList"></div>
+  <div class="card"><h3>Pictures (tap to enlarge)</h3><div class="imgs" id="allImgs"></div></div>
+</section>
+
+<section class="panel" id="p-info"><h2>Info &amp; updates</h2>
+  <div id="posts"></div>
+  <div class="card hidden" id="admin"><h3>Organiser tools</h3>
+    <div class="row" style="margin-bottom:8px"><div class="f"><label>SGD → IDR rate (IDR per S$1)</label><input type="number" id="cFx" step="1"></div><div class="f"><label>Rate date / source</label><input id="cFxd"></div></div>
+    <div class="row"><div class="f"><label>Restaurant tax %</label><input type="number" id="cTax" min="0" step="0.5"></div><div class="f"><label>Service charge %</label><input type="number" id="cSvc" min="0" step="0.5"></div><button id="cSave">Save rates</button></div>
+    <ul class="pts small mut"><li>Batam's restaurant tax is 10%</li><li>Barelang's menu does not state tax or service</li><li>Service therefore starts at 0%: ask the restaurant and change it here</li></ul>
+    <hr><h3>Add a menu item (e.g. drinks)</h3>
+    <div class="row"><div class="f"><label>Name</label><input id="mName"></div><div class="f"><label>Price (IDR)</label><input type="number" id="mPrice"></div><button id="mAdd">Add item</button></div>
+    <div id="mList" class="small"></div>
+    <hr><h3>Post new information</h3>
+    <label>Title</label><input id="pTitle" style="width:100%"><label style="margin-top:8px">Details</label><textarea id="pBody"></textarea>
+    <label style="margin-top:8px">Attach a file or photo (optional)</label><input type="file" id="pFile">
+    <div class="row" style="margin-top:8px"><button id="pAdd">Post</button><span class="small mut" id="pMsg"></span></div>
+  </div>
+  <p class="small mut" id="infoStatus"></p>
+</section>
+
+</main>
+<script src="config.js"></script><script src="shim.js"></script>
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+let FX={rate:14165,date:'22 Nov 2026, latest quote before 23 Nov (weekend)'},EST={total:0};
+const rpt=n=>'IDR '+Math.round(n).toLocaleString('en-US');
+const sg=n=>'S$'+(n/FX.rate).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+const rp=n=>rpt(n)+' <span class="sgd">('+sg(n)+')</span>';
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ls={get(k,d){try{const v=localStorage.getItem('batam26.'+k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem('batam26.'+k,JSON.stringify(v))}catch(e){}}};
+const copyText=async t=>{try{await navigator.clipboard.writeText(t);return true}catch(e){return false}};
+
+/* ---------- data ---------- */
+const FAMS=[
+ {id:'A',name:'Abah & Mama',room:'Sea View',cap:2,m:['Abah','Mama'],bf:2},
+ {id:'B',name:'Kakak & family',room:'Suite',cap:4,m:['Kakak','Abg Hairul','Sarah','Khalid'],bf:4},
+ {id:'C',name:'Samirah & family',room:'Villa',cap:5,m:['Samirah','Muhammad','Adam','Ammar','Nia (helper)'],bf:0}];
+const AGE={Adam:11,Ammar:10,Sarah:16,Khalid:12};
+const famOf=n=>(FAMS.find(f=>f.m.includes(n))||{}).id;
+const DAYS=[
+ {d:'Wed 9 Dec',t:'Arrival',i:['resort-aerial'],e:[['8:15am','Majestic ferry departs Tanah Merah','Singapore time'],['~8:15am','Arrive at Batam Centre ferry terminal','About 59 min sailing · Batam time'],['After','Immigration, then breakfast at the terminal','If time permits'],['9:30am','Driver meets us at the ferry terminal'],['After','Drive to HARRIS Resort Barelang','IDR 350,000'],['Early','Early check-in requested','Waiting for the resort to confirm'],['3:00pm','Standard check-in time']]},
+ {d:'Thu 10 Dec',t:'Water & ATV day',i:['act-jetski','act-atv','bl-crab'],e:[['Day','Jet ski (weather permitting)','Abg Hairul, Kakak, Muhammad'],['Day','ATV (weather permitting)','Samirah + Adam · Muhammad + Ammar · Sarah · Abg Hairul + Khalid · Kakak'],['Day','Electric bike (day to be fixed)','Adam, Ammar, Muhammad'],['Meal','Barelang Seafood','Eat at the Villa and/or at the restaurant']]},
+ {d:'Fri 11 Dec',t:'Shooting range & mall',e:[['10:00am','Full-day driver','IDR 1,100,000'],['Day','Shooting range (RAD827)','Muhammad'],['Day','Batam Grand Mall','The new shopping centre']]},
+ {d:'Sat 12 Dec',t:'Garden & seafood',i:['bl-prawn'],e:[['Day','Garden harvesting'],['Day','DC Mall (KIV, tentative)'],['Meal','Barelang Seafood','Eat at the Villa and/or at the restaurant']]},
+ {d:'Sun 13 Dec',t:'Going home',e:[['9:30am','Driver picks us up at the resort','Batam time · IDR 350,000'],['After','Drive to Batam Centre ferry terminal'],['1:00pm','Majestic ferry to Tanah Merah','Batam time'],['Note','Standard check-out time is 12:00']]}];
+const TRANS=[['Wed 9 Dec','9:30am','One way: Batam Centre Ferry Terminal → HARRIS Resort Barelang',350000],['Fri 11 Dec','10:00am','Full day: shooting range + Batam Grand Mall',1100000],['Sun 13 Dec','9:30am','One way: HARRIS Resort Barelang → Batam Centre Ferry Terminal',350000]];
+const ROOM={A:{n:'Sea View',rate:1377000},B:{n:'Suite',rate:3087000},C:{n:'Villa',rate:4959000}};
+const FERRY_PP=87,NIGHTS=4,DEPOSIT=250000*NIGHTS,DRIVER_TOTAL=TRANS.reduce((a,t)=>a+t[3],0),HEAD={A:2,B:4,C:5};
+const DEFAULT={A:{lines:[],ts:0},
+ B:{lines:[{n:'Jet ski single · 15 min (weekday)',w:'Abg Hairul, Kakak',p:550000,q:2,r:1},{n:'ATV single · 15 min',w:'Sarah, Abg Hairul + Khalid, Kakak (3 ATVs)',p:425000,q:3,r:1}],ts:0},
+ C:{lines:[{n:'Jet ski single · 15 min (weekday)',w:'Muhammad',p:550000,q:1,r:1},{n:'ATV single · 15 min',w:'Samirah + Adam, Muhammad + Ammar (2 ATVs)',p:425000,q:2,r:1},{n:'Electric bike · 1 hour',w:'Adam, Ammar, Muhammad',p:150000,q:3,r:1},{n:'Shooting range · handgun, 50 bullets',w:'Muhammad (pays himself)',p:2000000,q:1,r:0,pers:1},{n:'Shooting range · rifle, 20 bullets',w:'Muhammad (pays himself)',p:1000000,q:1,r:0,pers:1}],ts:0}};
+const CAT=[['Jet ski single · 15 min (weekday)',550000,1],['Jet ski single · 1 hour (weekday)',1460000,1],['Jet ski single · 15 min (weekend)',600000,1],['Jet ski single · 1 hour (weekend)',1590000,1],['Jet ski couple · 30 min (weekday)',1260000,1],['Jet ski couple · 1 hour (weekday)',2100000,1],['Jet ski couple · 30 min (weekend)',1460000,1],['Jet ski couple · 1 hour (weekend)',2400000,1],['Banana boat · 15 min, per person',250000,1],['Kayak single · 15 min',150000,1],['Kayak single · 30 min',200000,1],['Kayak double · 15 min',250000,1],['Kayak double · 30 min',350000,1],['ATV single · 15 min',425000,1],['ATV single · 90 min',1500000,1],['ATV for kids · 15 min',250000,1],['Electric bike · 1 hour',150000,1],['Electric bike · 3 hours',240000,1],['Electric bike · 1 day',800000,1],['Archery · adult',150000,1],['Archery · kid',100000,1],['Air soft gun · 2 magazines',200000,1],['Benchrest target · 35 bullets',300000,1],['Batik painting · per session',250000,1],['Tote bag tie dye · per bag',120000,1],['ASPA relaxing massage · 60 min',800000,1],['ASPA rejuvenating massage · 90 min',1100000,1],['Spa · Active Strong Massage 60 min',350000,1],['Spa · Active Strong Massage 90 min',450000,1],['Spa · Aromatherapy Massage 60 min',375000,1],['Spa · Foot Massage 60 min',350000,1],['Spa · Body Scrub package 90 min',550000,1],['Spa · Royal Spa Treatment 120 min',750000,1],['Spa · Ritual 150 min',950000,1],['Shooting range · handgun, 50 bullets',2000000,0],['Shooting range · rifle, 20 bullets',1000000,0]];
+const FILES=[
+ ['MENU_BARELANG_SEAFOOD_RESTAURANT_1.pdf','Barelang Seafood full photo menu, 26 pages (PDF)','PDF'],
+ ['1795415357384_image.png','HARRIS Café breakfast price (screenshot)','Image'],
+ ['1795424836649_image.png','HARRIS Café & in-room dining · food menu','Image'],
+ ['1795424847825_image.png','HARRIS Café & in-room dining · drinks menu','Image'],
+ ['1795415411236_image.png','Active Wellness Spa price list','Image'],
+ ['1795415421662_image.png','HARRIS Activities & Sport price list','Image'],
+ ['1795416349355_image.png','Barelang Seafood packages menu','Image'],
+ ['1795416370352_image.png','Barelang Seafood food price list','Image'],
+ ['1795416522852_image.png','Barelang Seafood packages (photo of printed menu)','Image']];
+const IMGS=[['1795424836649_image','HARRIS Café food menu'],['1795424847825_image','HARRIS Café drinks menu'],['1795415357384_image','HARRIS Café breakfast'],['1795415411236_image','Spa price list'],['1795415421662_image','Activities & Sport'],['1795416349355_image','Barelang packages'],['1795416370352_image','Barelang food prices'],['1795416522852_image','Barelang packages (photo)']];
+const MENU_IMGS=IMGS.slice(5);
+
+/* Barelang order menu. g = price per 100 g; e = per portion */
+const MENU=[];
+const add=(cat,id,n,en,u,p)=>MENU.push({cat,id,n,en,u,p});
+[['sonu','Ikan Sonu','Leopard Coral Grouper',80],['kerapu','Ikan Kerapu Hitam','Grouper',36],['ungar','Ikan Ungar','Mangrove Snapper',34],['kakapm','Ikan Kakap Merah','Red Snapper',34],['kakapp','Ikan Kakap Putih','Barramundi / Sea Bass',34],['bawal','Ikan Bawal','Pomfret',32],['karang','Ikan Karang','Coral Fish',17],['lobster','Lobster','Lobster',95],['hepo','Udang Kipas / Hepo','Hepo Prawn',36],['udang','Udang','Prawn',26],['kepiting','Kepiting','Crab',50],['rajungan','Rajungan','Flower Crab',25],['cumi','Cumi-cumi (hidup)','Squid (live)',24],['kapis','Kapis / Shell','Scallop',10],['gonggong','Gong-gong','Conch',8]].forEach(x=>add('Seafood (price per 100 g)',x[0],x[1],x[2],'g',x[3]*1000));
+[['sotong','Sotong (porsi)','Cuttlefish (portion)',75],['fillet','Daging Ikan (fillet)','Fish fillet',75],['fuyong','Fu Yong Hai','Foo yong omelette',55],['telurudang','Telur Dadar Udang','Onion & prawn scrambled egg',50],['tipantahu','Tipan Tahu','Bean curd hot plate',55],['tipankk','Tipan Kangkung','Water spinach hot plate',40],['petai','Petai Bilis','Stinky beans & dried fish',75],['cumibuncit','Cumi Buncit','See menu',100],['steamboat','Steamboat','Steamboat / hot pot (set)',350]].forEach(x=>add('Dishes (per portion)',x[0],x[1],x[2],'e',x[3]*1000));
+[['sgt','Sotong Goreng Tepung','Battered fried squid',60,85],['ssa','Sup Sayur Asin','Salted vegetable soup',40,60],['sjm','Sup Jamur','Mushroom soup',40,60],['ssf','Sup Seafood','Seafood soup',40,60],['sas','Sup Asparagus','Asparagus crab meat soup',55,90],['sty','Sup Tom Yam','Tom yam soup',45,80],['agb','Ayam Goreng Bawang','Garlic fried chicken',50,75],['td','Telur Dadar','Onion scrambled egg',25,45],['bk','Baby Kailan Polos','Plain stir-fry baby kailan',35,50],['tia','Tauge Ikan Asin','Salted fish bean sprout',35,50],['ku','Kailan Udang','Prawn stir-fry kailan',45,60],['bb','Buah-buahan Segar','Fresh fruit platter',30,50],['cc','Cap Cai','Mixed vegetables',40,55],['kp','Kangkung Polos','Plain stir-fry water spinach',35,50]].forEach(x=>{add('Soups, vegetables & more','m'+x[0],x[1]+' (M)',x[2],'e',x[3]*1000);add('Soups, vegetables & more','l'+x[0],x[1]+' (L)',x[2],'e',x[4]*1000)});
+add('Rice & noodles','nasi','Nasi Putih','Steamed rice','e',6000);
+[['S',25],['M',70],['L',120]].forEach(x=>add('Rice & noodles','nmb'+x[0],'Nasi / Mie / Bihun Goreng ('+x[0]+')','Fried rice / noodles / vermicelli','e',x[1]*1000));
+[['vak','Ayam Kalasan Vegetarian',50],['vias','Ikan Asam Manis Vegetarian',80],['vifs','Ikan Fillet Sambal Vegetarian',50],['vty','Sup Tomyam Vegetarian',80]].forEach(x=>add('Vegetarian','v'+x[0],x[1],'Vegetarian dish','e',x[2]*1000));
+const PKGS=[['A',650000,['Daging Ikan Asam Manis','Gong Gong Rebus','Udang Goreng Mentega','Tipan Tahu / Hot Plate','Sayur Cap Cai','Nasi Putih','Buah-buahan','Mineral water 330ml & soft drink']],
+ ['B',950000,['Daging Ikan Asam Pedas','Rajungan Saus Padang','Gong Gong Rebus','Udang Goreng Mentega','Ayam Goreng Bawang Putih','Tipan Tahu / Hot Plate','Sayur Cap Cai','Nasi Putih','Buah-buahan','Mineral water 330ml & soft drink']],
+ ['C',1150000,['Ikan Masak Kuning','Udang Goreng Nestum','Gong Gong Rebus','Sotong Goreng Tepung','Ayam Goreng Bawang Putih','Tipan Tahu / Hot Plate','Sayur Cap Cai','Nasi Putih','Buah-buahan','Kelapa Muda']],
+ ['D',1500000,['Ikan Asam Pedas','Kepiting Saus Padang','Udang Goreng Nestum','Gong Gong Rebus','Sotong Goreng Tepung','Ayam Goreng Bawang Putih','Tipan Tahu / Hot Plate','Sayur Cap Cai','Nasi Putih','Buah-buahan','Kelapa Muda']]];
+MENU.unshift(...PKGS.map(p=>({cat:'Packages (per table of 10)',id:'pkg'+p[0],n:'Paket '+p[0],en:p[2].join(' · '),u:'t',p:p[1]})));
+
+/* ---------- state ---------- */
+let DB=null,USER=null,UID=null,CAN_EDIT=false,CFG={taxPct:10,svcPct:0,custom:[]},POSTS=[],ALL=[];
+let ord=Object.assign({fam:'C',date:'10 Dec',place:'Eat at the Villa',name:'',note:'',q:{},ln:{}},ls.get('draft',{}));
+let sel=ls.get('sel',{});let tax21=false;
+const items=()=>MENU.concat(CFG.custom.map(c=>({cat:'Drinks & extras (added by organiser)',id:c.id,n:c.name,en:'',u:'e',p:c.price})));
+const lineTotal=(it,q)=>it.u==='g'?it.p*q/100:it.p*q;
+function calc(q){const lines=items().filter(i=>q[i.id]>0).map(i=>({i,q:q[i.id],t:lineTotal(i,q[i.id])}));const sub=lines.reduce((s,l)=>s+l.t,0),svc=sub*CFG.svcPct/100,tax=(sub+svc)*CFG.taxPct/100;return{lines,sub,svc,tax,total:sub+svc+tax}}
+const qtyLabel=(i,q)=>i.u==='g'?q+' g':'× '+q;
+
+/* ---------- tabs ---------- */
+const TABS=[['trip','Trip plan'],['costs','Costs by family'],['people','People & rooms'],['activities','Activities'],['transport','Transport'],['harris','HARRIS Resort'],['barelang','Barelang Seafood'],['tools','Trip tools'],['files','Files'],['info','Info']];
+$('#tabs').innerHTML=TABS.map(t=>`<button data-t="${t[0]}">${t[1]}</button>`).join('');
+function go(t){if(!TABS.some(x=>x[0]===t))t='trip';$$('.panel').forEach(p=>p.classList.toggle('on',p.id==='p-'+t));$$('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));try{history.replaceState(null,'','#'+t)}catch(e){}}
+$('#tabs').onclick=e=>{const b=e.target.closest('button');if(b){go(b.dataset.t);scrollTo(0,0)}};
+addEventListener('beforeprint',()=>$$('details').forEach(d=>d.open=true));
+addEventListener('hashchange',()=>go(location.hash.slice(1)));
+
+/* ---------- static sections ---------- */
+$('#days').innerHTML=DAYS.map(d=>`<div class="day card"><h3>${d.d} · ${d.t}</h3>${d.i?`<div class="thumbs">${d.i.map(x=>`<img src="img/${x}.jpg" alt="">`).join('')}</div>`:''}${d.e.map(e=>`<div class="ev"><div class="t">${esc(e[0])}</div><div>${esc(e[1])}${e[2]?`<small>${esc(e[2])}</small>`:''}</div></div>`).join('')}</div>`).join('');
+$('#rooms').innerHTML=FAMS.map(f=>`<div class="card"><span class="tag c">${f.room}</span><span class="tag">${f.cap} persons</span><h3 style="margin-top:8px">${esc(f.name)}</h3><ul style="margin:0;padding-left:18px">${f.m.map(x=>`<li>${esc(x)}${AGE[x]?' <span class="mut">(age '+AGE[x]+')</span>':''}</li>`).join('')}</ul></div>`).join('');
+function renderTransport(){$('#trBody').innerHTML=TRANS.map(t=>`<tr><td>${t[0]}</td><td>${t[1]}</td><td>${t[2]}</td><td class="r">${rp(t[3])}</td></tr>`).join('');
+$('#trTot').innerHTML=rp(TRANS.reduce((s,t)=>s+t[3],0))}
+
+let PLANS=[];
+function planOf(fid){let best=null;[ls.get('plan',{})[fid],...PLANS.map(d=>d&&d.plans&&d.plans[fid])].filter(Boolean).forEach(x=>{if(!best||(x.ts||0)>(best.ts||0))best=x});return JSON.parse(JSON.stringify(best||DEFAULT[fid]))}
+async function savePlan(fid,pl){pl.ts=Date.now();const loc=ls.get('plan',{});loc[fid]=pl;ls.set('plan',loc);
+ let m='Saved on this device only.';if(DB&&UID){try{await DB.doc('plans/'+UID).set({plans:loc,ts:Date.now()});m='Saved for everyone.'}catch(e){m='Saved on this device. The shared copy refused it (your access may be view-only).'}}
+ $('#planMsg').textContent=m;renderPlan();renderBreakfast();renderCosts()}
+function renderBreakfast(){$('#bfBody').innerHTML=FAMS.map(f=>{if(!f.bf)return`<tr><td>${f.room} (${esc(f.name)})</td><td colspan="3" class="b" style="color:var(--ok)">Breakfast included</td></tr>`;const pl=planOf(f.id),g=pl.bfG??f.bf,d=pl.bfD??4;return`<tr><td>${f.room} (${esc(f.name)})</td><td><input type="number" min="0" style="width:64px" data-bf="${f.id}" data-k="bfG" value="${g}"></td><td><input type="number" min="0" style="width:64px" data-bf="${f.id}" data-k="bfD" value="${d}"></td><td class="r b">${rp(140000*g*d)}</td></tr>`}).join('')}
+$('#bfBody').onchange=e=>{const i=e.target.dataset;if(!i.bf)return;const pl=planOf(i.bf);pl[i.k]=Math.max(0,+e.target.value||0);savePlan(i.bf,pl)};
+const lineVal=l=>l.p*l.q*(l.r&&tax21&&!l.cafe&&!/^Café ·/.test(l.n)?1.21:1);
+function actImg(n){const m=[[/jet ski/i,'act-jetski'],[/atv/i,'act-atv'],[/archery|shooting|benchrest|air soft/i,'act-archery'],[/batik|tote/i,'act-batik'],[/massage|spa|scrub|facial/i,'act-massage'],[/kayak|banana|beach|bike/i,'act-beach']].find(x=>x[0].test(n));return m?`<img class="th" src="img/${m[1]}.jpg" alt="">`:''}
+function renderPlan(){$('#planCards').innerHTML=FAMS.map(f=>{const pl=planOf(f.id);const own=pl.lines.filter(l=>!l.pers).reduce((a,l)=>a+lineVal(l),0);
+ return`<div class="card" data-f="${f.id}"><span class="tag c">${f.room}</span><h3 style="margin-top:6px">${esc(f.name)}</h3>${pl.lines.length?pl.lines.map((l,i)=>`<div class="pl" data-i="${i}"><div class="full actrow">${actImg(l.n)}<div style="flex:1"><label>Activity</label><input data-k="n" value="${esc(l.n)}"></div></div><div class="full"><label>Who</label><input data-k="w" value="${esc(l.w||'')}" placeholder="Names"></div><div><label>Price each (IDR)</label><input type="number" min="0" data-k="p" value="${l.p}"></div><div><label>Quantity</label><div class="st"><button data-act="dec">−</button><span>${l.q}</span><button data-act="inc">+</button><button class="warn" data-act="del" title="Remove" style="margin-left:auto">✕</button></div></div><div class="full tot">${l.pers?'<span class="tag c">paid personally</span> ':''}${rp(lineVal(l))}</div></div>`).join(''):'<p class="mut">No activities chosen.</p>'}
+ <div class="row" style="margin-top:8px"><select class="addSel" style="flex:1 1 200px"><optgroup label="Activities & spa">${CAT.map((c,i)=>c[3]?'':`<option value="${i}">${esc(c[0])} · ${rpt(c[1])}</option>`).join('')}</optgroup><optgroup label="HARRIS Café & in-room dining">${CAT.map((c,i)=>c[3]?`<option value="${i}">${esc(c[0].replace('Café · ',''))} · ${rpt(c[1])}</option>`:'').join('')}</optgroup><option value="x">Other (type your own)…</option></select><button data-act="add">Add</button></div>
+ <p class="b right" style="margin:8px 0 0">Family activities &amp; café: ${rp(own)}</p></div>`}).join('')}
+$('#planCards').onclick=e=>{const b=e.target.closest('button[data-act]');if(!b)return;const card=b.closest('[data-f]'),fid=card.dataset.f,pl=planOf(fid),a=b.dataset.act;
+ if(a==='add'){const v=card.querySelector('.addSel').value;pl.lines.push(v==='x'?{n:'New activity',w:'',p:0,q:1,r:0}:{n:CAT[v][0],w:'',p:CAT[v][1],q:1,r:CAT[v][2],pers:0,cafe:CAT[v][3]?1:0})}
+ else{const l=pl.lines[+b.closest('.pl').dataset.i];if(a==='inc')l.q++;if(a==='dec')l.q=Math.max(1,l.q-1);if(a==='del')pl.lines.splice(+b.closest('.pl').dataset.i,1)}
+ savePlan(fid,pl)};
+$('#planCards').onchange=e=>{const k=e.target.dataset.k;if(!k)return;const card=e.target.closest('[data-f]'),pl=planOf(card.dataset.f),l=pl.lines[+e.target.closest('.pl').dataset.i];l[k]=k==='p'?Math.max(0,+e.target.value||0):e.target.value;savePlan(card.dataset.f,pl)};
+
+
+const imgHtml=(list)=>list.map(x=>`<figure><a href="view/${x[0]}.jpg" target="_blank" rel="noopener"><img loading="lazy" src="view/${x[0]}.jpg" alt="${esc(x[1])}"></a><figcaption>${esc(x[1])}</figcaption></figure>`).join('');
+$('#menuImgs').innerHTML=imgHtml(MENU_IMGS);$('#allImgs').innerHTML=imgHtml(IMGS);
+$('#fileList').innerHTML='<h3>Original files</h3>'+FILES.map(f=>`<div class="file"><div class="nm"><b>${esc(f[1])}</b><div class="small mut">${f[2]==='PDF'?esc(f[0])+' · ':''}${f[2]}</div></div><a class="btn ghost" href="files/${f[0]}" target="_blank" rel="noopener">Open</a></div>`).join('')+'<div id="postFiles"></div>';
+
+/* ---------- plan text ---------- */
+const planText=()=>'BATAM FAMILY TRIP · HARRIS Resort Barelang · 9–13 Dec 2026\nBooking: Mrs Samirah, confirmation 100991 · Resort +62 778 409 1111\n\n'+DAYS.map(d=>d.d+' · '+d.t+'\n'+d.e.map(e=>'  '+e[0]+': '+e[1]+(e[2]?' ('+e[2]+')':'')).join('\n')).join('\n\n')+'\n\nRooms:\n'+FAMS.map(f=>'  '+f.room+': '+f.m.join(', ')).join('\n');
+$('#waPlan').href='https://wa.me/?text='+encodeURIComponent(planText());
+$('#copyPlan').onclick=async()=>{const t=planText();$('#copyMsg').textContent=(await copyText(t))?'Copied. Paste it into WhatsApp.':'Could not copy on this device.'};
+
+/* ---------- Barelang order ---------- */
+$('#oFam').innerHTML=FAMS.map(f=>`<option value="${f.id}">${esc(f.name)}</option>`).join('')+'<option value="ALL">Whole group</option>';
+const famName=id=>id==='ALL'?'Whole group':(FAMS.find(f=>f.id===id)||{}).name;
+const CATIMG={'Packages (per table of 10)':'bl-special','Seafood (price per 100 g)':'bl-crab','Dishes (per portion)':'bl-others','Soups, vegetables & more':'bl-veg','Rice & noodles':'bl-rice','Vegetarian':'bl-vegetarian','Drinks & extras (added by organiser)':'bl-juice'};
+const IMAP={fish:['sonu','kerapu','ungar','kakapm','kakapp','bawal','karang','fillet'],'bl-lobster':['lobster','hepo'],'bl-prawn':['udang','telurudang','ku'],'bl-crab':['kepiting'],'bl-flowercrab':['rajungan'],'bl-squid':['cumi','sotong','sgt','cumibuncit'],'bl-gonggong':['kapis','gonggong'],'bl-chicken':['agb'],'bl-rice':['nasi','nmbS','nmbM','nmbL','fuyong'],'bl-veg':['ssa','sjm','ssf','sas','sty','bk','tia','bb','cc','kp'],'bl-others':['td','petai','steamboat','tipantahu','tipankk']};IMAP['bl-fish']=IMAP.fish;delete IMAP.fish;
+function itemImg(i){let k=i.id;if(/^pkg/.test(k))return null;if(/^v/.test(k)&&/Vegetarian/.test(i.cat))return'bl-vegetarian';if(/^x/.test(k))return'bl-juice';const b=/^[ml]/.test(k)&&i.cat.startsWith('Soups')?k.slice(1):k;const e=Object.entries(IMAP).find(([,v])=>v.includes(b));return e?e[0]:null}
+function renderOrder(){const q=ord.q,f=$('#oSearch').value.trim().toLowerCase();let cat='',h='';
+ items().forEach(i=>{if(f&&!(i.n+' '+i.en).toLowerCase().includes(f))return;if(i.cat!==cat){cat=i.cat;h+=`<div class="cat">${esc(cat)}</div>${CATIMG[cat]?`<img class="catimg" loading="lazy" src="img/${CATIMG[cat]}.jpg" alt="">`:''}`}
+  const n=q[i.id]||0,step=i.u==='g'?100:1;
+  h+=`<div class="it ${n?'':'zero'}" data-id="${i.id}">${(t=>t?`<img class="th" loading="lazy" src="img/${t}.jpg" alt="">`:'')(itemImg(i))}<div class="nm"><b>${esc(i.n)}</b>${i.en?`<small>${esc(i.en)}</small>`:''}</div><div class="pr">${rp(i.p)}${i.u==='g'?' / 100 g':i.u==='t'?' / table':''}</div><div class="st"><button data-d="-${step}">−</button><span>${n?qtyLabel(i,n):'0'}</span><button data-d="${step}">+</button></div>${n?`<div class="ln"><input data-ln="${i.id}" placeholder="Cooking style / note (e.g. Saus Padang, Asam Manis)" value="${esc(ord.ln[i.id]||'')}"></div>`:''}</div>`});
+ $('#oList').innerHTML=h||'<p class="mut">No items match.</p>';renderSum()}
+function renderSum(){const c=calc(ord.q);$('#oSum').innerHTML=c.lines.length?`${c.lines.map(l=>`<div class="l"><span>${esc(l.i.n)} ${qtyLabel(l.i,l.q)}</span><span>${rp(l.t)}</span></div>`).join('')}<div class="l" style="border-top:1px solid var(--coral);margin-top:4px;padding-top:4px"><span>Subtotal</span><span>${rp(c.sub)}</span></div>${CFG.svcPct?`<div class="l"><span>Service charge ${CFG.svcPct}%</span><span>${rp(c.svc)}</span></div>`:''}<div class="l"><span>Restaurant tax ${CFG.taxPct}%</span><span>${rp(c.tax)}</span></div><div class="l tot"><span>Estimated total</span><span>${rp(c.total)}</span></div>`:'<span class="mut">No items yet. Use + to add dishes.</span>';
+ $('#oWa').href='https://wa.me/6281277559191?text='+encodeURIComponent(orderText(ord))}
+function orderText(o,withTotal=true){const c=calc(o.q);if(!c.lines.length)return'Barelang Seafood order (empty)';return`BARELANG SEAFOOD ORDER\n${o.date} · ${o.place}\nFor: ${famName(o.fam)}${o.name?' ('+o.name+')':''}\n\n`+c.lines.map((l,i)=>`${i+1}. ${qtyLabel(l.i,l.q)} ${l.i.n}${l.i.en?' ('+l.i.en+')':''}${(o.ln||{})[l.i.id]?' – '+o.ln[l.i.id]:''}`).join('\n')+(o.note?`\n\nNotes: ${o.note}`:'')+(withTotal?`\n\nEstimate: ${rpt(c.sub)}${CFG.svcPct?' + service '+CFG.svcPct+'%':''} + tax ${CFG.taxPct}% = ${rpt(c.total)}\n(Seafood is charged by actual weight.)`:'')}
+const persist=()=>ls.set('draft',ord);
+$('#oList').onclick=e=>{const b=e.target.closest('button[data-d]');if(!b)return;const id=b.closest('.it').dataset.id,v=Math.max(0,(ord.q[id]||0)+ +b.dataset.d);if(v)ord.q[id]=v;else{delete ord.q[id];delete ord.ln[id]}persist();renderOrder()};
+$('#oList').onchange=e=>{if(e.target.dataset.ln){ord.ln[e.target.dataset.ln]=e.target.value;persist();renderSum()}};
+$('#oSearch').oninput=renderOrder;
+[['oFam','fam'],['oDate','date'],['oPlace','place'],['oName','name'],['oNote','note']].forEach(([id,k])=>{const el=$('#'+id);el.value=ord[k];el.onchange=el.oninput=()=>{ord[k]=el.value;persist();renderSum()}});
+$('#oCopy').onclick=async()=>{$('#oMsg').textContent=(await copyText(orderText(ord)))?'Order copied. Paste it into WhatsApp.':'Could not copy on this device.'};
+$('#oClear').onclick=()=>{if(!Object.keys(ord.q).length||confirm_()){ord.q={};ord.ln={};ord.note='';$('#oNote').value='';persist();renderOrder()}};
+const confirm_=()=>{if($('#oClear').dataset.arm){delete $('#oClear').dataset.arm;$('#oClear').textContent='Clear';return true}$('#oClear').dataset.arm=1;$('#oClear').textContent='Tap again to clear';setTimeout(()=>{delete $('#oClear').dataset.arm;$('#oClear').textContent='Clear'},3000);return false};
+$('#oSave').onclick=async()=>{const key=ord.fam+'|'+ord.date,mine=ls.get('mine',{});if(Object.keys(ord.q).length)mine[key]={...JSON.parse(JSON.stringify(ord)),ts:Date.now()};else delete mine[key];ls.set('mine',mine);renderCosts();
+ if(!DB||!UID){$('#oMsg').textContent='Saved on this device only. Use Copy or WhatsApp to send it.';return}
+ try{await DB.doc('orders/'+UID).set({orders:mine,ts:Date.now()});$('#oMsg').textContent='Saved for the whole family to see (All orders tab).'}catch(e){$('#oMsg').textContent='Saved on this device. The shared list refused it (your access may be view-only). Use Copy or WhatsApp to send it.'}};
+
+/* packages + menu sub-tabs */
+$('#pkgList').innerHTML=PKGS.map(p=>`<div class="card pkg"><span class="tag c">per table · 10 pax</span><h3 style="margin-top:6px">Paket ${p[0]} · ${rp(p[1])}</h3><ul>${p[2].map(x=>`<li>${esc(x)}${AGE[x]?' <span class="mut">(age '+AGE[x]+')</span>':''}</li>`).join('')}</ul></div>`).join('');
+$('#bsub').onclick=e=>{const b=e.target.closest('button');if(!b)return;$$('#bsub button').forEach(x=>x.classList.toggle('on',x===b));['order','pkg','all','menu'].forEach(s=>$('#s-'+s).classList.toggle('hidden',s!==b.dataset.s))};
+
+/* all orders (shared) */
+function renderAll(){const recs=[];ALL.forEach(d=>Object.values((d&&d.orders)||{}).forEach(r=>recs.push(r)));
+ $('#allMsg').textContent=DB?(recs.length?'Orders saved by the family. Combined per meal date.':'No shared orders yet. Save an order from the Order tab.'):'Shared orders are not available in this view. Orders still work on your own device.';
+ const dates=[...new Set(recs.map(r=>r.date))];$('#allBody').innerHTML=dates.map(d=>{const rs=recs.filter(r=>r.date===d),comb={},ln={};let tot=0;rs.forEach(r=>{Object.entries(r.q).forEach(([k,v])=>comb[k]=(comb[k]||0)+v);Object.assign(ln,r.ln||{})});
+  const o={fam:'ALL',date:d,place:[...new Set(rs.map(r=>r.place))].join(' / '),name:'',note:rs.map(r=>r.note).filter(Boolean).join('; '),q:comb,ln};const c=calc(comb);
+  return`<div class="card"><h3>${esc(d)} · ${rs.length} order${rs.length>1?'s':''}</h3><table><tbody>${rs.map(r=>{const rc=calc(r.q);tot+=rc.total;return`<tr><td>${esc(famName(r.fam))}${r.name?' ('+esc(r.name)+')':''}<div class="small mut">${esc(r.place)}</div></td><td class="r">${rp(rc.total)}</td></tr>`}).join('')}</tbody><tfoot><tr><td>All families (estimate)</td><td class="r">${rp(c.total)}</td></tr></tfoot></table>
+  <details style="margin-top:8px"><summary>Combined list for the restaurant</summary><pre style="white-space:pre-wrap;font:13px inherit">${esc(orderText(o,false))}</pre></details>
+  <div class="row noprint" style="margin-top:8px"><button class="ghost" data-copyall="${esc(d)}">Copy combined order</button><a class="btn wa" target="_blank" rel="noopener" href="https://wa.me/6281277559191?text=${encodeURIComponent(orderText(o))}">Send combined by WhatsApp</a></div></div>`}).join('');
+ $$('[data-copyall]').forEach(b=>b.onclick=async()=>{const d=b.dataset.copyall,rs=recs.filter(r=>r.date===d),comb={};rs.forEach(r=>Object.entries(r.q).forEach(([k,v])=>comb[k]=(comb[k]||0)+v));b.textContent=(await copyText(orderText({fam:'ALL',date:d,place:'',name:'',note:'',q:comb,ln:{}})))?'Copied':'Could not copy'})}
+
+/* ---------- info / admin ---------- */
+function renderInfo(){$('#posts').innerHTML=POSTS.length?POSTS.map(p=>`<div class="card"><h3>${esc(p.title)}</h3><p style="white-space:pre-wrap;margin:0 0 6px">${esc(p.body)}</p>${p.fileId?`<a class="btn ghost" href="/_blob/${esc(p.fileId)}" target="_blank" rel="noopener">Open ${esc(p.fileName||'file')}</a>`:''}<div class="small mut">${new Date(p.ts).toLocaleDateString('en-GB')}${CAN_EDIT?` · <a href="#info" data-del="${esc(p.id)}">delete</a>`:''}</div></div>`).join(''):'<div class="card mut">No extra information yet. The organiser can add notes, photos and files here.</div>';
+ $('#postFiles').innerHTML=POSTS.filter(p=>p.fileId).map(p=>`<div class="file"><div class="nm"><b>${esc(p.title)}</b><div class="small mut">${esc(p.fileName||'')}</div></div><a class="btn ghost" href="/_blob/${esc(p.fileId)}" target="_blank" rel="noopener">Open</a></div>`).join('');
+ $('#admin').classList.toggle('hidden',!CAN_EDIT);$('#cTax').value=CFG.taxPct;$('#cFx').value=FX.rate;$('#cFxd').value=FX.date;$('#cSvc').value=CFG.svcPct;
+ $('#mList').innerHTML=CFG.custom.map(c=>`<div>${esc(c.name)} · ${rp(c.price)} <a href="#info" data-delm="${esc(c.id)}">remove</a></div>`).join('');
+ $('#infoStatus').textContent=DB?'':'Updates from the organiser appear here when you are signed in to Claude.'}
+$('#posts').onclick=async e=>{const id=e.target.dataset.del;if(!id)return;e.preventDefault();try{await DB.doc('site/'+id).delete()}catch(x){}};
+$('#mList').onclick=async e=>{const id=e.target.dataset.delm;if(!id)return;e.preventDefault();await saveCfg({custom:CFG.custom.filter(c=>c.id!==id)})};
+async function saveCfg(p){const n={...CFG,...p};try{await DB.doc('site/config').set({type:'config',taxPct:n.taxPct,svcPct:n.svcPct,custom:n.custom,fx:n.fx||FX});CFG=n;if(n.fx)FX=n.fx;refresh();return true}catch(e){$('#pMsg').textContent='Could not save: '+(e.message||'no permission');return false}}
+$('#cSave').onclick=async()=>{if(await saveCfg({taxPct:+$('#cTax').value||0,svcPct:+$('#cSvc').value||0,fx:{rate:+$('#cFx').value||FX.rate,date:$('#cFxd').value||FX.date,ts:Date.now()}}))$('#pMsg').textContent='Rates saved.'};
+$('#mAdd').onclick=async()=>{const n=$('#mName').value.trim(),p=+$('#mPrice').value;if(!n||!p)return;if(await saveCfg({custom:[...CFG.custom,{id:'x'+Date.now(),name:n,price:p}]})){$('#mName').value='';$('#mPrice').value=''}};
+$('#pAdd').onclick=async()=>{const title=$('#pTitle').value.trim();if(!title){$('#pMsg').textContent='Add a title first.';return}const rec={type:'post',id:'p'+Date.now(),title,body:$('#pBody').value,ts:Date.now()};const file=$('#pFile').files[0];
+ try{if(file){const A=await claude.use('assets');if(!A){$('#pMsg').textContent='File upload is not available in this view.';return}const r=await A.upload(file);rec.fileId=r.id;rec.fileName=file.name}
+  await DB.doc('site/'+rec.id).set(rec);$('#pTitle').value='';$('#pBody').value='';$('#pFile').value='';$('#pMsg').textContent='Posted.'}catch(e){$('#pMsg').textContent='Could not post: '+(e.message||'no permission')}};
+
+/* ---------- costs page ---------- */
+const CATS=[['rdp','Room deposit (pay Abah)','#6a4c9c'],['room','Room · 4 nights','#0f5b6b'],['bf','Breakfast','#e0a100'],['dep','Check-in deposit (resort)','#8aa1ab'],['ferry','Ferry · Majestic (return)','#3b6fd4'],['drv','Driver share','#4f7cac'],['act','Activities','#d9541e'],['cafe','HARRIS Café & in-room dining','#b8772e'],['food','Barelang food','#2f9e63'],['pers','Shooting (Muhammad, personal)','#8e4585']];
+let pieScope='all';
+function orderRecs(){const m={};const put=r=>{if(!r||!r.q)return;const k=r.fam+'|'+r.date;if(!m[k]||(r.ts||0)>(m[k].ts||0))m[k]=r};ALL.forEach(d=>Object.values((d&&d.orders)||{}).forEach(put));Object.values(ls.get('mine',{})).forEach(put);return Object.values(m)}
+function costs(fid){const f=FAMS.find(x=>x.id===fid),pl=planOf(fid),det={};let act=0,pers=0,cafe=0;pl.lines.forEach(l=>{if(l.pers)pers+=lineVal(l);else if(l.cafe||/^Café ·/.test(l.n))cafe+=lineVal(l);else act+=lineVal(l)});
+ det.act=pl.lines.filter(l=>!l.pers&&!l.cafe&&!/^Café ·/.test(l.n)).map(l=>l.q+' × '+l.n).join('; ');det.cafe=pl.lines.filter(l=>!l.pers&&(l.cafe||/^Café ·/.test(l.n))).map(l=>l.q+' × '+l.n.replace('Café · ','')).join('; ');det.pers=pl.lines.filter(l=>l.pers).map(l=>l.q+' × '+l.n).join('; ');
+ const bfn=f.bf?140000*(pl.bfG??f.bf)*(pl.bfD??4):0,extra=fid==='C'?156000*NIGHTS:0;det.bf=f.bf?(pl.bfG??f.bf)+' guests × '+(pl.bfD??4)+' days × IDR 140,000':'Villa breakfast included; additional breakfast per Harris letter (IDR 156,000 × 4 nights)';
+ let food=0;const fd=[];orderRecs().forEach(r=>{const t=calc(r.q).total;if(r.fam===fid){food+=t;fd.push(r.date)}else if(r.fam==='ALL'){food+=t*HEAD[fid]/11;fd.push(r.date+' (group, shared by headcount)')}});det.food=fd.length?'Orders: '+fd.join(', '):'No orders saved yet';
+ det.room=f.room+' · '+rpt(ROOM[fid].rate)+' × '+NIGHTS+' nights (21% tax & service included)';det.dep='IDR 250,000 × '+NIGHTS+' nights, collected at check-in';det.drv='One third of the 3 driver trips';
+ const rmH=fid==='A'?0:ROOM[fid].rate*NIGHTS/2,bfH=fid==='C'?extra/2:0;
+ det.rdp=fid==='A'?'':ROOM[fid].n+': '+rpt(ROOM[fid].rate)+' × '+NIGHTS+' nights ÷ 2'+(bfH?' + extra breakfast ÷ 2 ('+rpt(bfH)+')':'')+'. Paid to Abah, who paid the booking deposit';
+ if(fid!=='A'){det.room=det.room+'. Half is in the deposit above; this is the other half, paid at the resort';det.bf=det.bf+(bfH?' (half of the extra breakfast is in the deposit above)':'')}
+ det.dep='IDR 250,000 × '+NIGHTS+' nights, collected by the resort at check-in';
+ det.ferry=HEAD[fid]+' travellers × S$'+FERRY_PP+' return (Premium cabin). Estimate: tickets to be bought together on Sat 28 Nov';
+ return{v:{cafe,ferry:FERRY_PP*FX.rate*HEAD[fid],rdp:rmH+bfH,room:ROOM[fid].rate*NIGHTS-rmH,bf:bfn+extra-bfH,dep:0,drv:DRIVER_TOTAL/3,act,food,pers},det}}
+function slicePath(cx,cy,R,r,a0,a1){const p=(rad,a)=>[cx+rad*Math.cos(a),cy+rad*Math.sin(a)],l=a1-a0>Math.PI?1:0,[x0,y0]=p(R,a0),[x1,y1]=p(R,a1),[x2,y2]=p(r,a1),[x3,y3]=p(r,a0);return`M${x0} ${y0}A${R} ${R} 0 ${l} 1 ${x1} ${y1}L${x2} ${y2}A${r} ${r} 0 ${l} 0 ${x3} ${y3}Z`}
+function renderCosts(){renderDp();const per={};FAMS.forEach(f=>per[f.id]=costs(f.id));const sum=ids=>{const t={};CATS.forEach(c=>t[c[0]]=ids.reduce((a,i)=>a+per[i].v[c[0]],0));return t};
+ const scope=pieScope==='all'?FAMS.map(f=>f.id):[pieScope],tv=sum(scope),tot=Object.values(tv).reduce((a,b)=>a+b,0);
+ const famTot=id=>Object.entries(per[id].v).reduce((a,[k,v])=>k==='pers'?a:a+v,0),all=sum(FAMS.map(f=>f.id)),grand=Object.values(all).reduce((a,b)=>a+b,0);
+ $('#fxNote').innerHTML=`<b>Exchange rate</b><ul class="pts"><li>S$1 = IDR ${FX.rate.toLocaleString('en-US')}</li><li>Mid-market rate, ${esc(FX.date)}</li><li>Banks, cards and money changers usually give about 2–3% less</li><li>Treat S$ amounts as a guide</li></ul>`;
+ $('#tiles').innerHTML=FAMS.map(f=>`<div class="tile"><small>${esc(f.name)} · ${f.room}</small><b>${rpt(famTot(f.id))}</b><span class="sgd">${sg(famTot(f.id))} · family total</span></div>`).join('')+`<div class="tile" style="border-top-color:var(--teal)"><small>Whole group (incl. Muhammad's shooting)</small><b>${rpt(grand)}</b><span class="sgd">${sg(grand)}</span></div>`;
+ $('#pieSel').innerHTML=[['all','Whole group'],...FAMS.map(f=>[f.id,f.name])].map(x=>`<button data-p="${x[0]}" class="${pieScope===x[0]?'on':''}">${esc(x[1])}</button>`).join('');
+ let a0=-Math.PI/2,sl='';const live=CATS.filter(c=>tv[c[0]]>0.5);live.forEach(c=>{const fr=tv[c[0]]/tot;if(fr>.9999)sl+=`<circle cx="100" cy="100" r="71" fill="none" stroke="${c[2]}" stroke-width="38"/>`;else{sl+=`<path d="${slicePath(100,100,90,52,a0,a0+fr*2*Math.PI)}" fill="${c[2]}"/>`;a0+=fr*2*Math.PI}});
+ $('#pie').innerHTML=tot?`<svg viewBox="0 0 200 200" role="img" aria-label="Spending split">${sl}<text x="100" y="96" text-anchor="middle" font-size="13" fill="#5d727a">Total</text><text x="100" y="114" text-anchor="middle" font-size="17" font-weight="700" fill="#16313a">${sg(tot)}</text></svg><div class="leg">${live.map(c=>`<div class="r"><i style="background:${c[2]}"></i><span class="n">${c[1]}</span><span class="a">${rpt(tv[c[0]])}<br><span class="sgd">${sg(tv[c[0]])} · ${Math.round(tv[c[0]]/tot*100)}%</span></span></div>`).join('')}<div class="r b" style="border-top:1px solid var(--line);margin-top:4px"><span class="n">Total</span><span class="a">${rpt(tot)}<br><span class="sgd">${sg(tot)}</span></span></div></div>`:'<p class="mut">Nothing to show yet.</p>';
+ $('#famCosts').innerHTML=FAMS.map(f=>{const c=per[f.id];const rows=CATS.filter(k=>k[0]!=='pers'&&(c.v[k[0]]>0||k[0]==='food')).map(k=>`<tr><td><span style="color:${k[2]}">●</span> <b>${k[1]}</b><small>${esc(c.det[k[0]]||'')}</small></td><td class="r">${rpt(c.v[k[0]])}<br><span class="sgd">${sg(c.v[k[0]])}</span></td></tr>`).join('');
+  return`<div class="card"><h3>${esc(f.name)} <span class="tag c">${f.room}</span></h3><table><tbody>${rows}</tbody><tfoot><tr><td>Family total</td><td class="r">${rpt(famTot(f.id))}<br><span class="sgd">${sg(famTot(f.id))}</span></td></tr></tfoot></table>${c.v.pers?`<p class="small" style="margin:8px 0 0"><b>Not in the family total:</b> ${esc(c.det.pers)} = ${rp(c.v.pers)}, paid by Muhammad personally.</p>`:''}</div>`}).join('')}
+const accOf=id=>ROOM[id].rate*NIGHTS+(id==='C'?156000*NIGHTS:0);
+function renderDp(){const acc=accOf,tot=FAMS.reduce((a,f)=>a+acc(f.id),0),dp=tot/2;
+ const rows=FAMS.map(f=>{const rm=ROOM[f.id].rate*NIGHTS/2,bf=f.id==='C'?156000*NIGHTS/2:0,share=rm+bf,me=f.id==='A';return`<tr><td><b>${esc(f.name)}</b><small>${f.room}: ${rpt(ROOM[f.id].rate)} × ${NIGHTS} nights ÷ 2 = ${rpt(rm)}</small>${bf?`<small>+ extra breakfast ÷ 2 = ${rpt(bf)}</small>`:''}</td><td class="r">${me?'<b>Paid by Abah</b><br><span class="sgd">own share '+rpt(share)+'</span>':'<b>'+rpt(share)+'</b><br><span class="sgd">'+sg(share)+'</span>'}</td></tr>`}).join('');
+ $('#dpCard').innerHTML=`<div class="card"><h3>Room deposit paid by Abah</h3><ul class="pts"><li>Abah paid the 50% booking deposit: <b>${rpt(dp)}</b> (${sg(dp)})</li><li>Each family's share = its room rate × 4 nights ÷ 2</li><li>Kakak &amp; Samirah pay their share back to Abah</li></ul><table><thead><tr><td>Family</td><td class="r">Pay Abah</td></tr></thead><tbody>${rows}</tbody></table><ul class="pts" style="margin-top:10px"><li>Other 50% (${rpt(dp)}) is paid at the resort at check-in</li><li>Each family's half = the same amounts as above</li><li>Check-in deposit (IDR 250,000 × 4 nights = IDR 1,000,000 per room) is not a cost</li><li>It is held on Abah's credit card, not paid by each family</li><li>Each family pays its own charges directly (on the spot or at check-out)</li><li>Samirah's room includes extra breakfast (IDR 156,000 × 4)</li></ul></div>`}
+$('#pieSel').onclick=e=>{const b=e.target.closest('button');if(b){pieScope=b.dataset.p;renderCosts()}};
+function renderFx(){$('#fxLine').textContent=`S$1 = IDR ${FX.rate.toLocaleString('en-US')} · mid-market, ${FX.date}`}
+function refresh(){renderFx();renderTransport();renderBreakfast();renderPlan();renderOrder();renderAll();renderInfo();renderCosts()}
+
+/* ---------- boot ---------- */
+const rowsOf=s=>{if(!s)return[];const arr=Array.isArray(s)?s:s.docs||(()=>{const a=[];s.forEach&&s.forEach(x=>a.push(x));return a})();return arr.map(x=>x&&typeof x.data==='function'?x.data():x).filter(Boolean)};
+let ZM=ls.get('zoom',1);const az=()=>{document.body.style.zoom=ZM;ls.set('zoom',ZM)};az();$('#zp').onclick=()=>{ZM=Math.min(1.6,+(ZM+.1).toFixed(1));az()};$('#zm').onclick=()=>{ZM=Math.max(.9,+(ZM-.1).toFixed(1));az()};
+go(location.hash.slice(1));refresh();
+(async()=>{try{if(!window.claude||!claude.use)return;USER=await claude.use('user');DB=await claude.use('db');
+ if(USER){try{UID=await USER.id()}catch(e){}try{CAN_EDIT=!!(await USER.canEdit())}catch(e){}}
+ if(!DB){renderAll();renderInfo();return}
+ renderInfo();renderAll();
+ DB.collection('site').onSnapshot(s=>{const r=rowsOf(s),c=r.find(x=>x.type==='config');if(c)CFG={taxPct:c.taxPct??10,svcPct:c.svcPct??0,custom:c.custom||[]};if(c&&c.fx&&c.fx.rate)FX=c.fx;{const af=r.find(x=>x.type==='fx');if(af&&af.rate&&af.ts>(FX.ts||0))FX={rate:af.rate,date:af.date,ts:af.ts,src:af.src};WX=r.find(x=>x.type==='weather')||null}POSTS=r.filter(x=>x.type==='post').sort((a,b)=>b.ts-a.ts);refresh()},()=>{});
+ DB.collection('orders').onSnapshot(s=>{ALL=rowsOf(s);renderAll();renderCosts()},()=>{});
+ DB.collection('plans').onSnapshot(s=>{PLANS=rowsOf(s);renderPlan();renderBreakfast();renderCosts()},()=>{});
+}catch(e){}})();
+</script>
+<script>
+
+const HC=[['Let\'s start',[['Tahu Telur',98],['Chinese-style Chicken Wings',108],['Tempe Kemul',58],['Vegetable Spring Rolls',68]]],['Soup for the soul',[['Soto Ayam Kampung',128],['Sup Iga',168],['Sup Ikan Asam Pedas',148]]],['Chef\'s favourites',[['Curry Chicken (your choice)',158],['Curry Prawn (your choice)',178],['Beef Oxtail Soup',178],['Iga Bakar Sambal Matah',188]]],['Flavours of Indonesia',[['Ayam Taliwang',158],['Grilled Snapper Jimbaran',168],['Udang Saos Telur Asin',168]]],['A taste of Asia',[['Mongolian Beef',188],['Chicken Tikka',178],['Snapper Miso',178]]],['Rice, noodles & comfort',[['Nasi Goreng Kampung',138],['Seafood Tom Yum Fried Rice',148],['Mie Goreng Saos Aceh',118],['Mie Godog Jawa',118]]],['HARRIS Café favourites',[['Chicken Cordon Bleu',148],['HARRIS Café Pizza',158],['Fish & Chips',148]]],['Dino\'s favourites (kids)',[['Nuggets & Fries',98],['Mac & Cheese Balls',128],['Dino\'s Fried Rice',98]]],['Fresh & green',[['Vegetarian Fried Rice',108],['Vegetarian Fried Noodles',108],['Vegetable Curry',138]]],['Something sweet',[['Tiramisu Parfait',158],['Biscoff Cheesecake',158],['Fried Banana & Ice Cream',98],['Tropical Fruit Plate',88]]],['Fresh juice',[['Orange Juice',68],['Dragon Fruit Juice',68],['Watermelon Juice',58],['Pineapple Juice',58],['Honeydew Juice',58],['Lemon / Lime Juice',58]]],['Tea',[['Earl Grey',48],['English Breakfast',48],['Jasmine Green',48],['Chamomile',48]]],['Coffee',[['Espresso',48],['Americano',48],['Latte',48],['Cappuccino',48],['Mochaccino',48]]],['Soft drinks',[['Coca Cola',48],['Coke Zero',48],['Sprite',48],['Tonic Water',48],['Soda Water',48]]],['Bottled water',[['Aqua Reflection',48],['Equil Sparkling Water',48]]]];
+function renderHC(){$('#hcMenu').innerHTML=`<h3>HARRIS Café &amp; in-room dining menu</h3><ul class="pts"><li>Same menu for the café and in-room dining</li><li>Prices in IDR, shown in S$ too</li><li>Prices are in thousand rupiah</li><li><b>Prices include tax and service charge</b></li><li>Charge it to the room, then each family pays for its own</li><li>To add dishes to your family total: Activities tab → "Café · …"</li></ul><div class="btns noprint"><a class="btn" href="#activities">Add café items to my family</a></div>`+HC.map(([t,it])=>`<details><summary><b>${esc(t)}</b> <span class="mut small">(${it.length})</span></summary><table><tbody>${it.map(([n,pr])=>`<tr><td>${esc(n)}</td><td class="r">${rpt(pr*1000)}<br><span class="sgd">${sg(pr*1000)}</span></td></tr>`).join('')}</tbody></table></details>`).join('')+`<div class="btns noprint" style="margin-top:10px"><a class="btn ghost" href="files/1795424836649_image.png" target="_blank" rel="noopener">Open food menu</a><a class="btn ghost" href="files/1795424847825_image.png" target="_blank" rel="noopener">Open drinks menu</a></div>`}
+renderHC();const _rf4=refresh;refresh=function(){_rf4();renderHC()};
+/* ---- extras: prayer times, payments, packing, budget, share, easy-read ---- */
+const SOLAT=[['Wed 9 Dec','04:33','06:20','11:59','15:23','18:01','19:15'],['Thu 10 Dec','04:34','06:20','12:00','15:24','18:01','19:15'],['Fri 11 Dec','04:34','06:21','12:00','15:24','18:02','19:16'],['Sat 12 Dec','04:34','06:21','12:01','15:25','18:02','19:16'],['Sun 13 Dec','04:35','06:22','12:01','15:25','18:03','19:17']];
+$('#solat').innerHTML='<thead><tr><td>Day</td><td>Subuh</td><td>Dhuha</td><td>Zuhur</td><td>Asar</td><td>Maghrib</td><td>Isya</td></tr></thead><tbody>'+SOLAT.map(r=>'<tr><td><b>'+r[0]+'</b></td>'+r.slice(1).map(x=>'<td>'+x+'</td>').join('')+'</tr>').join('')+'</tbody>';
+$('#solat').parentElement.style.overflowX='auto';
+const DP=()=>FAMS.filter(f=>f.id!=='A').map(f=>({id:'dp'+f.id,t:f.name+' pays Abah (deposit share)',a:accOf(f.id)/2}));
+const BAL=()=>FAMS.map(f=>({id:'bal'+f.id,t:f.name+' · resort balance at check-in',a:accOf(f.id)/2}));
+function renderPay(){const paid=ls.get('paid',{}),rows=[...DP(),...BAL()];
+ $('#payList').innerHTML=rows.map(r=>`<label class="pay"><input type="checkbox" data-k="${r.id}" ${paid[r.id]?'checked':''}><span><b>${esc(r.t)}</b><small>${rp(r.a)}</small></span></label>`).join('');
+ const left=DP().filter(r=>!paid[r.id]).reduce((a,r)=>a+r.a,0),lb=BAL().filter(r=>!paid[r.id]).reduce((a,r)=>a+r.a,0);
+ $('#payTot').innerHTML=`<ul class="pts"><li>Still to pay Abah: <b>${rpt(left)}</b> (${sg(left)})</li><li>Resort balance still to pay: <b>${rpt(lb)}</b> (${sg(lb)})</li></ul>`}
+$('#payList').addEventListener('change',e=>{const k=e.target.dataset.k;if(!k)return;const p=ls.get('paid',{});p[k]=e.target.checked;ls.set('paid',p);renderPay()});
+const PACK=['Passport (valid 6+ months)','Ferry booking / tickets','Resort confirmation no. 100991','Cash (SGD and rupiah)','Phone charger & power bank','Swimwear & towel','Sunscreen & hat','Umbrella / light raincoat','Personal medicine','Comfortable shoes (ATV, walking)','Prayer clothes / sejadah','Immigration forms: check current rules'];
+$('#packWho').innerHTML=FAMS.flatMap(f=>f.m).concat(['Nia']).filter((x,i,a)=>a.indexOf(x)===i).map(n=>`<option>${esc(n)}</option>`).join('');
+function renderPack(){const w=$('#packWho').value,d=ls.get('pack.'+w,[]);$('#packList').innerHTML=PACK.map((x,i)=>`<label class="pay"><input type="checkbox" data-i="${i}" ${d.includes(i)?'checked':''}><span><b>${esc(x)}</b></span></label>`).join('');$('#packCount').textContent=d.length+' of '+PACK.length+' packed'}
+$('#packWho').onchange=renderPack;$('#packList').addEventListener('change',e=>{const i=+e.target.dataset.i,w=$('#packWho').value;let d=ls.get('pack.'+w,[]);d=e.target.checked?[...new Set([...d,i])]:d.filter(x=>x!==i);ls.set('pack.'+w,d);renderPack()});
+renderPay();renderPack();
+/* costs share */
+function costsText(){const paid=ls.get('paid',{});return'BATAM TRIP · COSTS (estimates)\nS$1 = IDR '+FX.rate.toLocaleString('en-US')+'\n\n'+FAMS.map(f=>{const c=costs(f.id).v,t=Object.entries(c).reduce((a,[k,v])=>k==='pers'?a:a+v,0);return f.name+': '+rpt(t)+' ('+sg(t)+')'}).join('\n')+'\n\nPay Abah (room deposit share):\n'+DP().map(r=>'  '+r.t.replace(' (deposit share)','')+': '+rpt(r.a)+' ('+sg(r.a)+')'+(paid[r.id]?' ✓ paid':'')).join('\n')}
+const _rc2=renderCosts;renderCosts=function(){_rc2();$('#waCosts').href='https://wa.me/?text='+encodeURIComponent(costsText())};
+/* budget alert */
+let budWas=false;function budCheck(){const b=+$('#bud').value||0,t=calc(ord.q).total,m=$('#budMsg');if(!b||!t){m.classList.add('hidden');budWas=false;return}
+ m.classList.remove('hidden');const over=t>b;m.innerHTML=over?`<b>Over budget</b> by ${rpt(t-b)} (${sg(t-b)})`:`Within budget · ${rpt(b-t)} (${sg(b-t)}) left`;m.style.borderLeftColor=over?'#b42318':'#1f9d55';
+ if(over&&!budWas&&window.toast)toast('Over your food budget by '+rpt(t-b),false);budWas=over}
+$('#bud').value=ls.get('bud','')||'';$('#bud').addEventListener('input',()=>{ls.set('bud',$('#bud').value);budCheck()});
+const _rs3=renderSum;renderSum=function(){_rs3();budCheck()};
+/* easy-read mode */
+const zb=$('.zoom');zb.insertAdjacentHTML('beforeend','<button id="easy" aria-pressed="false">Easy read</button><button id="lang">BM</button>');
+function setEasy(on){document.body.classList.toggle('easy',on);$('#easy').setAttribute('aria-pressed',on);ls.set('easy',on);ZM=on?1.35:1;az()}
+$('#easy').onclick=()=>setEasy(!document.body.classList.contains('easy'));if(ls.get('easy',false))setEasy(true);
+/* ===== v3: café ordering, next strip, travel times, weather, FX tool, order picture ===== */
+let WX=null;
+/* café items join the activity list (same per-family editing + costs) */
+HC.forEach(([sec,it])=>it.forEach(([n,pr])=>CAT.push(['Café · '+n,pr*1000,0,1])));
+renderPlan();
+/* next-up strip */
+const T0=Date.UTC(2026,11,9);
+function evTimes(){const out=[];DAYS.forEach((d,di)=>d.e.forEach(e=>{const m=/^~?(\d{1,2}):(\d{2})(am|pm)$/i.exec(e[0]);if(!m)return;const h=+m[1]%12+(m[3].toLowerCase()==='pm'?12:0),sgT=/Singapore time/i.test(e[2]||'');out.push({t:T0+di*864e5+(h*60+ +m[2])*6e4-(sgT?8:7)*36e5,title:e[1],time:e[0].replace('~',''),tz:sgT?'Singapore time':'Batam time',d:d.d})}));return out.sort((a,b)=>a.t-b.t)}
+const EVT=evTimes();
+function dur(ms){const m=Math.max(0,Math.round(ms/6e4)),d=Math.floor(m/1440),h=Math.floor(m%1440/60),mm=m%60;return d?d+'d '+h+'h':h?h+'h '+mm+'m':mm+' min'}
+function renderNext(){const now=Date.now(),n=EVT.find(x=>x.t>now),el=$('#nextStrip');if(!n){el.classList.add('hidden');return}
+ el.classList.remove('hidden');el.innerHTML=`<span class="nl">Next up</span><b>${esc(n.d)} · ${esc(n.time)}</b> ${esc(n.title)} <span class="nt">in ${dur(n.t-now)} · ${n.tz}</span>`}
+renderNext();setInterval(renderNext,3e4);
+/* travel times */
+const GM=(o,d)=>'https://www.google.com/maps/dir/?api=1&travelmode=driving&origin='+encodeURIComponent(o)+'&destination='+encodeURIComponent(d);
+const TERM='Batam Centre International Ferry Terminal',HAR='HARRIS Resort Barelang Batam',RAD='RAD827 Batam, Lembah Pelangi Bukit Dangas, Sekupang',GBM='Grand Batam Mall, Jl. Pembangunan, Batam';
+const TRAVEL=[
+ {t:'Wed 9 Dec · Ferry terminal → HARRIS Resort',o:TERM,d:HAR,b:['Pick-up: 9:30am (Batam time)','Normal drive: about 35–50 min','Peak-hour drive: 60 min or more','Expected arrival: about 10:15–10:30am','Tip: 9:30am is after the morning rush','Tip: allow extra time to load luggage']},
+ {t:'Fri 11 Dec · HARRIS Resort → RAD827 shooting range',o:HAR,d:RAD,b:['Leave: 10:00am','Normal drive: about 20–35 min','Expected arrival: about 10:30–10:45am','Range is open daily 9:00am–5:00pm','Tip: WhatsApp +62 859 2445 3577 to confirm your slot']},
+ {t:'Fri 11 Dec · RAD827 → Grand Batam Mall',o:RAD,d:GBM,b:['Normal drive: about 35–50 min','Midday traffic: up to 60 min','Mall is open 10:00am–10:00pm','Tip: Friday prayers are around midday (Zuhur 12:00)','Tip: plan prayer and lunch before or after the drive']},
+ {t:'Fri 11 Dec · Grand Batam Mall → HARRIS Resort',o:GBM,d:HAR,b:['Normal drive: about 45–60 min','Evening rush (4:30–6:30pm): 70–90 min','Best: leave the mall before 4:00pm or after 7:00pm','Tip: roads towards the resort get busy in the evening']},
+ {t:'Sun 13 Dec · HARRIS Resort → Ferry terminal',o:HAR,d:TERM,b:['Pick-up: 9:30am (Batam time)','Normal drive: about 35–50 min','Sunday traffic is usually lighter','Expected arrival: about 10:15–10:30am','Ferry leaves 1:00pm: about 2.5 hours to spare','Tip: be at the terminal at least 1.5 hours early (confirm with Majestic)']}];
+$('#travel').innerHTML='<h3>Travel times (estimates)</h3><ul class="pts"><li>Based on typical road conditions, not live traffic</li><li>Tap "Live traffic" for the current time on Google Maps</li><li>Times in Batam time (WIB)</li></ul>'+TRAVEL.map(l=>`<details><summary><b>${esc(l.t)}</b></summary><ul class="pts">${l.b.map(x=>'<li>'+esc(x)+'</li>').join('')}</ul><div class="btns noprint"><a class="btn ghost" target="_blank" rel="noopener" href="${GM(l.o,l.d)}">Live traffic</a></div></details>`).join('')+'<div class="note" style="margin-top:12px"><b>Peak hours in Batam</b><ul class="pts"><li>Morning rush: about 7:00–9:00am</li><li>Evening rush: about 4:30–6:30pm</li><li>Busiest roads: Sudirman, Yos Sudarso, Ahmad Yani</li><li>Heavy rain can slow roads and cause flooding</li><li>The roads towards the resort are busiest in the evening</li></ul></div>';
+/* weather (auto-updated into the shared database) */
+function ago(ts){const m=Math.round((Date.now()-ts)/6e4);return m<2?'just now':m<90?m+' min ago':m<2880?Math.round(m/60)+' hours ago':Math.round(m/1440)+' days ago'}
+function renderWx(){const days=Math.ceil((T0+7*36e5-Date.now())/864e5);let h='';
+ if(WX&&WX.days&&WX.days.length){h=`<ul class="pts"><li>Updated ${ago(WX.ts)}${WX.src?' · '+esc(WX.src):''}</li><li>Forecasts change: it keeps updating automatically</li></ul><table><thead><tr><td>Day</td><td>Weather</td><td class="r">Temp</td><td class="r">Rain</td></tr></thead><tbody>${WX.days.map(d=>`<tr><td><b>${esc(d.d)}</b></td><td>${esc(d.desc||'')}</td><td class="r">${d.lo!=null?d.lo+'–':''}${d.hi!=null?d.hi+'°C':''}</td><td class="r">${d.pop!=null?d.pop+'%':''}</td></tr>`).join('')}</tbody></table>${WX.note?'<p class="small">'+esc(WX.note)+'</p>':''}`}
+ else h=`<ul class="pts"><li><b>Forecast not available yet</b></li>${days>0?`<li>The trip starts in ${days} days: forecasts usually cover only the next 7–10 days</li>`:''}<li>It will appear here automatically when it is available</li>${WX&&WX.ts?`<li>Last checked ${ago(WX.ts)}</li>`:''}<li>Rainy season: expect showers in December</li></ul>`;
+ $('#wxBox').innerHTML=h}
+renderWx();setInterval(renderWx,6e4);
+/* currency converter */
+function fxAge(){return FX.ts?ago(FX.ts):''}
+const fxSheet=document.createElement('div');fxSheet.id='fxSheet';fxSheet.setAttribute('role','dialog');fxSheet.setAttribute('aria-label','Currency converter');
+fxSheet.innerHTML=`<div class="fxin"><button class="x" id="fxX" aria-label="Close">✕</button><h3>Currency converter</h3><div class="fxdir"><button id="fxD1" class="on">S$ → IDR</button><button id="fxD2">IDR → S$</button></div><label for="fxAmt" id="fxL">Amount in S$</label><input id="fxAmt" type="number" inputmode="decimal" value="100"><div class="fxq" id="fxQ"></div><div class="fxres"><div class="big" id="fxBig"></div><div class="sm" id="fxCash"></div></div><ul class="pts small mut" id="fxInfo"></ul><div class="btns"><a class="btn" id="fxXe" target="_blank" rel="noopener" href="https://www.xe.com/currencyconverter/convert/?Amount=1&From=SGD&To=IDR">Check live rate on XE</a></div></div>`;
+document.body.appendChild(fxSheet);
+let fxDir=1;
+function fxCalc(){const a=+$('#fxAmt').value||0,r=FX.rate,out=fxDir===1?a*r:a/r,fmt=n=>fxDir===1?'IDR '+Math.round(n).toLocaleString('en-US'):'S$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+ $('#fxBig').textContent=fmt(out);$('#fxCash').textContent='Typical cash rate (2–3% less): about '+fmt(out*0.975);
+ $('#fxInfo').innerHTML=`<li>Rate: S$1 = IDR ${r.toLocaleString('en-US')}</li><li>${esc(FX.date||'')}</li>${FX.ts?`<li>Rate updated ${fxAge()}${FX.src?' · '+esc(FX.src):''}</li>`:''}<li>Money changers set their own rates: compare before changing</li>`;
+ $('#fxL').textContent='Amount in '+(fxDir===1?'S$':'IDR');$('#fxD1').classList.toggle('on',fxDir===1);$('#fxD2').classList.toggle('on',fxDir===2);
+ $('#fxQ').innerHTML=(fxDir===1?[10,50,100,200,500]:[50000,100000,500000,1000000,5000000]).map(v=>`<button data-v="${v}">${v.toLocaleString('en-US')}</button>`).join('')}
+function openFx(){fxCalc();fxSheet.classList.add('on');setTimeout(()=>$('#fxAmt').focus(),50)}
+$('#fxX').onclick=()=>fxSheet.classList.remove('on');fxSheet.onclick=e=>{if(e.target===fxSheet)fxSheet.classList.remove('on');const q=e.target.closest('#fxQ button');if(q){$('#fxAmt').value=q.dataset.v;fxCalc()}};
+$('#fxAmt').oninput=fxCalc;$('#fxD1').onclick=()=>{fxDir=1;$('#fxAmt').value=100;fxCalc()};$('#fxD2').onclick=()=>{fxDir=2;$('#fxAmt').value=1000000;fxCalc()};
+addEventListener('keydown',e=>{if(e.key==='Escape')fxSheet.classList.remove('on')});
+const fab=document.createElement('button');fab.id='fxFab';fab.className='noprint';fab.setAttribute('aria-label','Open currency converter');fab.innerHTML='<b>S$</b> ⇄ <b>Rp</b>';fab.onclick=openFx;document.body.appendChild(fab);
+$('#fxLine').style.cursor='pointer';$('#fxLine').title='Tap to convert';$('#fxLine').addEventListener('click',openFx);
+$('#fxOpen').onclick=openFx;
+/* optional live rate if the browser allows it */
+(async()=>{try{const c=new AbortController();setTimeout(()=>c.abort(),6000);const r=await fetch('https://open.er-api.com/v6/latest/SGD',{signal:c.signal}),j=await r.json();if(j&&j.rates&&j.rates.IDR&&(!FX.ts||Date.now()-FX.ts>36e5)){FX={rate:Math.round(j.rates.IDR),date:'Live rate (mid-market), '+new Date().toLocaleString('en-SG',{dateStyle:'medium',timeStyle:'short'}),ts:Date.now(),src:'open.er-api.com'};refresh()}}catch(e){}})();
+const _rf5=refresh;refresh=function(){_rf5();renderWx();if(fxSheet.classList.contains('on'))fxCalc()};
+/* order as picture */
+let DLS=null;(async()=>{try{if(window.claude&&claude.use)DLS=await claude.use('downloads')}catch(e){}})();
+function orderCanvas(){const c=calc(ord.q);if(!c.lines.length)return null;const W=1080,P=56,cv=document.createElement('canvas');cv.width=W;cv.height=4200;const x=cv.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,W,4200);let y=0;
+ const T=(s,sz,wt,col,gap)=>{x.font=wt+' '+sz+'px system-ui,-apple-system,Segoe UI,Roboto,sans-serif';x.fillStyle=col;const words=String(s).split(' ');let line='';for(const w of words){const t=line?line+' '+w:w;if(x.measureText(t).width>W-2*P&&line){y+=sz*1.3;x.fillText(line,P,y);line=w}else line=t}y+=sz*1.3;x.fillText(line,P,y);y+=gap||0};
+ x.fillStyle='#0a6577';x.fillRect(0,0,W,205);y=60;T('BARELANG SEAFOOD',54,800,'#fff',0);y+=0;T('Order for the waiter',34,500,'#cfe8ee',0);y=225;
+ T(famName(ord.fam)+(ord.name?' ('+ord.name+')':''),44,700,'#10303a',4);T(ord.date+' · '+ord.place,34,500,'#5b7079',24);
+ c.lines.forEach((l,i)=>{T((i+1)+'.  '+qtyLabel(l.i,l.q)+'  '+l.i.n,44,700,'#10303a',0);if(l.i.en)T(l.i.en,30,400,'#5b7079',0);const ln=(ord.ln||{})[l.i.id];if(ln)T('→ '+ln,32,600,'#ee6a35',0);y+=14;x.fillStyle='#e8e0cf';x.fillRect(P,y,W-2*P,2);y+=8});
+ if(ord.note){y+=14;T('Notes: '+ord.note,36,600,'#10303a',10)}
+ y+=20;T('Estimate: '+rpt(c.total)+' ('+sg(c.total)+')',42,800,'#0a6577',0);T('Seafood is charged by actual weight.',28,400,'#5b7079',30);
+ const out=document.createElement('canvas');out.width=W;out.height=Math.ceil(y+20);out.getContext('2d').drawImage(cv,0,0);return out}
+async function saveOrderPic(){const cv=orderCanvas();if(!cv){$('#oMsg').textContent='Add items to the order first.';return}
+ const blob=await new Promise(r=>cv.toBlob(r,'image/png')),name='barelang-order-'+ord.date.replace(/\s/g,'')+'.png';let ok=0;
+ if(DLS){try{await DLS.save({filename:name,data:blob});ok=1}catch(e){try{await DLS.save({filename:name,data:new Uint8Array(await blob.arrayBuffer())});ok=1}catch(e2){}}}
+ if(ok){$('#oMsg').textContent='Order picture saved.';return}
+ const v=document.getElementById('picView')||Object.assign(document.createElement('div'),{id:'picView'});v.innerHTML='<div class="pin"><p>Press and hold the picture to save it, or take a screenshot.</p><img alt="Order picture"><button id="picX">Close</button></div>';v.querySelector('img').src=cv.toDataURL('image/png');document.body.appendChild(v);v.classList.add('on');v.onclick=e=>{if(e.target===v||e.target.id==='picX')v.classList.remove('on')}}
+$('#oPic').onclick=saveOrderPic;
+/* payment tick animation + all-paid flash */
+const _rp2=renderPay;renderPay=function(){_rp2();const paid=ls.get('paid',{}),all=[...DP(),...BAL()].every(r=>paid[r.id]),el=$('#payTot');el.classList.toggle('allpaid',all);if(all)el.innerHTML='<b>All paid ✓</b>'};
+renderPay();
+/* image shimmer */
+document.addEventListener('load',e=>{if(e.target&&e.target.tagName==='IMG')e.target.classList.add('ld')},true);$$('img').forEach(i=>{if(i.complete)i.classList.add('ld')});
+</script>
+<script>
+(()=>{
+const IC={map:'<path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/>',pie:'<path d="M12 3a9 9 0 1 0 9 9h-9z"/><path d="M15 3.5A9 9 0 0 1 20.5 9H15z"/>',users:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.5 3-6 6.5-6s6.5 2.5 6.5 6"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14c2.5 0 4.5 1.8 4.5 4.5"/>',bolt:'<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',car:'<path d="M5 16l1.5-5.5A2 2 0 0 1 8.4 9h7.2a2 2 0 0 1 1.9 1.5L19 16"/><rect x="3" y="16" width="18" height="4" rx="1.5"/><path d="M7 18h.01M17 18h.01"/>',bed:'<path d="M3 18V7M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-8v5"/><circle cx="6.5" cy="11" r="1.6"/>',utensils:'<path d="M6 3v8a2 2 0 0 0 2 2v8M10 3v8a2 2 0 0 1-2 2M17 3c-2 2-2.5 5-2.5 8H17v10"/>',file:'<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>',info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/>',phone:'<path d="M6.5 3h3l1.5 4-2 1.5a11 11 0 0 0 5.5 5.5L16 12l4 1.5v3a2 2 0 0 1-2 2A15 15 0 0 1 4.5 5a2 2 0 0 1 2-2z"/>',copy:'<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',check:'<circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-6"/>',x:'<path d="M6 6l12 12M18 6L6 18"/>',list:'<path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/>',sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',coin:'<circle cx="12" cy="12" r="9"/><path d="M14.5 9.2c-.6-.8-1.5-1.2-2.5-1.2-1.4 0-2.5.8-2.5 2s1 1.7 2.5 2 2.5.8 2.5 2-1.1 2-2.5 2c-1 0-1.9-.4-2.5-1.2M12 6.5V8M12 16v1.5"/>',ship:'<path d="M3 18c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0M5 14l1-6h12l1 6zM12 8V4h3"/>'};
+const svg=k=>`<svg class="i" viewBox="0 0 24 24" aria-hidden="true">${IC[k]}</svg>`;
+const TI={trip:'map',costs:'pie',people:'users',activities:'bolt',transport:'car',harris:'bed',barelang:'utensils',tools:'list',files:'file',info:'info'};
+$$('#tabs button').forEach(b=>{b.innerHTML=svg(TI[b.dataset.t])+'<span>'+b.textContent+'</span>'});
+Object.entries(TI).forEach(([t,k])=>{const h=$('#p-'+t+' > h2');if(h)h.innerHTML=`<span class="ic">${svg(k)}</span><span>${h.textContent}</span>`});
+$('.hero h1').insertAdjacentHTML('afterbegin',svg('ship'));
+/* countdown + dashboard */
+const sg=new Date(Date.now()+8*36e5),dd=Math.round((Date.UTC(sg.getUTCFullYear(),sg.getUTCMonth(),sg.getUTCDate())-Date.UTC(2026,11,9))/864e5);
+const cd=dd<0?`${-dd} day${-dd>1?'s':''} to go`:dd<=4?`Day ${dd+1} of 5`:'Trip complete';
+$('.hero .chips').insertAdjacentHTML('afterbegin',`<span class="chip pulse">${svg('clock')} ${cd}</span>`);
+const di=dd<0?0:Math.min(dd,4),big=dd<0?-dd:dd<=4?dd+1:'✓',lab=dd<0?(-dd===1?'day to go':'days to go'):dd<=4?'of 5 days':'home';
+const title=dd<0?'Next: '+DAYS[0].d+' · '+DAYS[0].t:dd<=4?'Today: '+DAYS[dd].d+' · '+DAYS[dd].t:'Welcome home!';
+const evs=dd>4?'':DAYS[di].e.slice(0,3).map(e=>`<li>${esc(e[0])}: ${esc(e[1])}</li>`).join('');
+const Q=[['barelang','utensils','Order seafood'],['costs','pie','Costs by family'],['activities','bolt','Activities'],['harris','bed','Resort'],['files','file','Menus & files'],['tools','clock','Prayer times'],['tools','sun','Weather'],['fx','coin','Convert S$ ⇄ IDR'],['plan','copy','Copy plan']];
+$('#p-trip > h2').insertAdjacentHTML('afterend',`<div id="dash"><div class="dash"><div class="count"><b>${big}</b><span>${lab}</span></div><div><h3 class="display">${title}</h3><ul class="pts">${evs}</ul></div></div><div class="quick">${Q.map(q=>`<button class="q" data-go="${q[0]}"><span class="ic">${svg(q[1])}</span>${q[2]}</button>`).join('')}<a class="q" target="_blank" rel="noopener" href="https://wa.me/6282168280212"><span class="ic">${svg('phone')}</span>WhatsApp Devi</a><a class="q" target="_blank" rel="noopener" href="https://wa.me/6285363011991"><span class="ic">${svg('car')}</span>WhatsApp Donny</a></div></div>`);
+$('#dash').onclick=e=>{const t=e.target.closest('[data-go]');if(!t)return;if(t.dataset.go==='plan')$('#copyPlan').click();else if(t.dataset.go==='fx')openFx();else{go(t.dataset.go);scrollTo({top:0,behavior:'smooth'})}};
+if(dd>=0&&dd<=4)$$('#days .day')[dd]?.classList.add('today');
+/* toasts */
+const tc=Object.assign(document.createElement('div'),{id:'toasts'});document.body.appendChild(tc);
+function toast(m,ok=true){const t=document.createElement('div');t.className='toast';t.innerHTML=svg(ok?'check':'info')+'<span></span>';t.querySelector('span').textContent=m;tc.appendChild(t);setTimeout(()=>t.classList.add('out'),2800);setTimeout(()=>t.remove(),3300)}
+['#oMsg','#planMsg','#copyMsg','#pMsg'].forEach(s=>{const el=$(s);if(!el)return;el.classList.add('sr');new MutationObserver(()=>{const x=el.textContent.trim();if(x)toast(x,!/could not|refused|not available|add a title/i.test(x))}).observe(el,{childList:true,characterData:true,subtree:true})});
+/* lightbox */
+const lb=document.createElement('div');lb.id='lb';lb.innerHTML=`<button class="x" aria-label="Close">${svg('x')}</button><button class="nv p" aria-label="Previous">‹</button><img alt=""><button class="nv n" aria-label="Next">›</button><div class="cap"></div><a class="btn ghost" target="_blank" rel="noopener">Open original</a>`;document.body.appendChild(lb);
+let grp=[],gi=0;const show=i=>{gi=(i+grp.length)%grp.length;const a=grp[gi],h=a.getAttribute('href');lb.querySelector('img').src=h;lb.querySelector('.cap').textContent=a.querySelector('img')?.alt||'';lb.querySelector('a').href=h.replace('view/','files/').replace('.jpg','.png')};
+document.addEventListener('click',e=>{const a=e.target.closest('.imgs a');if(a){e.preventDefault();grp=[...a.closest('.imgs').querySelectorAll('a')];show(grp.indexOf(a));lb.classList.add('on');return}if(e.target===lb||e.target.closest('#lb .x'))lb.classList.remove('on');if(e.target.closest('#lb .p'))show(gi-1);if(e.target.closest('#lb .n'))show(gi+1)});
+addEventListener('keydown',e=>{if(!lb.classList.contains('on'))return;if(e.key==='Escape')lb.classList.remove('on');if(e.key==='ArrowLeft')show(gi-1);if(e.key==='ArrowRight')show(gi+1)});
+/* order bar + chips + bump */
+const ob=document.createElement('div');ob.id='orderBar';ob.innerHTML='<div><b id="obN"></b><span id="obT"></span></div><button id="obB">Review order</button>';document.body.appendChild(ob);
+function updateBar(){const c=calc(ord.q),n=c.lines.length;ob.classList.toggle('on',n>0&&$('#p-barelang').classList.contains('on')&&!$('#s-order').classList.contains('hidden'));$('#obN').textContent=n+(n===1?' item':' items')+' in your order';$('#obT').innerHTML='Estimate '+rp(c.total)}
+$('#obB').onclick=()=>$('#oSum').scrollIntoView({behavior:'smooth',block:'center'});
+$('#bsub').addEventListener('click',()=>setTimeout(updateBar,0));
+const _rs=renderSum;renderSum=function(){_rs();updateBar()};
+function chips(){let h=$('#catChips');if(!h){h=document.createElement('div');h.id='catChips';h.className='noprint';$('#oList').before(h);h.onclick=e=>{const b=e.target.closest('button');if(b)document.getElementById(b.dataset.c)?.scrollIntoView({behavior:'smooth',block:'start'})}}
+ h.innerHTML=$$('#oList .cat').map((c,i)=>{c.id='cat'+i;return`<button data-c="cat${i}">${esc(c.textContent.replace(/\(.*\)/,'').trim())}</button>`}).join('')}
+const _ro=renderOrder;renderOrder=function(){_ro();chips()};$('#oSearch').addEventListener('input',chips);
+let lastId=null;$('#oList').addEventListener('click',e=>{lastId=e.target.closest('.it')?.dataset.id},true);
+$('#oList').addEventListener('click',e=>{if(e.target.closest('button[data-d]')&&lastId)document.querySelector(`#oList .it[data-id="${lastId}"] .st span`)?.classList.add('bump')});
+/* costs: stacked bars + count-up */
+const _rc=renderCosts;let last=[];
+renderCosts=function(){_rc();FAMS.forEach((f,i)=>{const card=$$('#famCosts .card')[i];if(!card)return;const v=costs(f.id).v,cs=CATS.filter(c=>c[0]!=='pers'&&v[c[0]]>0),t=cs.reduce((a,c)=>a+v[c[0]],0);card.querySelector('h3').insertAdjacentHTML('afterend',`<div class="stack">${cs.map(c=>`<i style="width:${v[c[0]]/t*100}%;background:${c[2]}" title="${c[1]}"></i>`).join('')}</div>`)});
+ $$('#tiles .tile b').forEach((b,i)=>{const to=+b.textContent.replace(/\D/g,''),from=last[i]??0;last[i]=to;if(from===to||matchMedia('(prefers-reduced-motion:reduce)').matches)return;const t0=performance.now();(function f(n){const k=Math.min(1,(n-t0)/800),e=1-Math.pow(1-k,3);b.textContent='IDR '+Math.round(from+(to-from)*e).toLocaleString('en-US');if(k<1)requestAnimationFrame(f)})(t0)})};
+/* tab transitions */
+const _go=go;go=function(t){_go(t);const nav=$('#tabs'),b=nav.querySelector('button.on');document.body.classList.toggle('sub',!!b&&b.dataset.t!=='trip');if(b)nav.scrollTo({left:b.offsetLeft-nav.clientWidth/2+b.clientWidth/2,behavior:'smooth'});
+ $$('.panel.on .card,.panel.on .tile,.panel.on .day,.panel.on .q').forEach((el,i)=>{el.style.setProperty('--d',Math.min(i,10)*45+'ms');el.classList.remove('rv');void el.offsetWidth;el.classList.add('rv')});updateBar()};
+
+/* Malay / English */
+const BM={'Trip plan':'Rancangan perjalanan','Costs by family':'Kos mengikut keluarga','People & rooms':'Orang & bilik','Activities':'Aktiviti','Transport':'Pengangkutan','HARRIS Resort':'Resort HARRIS','Trip tools':'Alat perjalanan','Files':'Fail','Info':'Maklumat','Files & downloads':'Fail & muat turun','Info & updates':'Maklumat & kemas kini','Order seafood':'Pesan makanan laut','Resort':'Resort','Menus & files':'Menu & fail','Prayer times':'Waktu solat','Copy plan':'Salin pelan','Save order':'Simpan pesanan','Copy order':'Salin pesanan','Send by WhatsApp':'Hantar melalui WhatsApp','Send plan by WhatsApp':'Hantar pelan melalui WhatsApp','Send cost summary by WhatsApp':'Hantar ringkasan kos melalui WhatsApp','Text size':'Saiz teks','Easy read':'Mudah baca','Who pays what':'Siapa bayar apa','Packing checklist':'Senarai bawaan','Weather':'Cuaca','Money tips':'Tip wang','Emergency numbers':'Nombor kecemasan','Before you leave':'Sebelum bertolak','Prayer times · Batam':'Waktu solat · Batam','Room deposit paid by Abah':'Deposit bilik dibayar oleh Abah'};
+const BMR=Object.fromEntries(Object.entries(BM).map(([a,b])=>[b,a]));
+function applyLang(bm){const M=bm?BM:BMR;$$('#tabs span,h2 > span:last-child,.q,h3,.card button,.btn,.zoom span,.zoom button').forEach(el=>{const node=[...el.childNodes].reverse().find(n=>n.nodeType===3&&n.textContent.trim());if(!node)return;const k=node.textContent.trim();if(M[k])node.textContent=node.textContent.replace(k,M[k])});
+ $('#lang').textContent=bm?'EN':'BM';document.documentElement.lang=bm?'ms':'en';ls.set('bm',bm)}
+$('#lang').onclick=()=>applyLang(!ls.get('bm',false));if(ls.get('bm',false))applyLang(true);
+renderOrder();renderCosts();renderPay();go(location.hash.slice(1));
+})();
+</script>
+<script>
+/* ---- self-hosted extras: install, offline, organiser sign-in, live weather ---- */
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+(function(){
+ const host=document.getElementById('p-info');if(!host)return;
+ const c=document.createElement('div');c.className='card';c.id='sh';
+ c.innerHTML='<h3>Offline &amp; sharing</h3><ul class="pts"><li id="shStat"></li><li>Tap <b>Save everything for offline</b> once while you have Wi-Fi</li><li>After that the trip plan, menus and files open with no internet</li></ul><div class="row" style="gap:8px;flex-wrap:wrap"><button class="btn" id="shOff">Save everything for offline</button><button class="btn ghost" id="shAdm"></button></div><p class="small mut" id="shMsg"></p>';
+ host.appendChild(c);
+ const A=window.__tripAdmin,$=x=>document.getElementById(x),msg=t=>$('shMsg').textContent=t;
+ function stat(){$('shStat').textContent=A&&A.on?(navigator.onLine?'Live sharing: on':'Live sharing: on (you are offline, changes will send later)'):'Live sharing: not set up (orders stay on this phone)';$('shAdm').textContent=A&&A.isAdmin?'Organiser sign-out':'Organiser sign-in';$('shAdm').style.display=A&&A.on?'':'none'}
+ stat();addEventListener('online',stat);addEventListener('offline',stat);
+ $('shAdm').onclick=async()=>{try{if(A.isAdmin){A.logout();CAN_EDIT=false}else{const p=prompt('Organiser passcode');if(!p)return;await A.login(p);CAN_EDIT=true}renderInfo();stat();msg(CAN_EDIT?'Signed in as organiser':'Signed out')}catch(e){msg(e.message)}};
+ if(A&&A.isAdmin)CAN_EDIT=true;
+ $('shOff').onclick=async()=>{try{if(!('caches' in window))return msg('This browser cannot save offline');msg('Saving… please wait');const ch=await caches.open('batam-trip-originals');let n=0;const list=(typeof FILES!=='undefined'?FILES:[]).map(f=>'files/'+f[0]);for(const u of list){try{await ch.add(u);n++}catch(e){}}msg('Saved '+n+' files for offline use. Done.')}catch(e){msg('Could not save: '+e.message)}};
+ /* live weather */
+ const WM={0:'Clear',1:'Mostly clear',2:'Partly cloudy',3:'Cloudy',45:'Fog',48:'Fog',51:'Light drizzle',53:'Drizzle',55:'Heavy drizzle',61:'Light rain',63:'Rain',65:'Heavy rain',80:'Showers',81:'Showers',82:'Heavy showers',95:'Thunderstorm',96:'Thunderstorm',99:'Thunderstorm'};
+ async function wx(){try{const c=new AbortController();setTimeout(()=>c.abort(),8000);const r=await fetch('https://api.open-meteo.com/v1/forecast?latitude=1.12&longitude=104.03&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FSingapore&start_date=2026-12-09&end_date=2026-12-13',{signal:c.signal});if(!r.ok)return;const j=await r.json(),d=j.daily;if(!d||!d.time)return;const days=d.time.map((t,i)=>({d:new Date(t+'T00:00:00').toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'}),desc:WM[d.weathercode[i]]||'',lo:Math.round(d.temperature_2m_min[i]),hi:Math.round(d.temperature_2m_max[i]),pop:d.precipitation_probability_max[i]}));WX={days,ts:Date.now(),src:'Open-Meteo'};localStorage.setItem('batamWx',JSON.stringify(WX));renderWx()}catch(e){}}
+ try{const o=JSON.parse(localStorage.getItem('batamWx')||'null');if(o&&o.days&&o.days.length){WX=o;renderWx()}}catch(e){}
+ wx();setInterval(wx,36e5);
+})();
+</script>
+</body>
+</html>
