@@ -216,7 +216,7 @@ html body{display:block!important}header.hero,#tabs,main{box-sizing:border-box;w
     <tr><td class="b">Deposit</td><td><ul class="pts"><li>IDR 250,000 per room per night</li><li>Held on Abah's credit card at check-in</li><li>3 rooms × 4 nights = IDR 3,000,000 held in total</li><li>Not a cost: each family pays its own charges directly</li></ul></td></tr>
     <tr><td class="b">Included</td><td><ul class="pts"><li>Welcome drink</li><li>Swimming pool</li><li>Dino Kids Club</li><li>Free Wi-Fi</li><li>21% government tax &amp; service charge on the room rate</li><li>Breakfast at HARRIS Café: <b>Villa only</b></li></ul></td></tr>
     <tr><td class="b">Booking terms</td><td><ul class="pts"><li>Non-refundable</li><li>No-show is charged 100%</li></ul></td></tr>
-    <tr><td class="b">Ferry fare</td><td><ul class="pts"><li>Majestic, Premium cabin, return</li><li>Ticket S$56 + surcharge S$11 per person</li><li>Terminal fees S$10 each way per person</li><li><b>S$87 per person</b> (S$348 for 4)</li><li>Not bought yet: booking together on Sat 28 Nov</li></ul></td></tr>
+    <tr><td class="b">Ferry fare</td><td><ul class="pts"><li>Majestic, Premium cabin, return</li><li>Ticket S$56 + surcharge S$11 per person</li><li>Terminal fees S$10 each way per person</li><li><b>S$87 per person</b> (S$348 for 4)</li><li>Kakak's and Samirah's families: booked. Abah, Mama and Nia: buying on Sat 28 Nov</li></ul></td></tr>
     <tr><td class="b">Time zones</td><td><ul class="pts"><li>Batam (WIB) is 1 hour behind Singapore</li><li>Pick-up times are Batam time</li></ul></td></tr>
   </tbody></table></div>
   <div id="days"></div>
@@ -254,7 +254,11 @@ html body{display:block!important}header.hero,#tabs,main{box-sizing:border-box;w
 <section class="panel" id="p-transport"><h2>Transport</h2>
   <div class="card"><table><thead><tr><th>Date</th><th>Time</th><th>Trip</th><th class="r">Price</th></tr></thead><tbody id="trBody"></tbody><tfoot><tr><td colspan="3">Total driver cost</td><td class="r" id="trTot"></td></tr></tfoot></table></div>
   <div class="card" id="travel"></div>
-  <div class="card"><h3>Ferry · Majestic Fast Ferry</h3><b>Going: Wed 9 Dec</b><ul class="pts"><li>Departs Tanah Merah 8:15am (Singapore time)</li><li>Sailing is about 59 minutes</li><li>Arrive Batam Centre about 8:15am Batam time (9:15am Singapore time)</li><li>Breakfast at the terminal first, if time permits</li><li>Driver meets us at 9:30am</li></ul><b>Return: Sun 13 Dec</b><ul class="pts"><li>Departs Batam Centre 1:00pm (Batam time)</li><li>Driver picks us up at the resort at 9:30am</li></ul><p class="small mut">Please check the exact times on your ticket.</p></div>
+  <div class="card"><h3>Ferry · Majestic Fast Ferry</h3>
+  <p class="small mut" style="margin:0 0 8px">Booked: Kakak's family (23 Nov) and Samirah's family, 4 passengers (24 Nov, confirmed). Abah, Mama and Nia: to be bought on Sat 28 Nov. All Premium cabin.</p>
+  <b>Going · Wed 9 Dec 2026</b><ul class="pts"><li><b>Depart Tanah Merah 8:15am</b> (Singapore time)</li><li><b>Arrive Batam Centre 8:00am</b> (Batam time = 9:00am Singapore time)</li><li>Sailing about 45 minutes</li><li><b>Be at Tanah Merah by 6:45am</b> (90 minutes before). Departure gate closes 7:55am, no exception</li><li>Breakfast at the terminal first, if time permits</li><li>Driver meets us at 9:30am</li></ul>
+  <b>Return · Sun 13 Dec 2026</b><ul class="pts"><li><b>Depart Batam Centre 1:00pm</b> (Batam time)</li><li><b>Arrive Tanah Merah 2:45pm</b> (Singapore time)</li><li>Be at Batam Centre by 11:30am (90 minutes before). Gate closes 12:40pm</li><li>Driver picks us up at the resort at 9:30am</li></ul>
+  <ul class="pts small"><li>Bring passport (valid 6 months + 5 days) and the printed or saved itinerary</li><li>Show the itinerary at the counter to get the boarding pass</li><li>Batam is 1 hour behind Singapore</li></ul></div>
 </section>
 
 <section class="panel" id="p-harris"><h2>HARRIS Resort</h2>
@@ -372,11 +376,11 @@ const FAMS=[
 const AGE={Adam:11,Ammar:10,Sarah:16,Khalid:12};
 const famOf=n=>(FAMS.find(f=>f.m.includes(n))||{}).id;
 const DAYS=[
- {d:'Wed 9 Dec',t:'Arrival',i:['resort-aerial'],e:[['8:15am','Majestic ferry departs Tanah Merah','Singapore time'],['~8:15am','Arrive at Batam Centre ferry terminal','About 59 min sailing · Batam time'],['After','Immigration, then breakfast at the terminal','If time permits'],['9:30am','Driver meets us at the ferry terminal'],['After','Drive to HARRIS Resort Barelang','IDR 350,000'],['Early','Early check-in requested','Waiting for the resort to confirm'],['3:00pm','Standard check-in time']]},
+ {d:'Wed 9 Dec',t:'Arrival',i:['resort-aerial'],e:[['6:45am','Be at Tanah Merah ferry terminal','90 min before · gate closes 7:55am · Singapore time'],['8:15am','Majestic ferry departs Tanah Merah','Singapore time'],['8:00am','Arrive at Batam Centre ferry terminal','Batam time (9:00am Singapore time)'],['After','Immigration, then breakfast at the terminal','If time permits'],['9:30am','Driver meets us at the ferry terminal'],['After','Drive to HARRIS Resort Barelang','IDR 350,000'],['Early','Early check-in requested','Waiting for the resort to confirm'],['3:00pm','Standard check-in time']]},
  {d:'Thu 10 Dec',t:'Water & ATV day',i:['act-jetski','act-atv','bl-crab'],e:[['Day','Jet ski (weather permitting)','Abg Hairul, Kakak, Muhammad'],['Day','ATV (weather permitting)','Samirah + Adam · Muhammad + Ammar · Sarah · Abg Hairul + Khalid · Kakak'],['Day','Electric bike (day to be fixed)','Adam, Ammar, Muhammad'],['Meal','Barelang Seafood','Eat at the Villa and/or at the restaurant']]},
  {d:'Fri 11 Dec',t:'Shooting range & mall',e:[['10:00am','Full-day driver','IDR 1,100,000'],['Day','Shooting range (RAD827)','Muhammad'],['Day','Batam Grand Mall','The new shopping centre']]},
  {d:'Sat 12 Dec',t:'Garden & seafood',i:['bl-prawn'],e:[['Day','Garden harvesting'],['Day','DC Mall (KIV, tentative)'],['Meal','Barelang Seafood','Eat at the Villa and/or at the restaurant']]},
- {d:'Sun 13 Dec',t:'Going home',e:[['9:30am','Driver picks us up at the resort','Batam time · IDR 350,000'],['After','Drive to Batam Centre ferry terminal'],['1:00pm','Majestic ferry to Tanah Merah','Batam time'],['Note','Standard check-out time is 12:00']]}];
+ {d:'Sun 13 Dec',t:'Going home',e:[['9:30am','Driver picks us up at the resort','Batam time · IDR 350,000'],['After','Drive to Batam Centre ferry terminal'],['1:00pm','Majestic ferry to Tanah Merah','Batam time · arrives Tanah Merah 2:45pm Singapore time'],['Note','Standard check-out time is 12:00']]}];
 const TRANS=[['Wed 9 Dec','9:30am','One way: Batam Centre Ferry Terminal → HARRIS Resort Barelang',350000],['Fri 11 Dec','10:00am','Full day: shooting range + Batam Grand Mall',1100000],['Sun 13 Dec','9:30am','One way: HARRIS Resort Barelang → Batam Centre Ferry Terminal',350000]];
 const ROOM={A:{n:'Sea View',rate:1377000},B:{n:'Suite',rate:3087000},C:{n:'Villa',rate:4959000}};
 const FERRY_PP=87,NIGHTS=4,DEPOSIT=250000*NIGHTS,DRIVER_TOTAL=TRANS.reduce((a,t)=>a+t[3],0),HEAD={A:2,B:4,C:5},FERRYN={A:3,B:4,C:4};
