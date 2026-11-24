@@ -278,6 +278,20 @@ html body{display:block!important}header.hero,#tabs,main{box-sizing:border-box;w
 @media(max-width:480px){#kf .dep{grid-template-columns:1fr;}#kf .dep .ar{transform:rotate(90deg)}}
 @media print{#kf .hb{display:none}}
 </style>
+<style>
+.it .wt{grid-column:1/-1;margin-top:6px}
+.it .wbtn{border:1px dashed #0a6577;background:#eef7f9;color:#0a6577;border-radius:99px;padding:4px 12px;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer}
+.it .wb{display:inline-block;margin-right:8px;font-size:11.5px;font-weight:700;border-radius:99px;padding:2px 9px;background:#fff4d6;color:#8a5a00}
+.it .wb.ok{background:#e4f5ea;color:#17683a}
+.it .wp{margin-top:8px;background:#f5f1e8;border-radius:12px;padding:8px 10px}
+.it .wc{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
+.it .wc span{background:#fff;border:1px solid #e3dccb;border-radius:99px;padding:2px 4px 2px 11px;font-size:13px;font-weight:700}
+.it .wc span button{border:0!important;background:#fdecea!important;color:#b3261e!important;border-radius:50%!important;width:22px!important;height:22px!important;min-width:22px!important;padding:0!important;line-height:22px;font-size:11px;text-align:center;cursor:pointer;margin:0 0 0 4px!important;box-shadow:none!important;vertical-align:middle}
+.it .wi{display:flex;gap:6px}.it .wi input{flex:1;min-width:0;font-size:16px;padding:6px 10px;border:1px solid #cfc7b3;border-radius:10px}
+.it .wi button{border:0;background:#0a6577;color:#fff;border-radius:10px;padding:6px 14px;font-weight:700;cursor:pointer}
+.it .wp small{display:block;margin-top:4px;color:#5b7079;font-size:11.5px}
+.it .wtot{margin-top:6px;font-weight:800;color:#0a6577}
+</style>
 </head>
 <body>
 <header class="hero">
@@ -499,11 +513,12 @@ MENU.unshift(...PKGS.map(p=>({cat:'Packages (per table of 10)',id:'pkg'+p[0],n:'
 /* ---------- state ---------- */
 let DB=null,USER=null,UID=null,CAN_EDIT=false,CFG={taxPct:10,svcPct:0,custom:[]},POSTS=[],ALL=[];
 let ord=Object.assign({fam:'C',date:'10 Dec',place:'Eat at the Villa',name:'',note:'',q:{},ln:{}},ls.get('draft',{}));
-let sel=ls.get('sel',{});let tax21=false;
+ord.w=ord.w||{};ord.e=ord.e||{};let sel=ls.get('sel',{});let tax21=false;
 const items=()=>MENU.concat(CFG.custom.map(c=>({cat:'Drinks & extras (added by organiser)',id:c.id,n:c.name,en:'',u:'e',p:c.price})));
 const lineTotal=(it,q)=>it.u==='g'?it.p*q/100:it.p*q;
 function calc(q){const lines=items().filter(i=>q[i.id]>0).map(i=>({i,q:q[i.id],t:lineTotal(i,q[i.id])}));const sub=lines.reduce((s,l)=>s+l.t,0),svc=sub*CFG.svcPct/100,tax=(sub+svc)*CFG.taxPct/100;return{lines,sub,svc,tax,total:sub+svc+tax}}
-const qtyLabel=(i,q)=>i.u==='g'?q+' g':'× '+q;
+const kg=g=>(g/1000).toFixed(2).replace(/\.?0+$/,'')||'0';
+const qtyLabel=(i,q,o)=>{if(i.u!=='g')return'× '+q;const w=o&&o.w&&o.w[i.id];if(w&&w.length)return kg(q)+' kg weighed'+(w.length>1?' ('+w.map(kg).join(' + ')+')':'');return q+' g'+(o&&o.q&&o.q[i.id]?' (estimate)':'')};
 
 /* ---------- tabs ---------- */
 const TABS=[['trip','Trip plan'],['tickets','Bookings'],['costs','Costs by family'],['people','People & rooms'],['activities','Activities'],['transport','Transport'],['harris','HARRIS Resort'],['barelang','Barelang Seafood'],['tools','Trip tools'],['files','Files'],['info','Info']];
@@ -554,21 +569,28 @@ const famName=id=>id==='ALL'?'Whole group':(FAMS.find(f=>f.id===id)||{}).name;
 const CATIMG={'Packages (per table of 10)':'bl-special','Seafood (price per 100 g)':'bl-crab','Dishes (per portion)':'bl-others','Soups, vegetables & more':'bl-veg','Rice & noodles':'bl-rice','Vegetarian':'bl-vegetarian','Drinks & extras (added by organiser)':'bl-juice'};
 const IMAP={fish:['sonu','kerapu','ungar','kakapm','kakapp','bawal','karang','fillet'],'bl-lobster':['lobster','hepo'],'bl-prawn':['udang','telurudang','ku'],'bl-crab':['kepiting'],'bl-flowercrab':['rajungan'],'bl-squid':['cumi','sotong','sgt','cumibuncit'],'bl-gonggong':['kapis','gonggong'],'bl-chicken':['agb'],'bl-rice':['nasi','nmbS','nmbM','nmbL','fuyong'],'bl-veg':['ssa','sjm','ssf','sas','sty','bk','tia','bb','cc','kp'],'bl-others':['td','petai','steamboat','tipantahu','tipankk']};IMAP['bl-fish']=IMAP.fish;delete IMAP.fish;
 function itemImg(i){let k=i.id;if(/^pkg/.test(k))return null;if(/^v/.test(k)&&/Vegetarian/.test(i.cat))return'bl-vegetarian';if(/^x/.test(k))return'bl-juice';const b=/^[ml]/.test(k)&&i.cat.startsWith('Soups')?k.slice(1):k;const e=Object.entries(IMAP).find(([,v])=>v.includes(b));return e?e[0]:null}
+const wOpen={};
+function wRow(i,n){const w=ord.w[i.id]||[],on=wOpen[i.id];
+ return `<div class="wt">${w.length?'<span class="wb ok">Weighed ✓</span>':n?'<span class="wb">Estimate only</span>':''}<button class="wbtn" data-wt="${i.id}">⚖ ${w.length?'Edit weight':'Enter weight'}</button>${on||w.length?`<div class="wp"><div class="wc">${w.map((g,k)=>`<span>${kg(g)} kg <button data-wx="${i.id}:${k}" aria-label="Remove">✕</button></span>`).join('')}</div>${on?`<div class="wi"><input type="number" inputmode="decimal" step="0.05" min="0" placeholder="Weight in kg, e.g. 1.25" data-wi="${i.id}"><button data-wa="${i.id}">Add catch</button></div><small>Add each fish or crab separately. The price is worked out from the total weight.</small>`:''}${w.length?`<div class="wtot">Total ${kg(w.reduce((a,b)=>a+b,0))} kg · ${rp(lineTotal(i,w.reduce((a,b)=>a+b,0)))}</div>`:''}</div>`:''}</div>`}
 function renderOrder(){const q=ord.q,f=$('#oSearch').value.trim().toLowerCase();let cat='',h='';
  items().forEach(i=>{if(f&&!(i.n+' '+i.en).toLowerCase().includes(f))return;if(i.cat!==cat){cat=i.cat;h+=`<div class="cat">${esc(cat)}</div>${CATIMG[cat]?`<img class="catimg" loading="lazy" src="img/${CATIMG[cat]}.jpg" alt="">`:''}`}
   const n=q[i.id]||0,step=i.u==='g'?100:1;
-  h+=`<div class="it ${n?'':'zero'}" data-id="${i.id}">${(t=>t?`<img class="th" loading="lazy" src="img/${t}.jpg" alt="">`:'')(itemImg(i))}<div class="nm"><b>${esc(i.n)}</b>${i.en?`<small>${esc(i.en)}</small>`:''}</div><div class="pr">${rp(i.p)}${i.u==='g'?' / 100 g':i.u==='t'?' / table':''}</div><div class="st"><button data-d="-${step}">−</button><span>${n?qtyLabel(i,n):'0'}</span><button data-d="${step}">+</button></div>${n?`<div class="ln"><input data-ln="${i.id}" placeholder="Cooking style / note (e.g. Saus Padang, Asam Manis)" value="${esc(ord.ln[i.id]||'')}"></div>`:''}</div>`});
+  h+=`<div class="it ${n?'':'zero'}" data-id="${i.id}">${(t=>t?`<img class="th" loading="lazy" src="img/${t}.jpg" alt="">`:'')(itemImg(i))}<div class="nm"><b>${esc(i.n)}</b>${i.en?`<small>${esc(i.en)}</small>`:''}</div><div class="pr">${rp(i.p)}${i.u==='g'?' / 100 g':i.u==='t'?' / table':''}</div><div class="st"><button data-d="-${step}">−</button><span>${n?qtyLabel(i,n,ord):'0'}</span><button data-d="${step}">+</button></div>${i.u==='g'?wRow(i,n):''}${n?`<div class="ln"><input data-ln="${i.id}" placeholder="Cooking style / note (e.g. Saus Padang, Asam Manis)" value="${esc(ord.ln[i.id]||'')}"></div>`:''}</div>`});
  $('#oList').innerHTML=h||'<p class="mut">No items match.</p>';renderSum()}
-function renderSum(){const c=calc(ord.q);$('#oSum').innerHTML=c.lines.length?`${c.lines.map(l=>`<div class="l"><span>${esc(l.i.n)} ${qtyLabel(l.i,l.q)}</span><span>${rp(l.t)}</span></div>`).join('')}<div class="l" style="border-top:1px solid var(--coral);margin-top:4px;padding-top:4px"><span>Subtotal</span><span>${rp(c.sub)}</span></div>${CFG.svcPct?`<div class="l"><span>Service charge ${CFG.svcPct}%</span><span>${rp(c.svc)}</span></div>`:''}<div class="l"><span>Restaurant tax ${CFG.taxPct}%</span><span>${rp(c.tax)}</span></div><div class="l tot"><span>Estimated total</span><span>${rp(c.total)}</span></div>`:'<span class="mut">No items yet. Use + to add dishes.</span>';
+function renderSum(){const c=calc(ord.q);$('#oSum').innerHTML=c.lines.length?`${c.lines.map(l=>`<div class="l"><span>${esc(l.i.n)} ${qtyLabel(l.i,l.q,ord)}</span><span>${rp(l.t)}</span></div>`).join('')}<div class="l" style="border-top:1px solid var(--coral);margin-top:4px;padding-top:4px"><span>Subtotal</span><span>${rp(c.sub)}</span></div>${CFG.svcPct?`<div class="l"><span>Service charge ${CFG.svcPct}%</span><span>${rp(c.svc)}</span></div>`:''}<div class="l"><span>Restaurant tax ${CFG.taxPct}%</span><span>${rp(c.tax)}</span></div><div class="l tot"><span>Estimated total</span><span>${rp(c.total)}</span></div>`:'<span class="mut">No items yet. Use + to add dishes.</span>';
  $('#oWa').href='https://wa.me/6281277559191?text='+encodeURIComponent(orderText(ord))}
-function orderText(o,withTotal=true){const c=calc(o.q);if(!c.lines.length)return'Barelang Seafood order (empty)';return`BARELANG SEAFOOD ORDER\n${o.date} · ${o.place}\nFor: ${famName(o.fam)}${o.name?' ('+o.name+')':''}\n\n`+c.lines.map((l,i)=>`${i+1}. ${qtyLabel(l.i,l.q)} ${l.i.n}${l.i.en?' ('+l.i.en+')':''}${(o.ln||{})[l.i.id]?' – '+o.ln[l.i.id]:''}`).join('\n')+(o.note?`\n\nNotes: ${o.note}`:'')+(withTotal?`\n\nEstimate: ${rpt(c.sub)}${CFG.svcPct?' + service '+CFG.svcPct+'%':''} + tax ${CFG.taxPct}% = ${rpt(c.total)}\n(Seafood is charged by actual weight.)`:'')}
+function orderText(o,withTotal=true){const c=calc(o.q);if(!c.lines.length)return'Barelang Seafood order (empty)';return`BARELANG SEAFOOD ORDER\n${o.date} · ${o.place}\nFor: ${famName(o.fam)}${o.name?' ('+o.name+')':''}\n\n`+c.lines.map((l,i)=>`${i+1}. ${qtyLabel(l.i,l.q,o)} ${l.i.n}${l.i.en?' ('+l.i.en+')':''}${(o.ln||{})[l.i.id]?' – '+o.ln[l.i.id]:''}`).join('\n')+(o.note?`\n\nNotes: ${o.note}`:'')+(withTotal?`\n\nEstimate: ${rpt(c.sub)}${CFG.svcPct?' + service '+CFG.svcPct+'%':''} + tax ${CFG.taxPct}% = ${rpt(c.total)}\n(Seafood is charged by actual weight.)`:'')}
 const persist=()=>ls.set('draft',ord);
-$('#oList').onclick=e=>{const b=e.target.closest('button[data-d]');if(!b)return;const id=b.closest('.it').dataset.id,v=Math.max(0,(ord.q[id]||0)+ +b.dataset.d);if(v)ord.q[id]=v;else{delete ord.q[id];delete ord.ln[id]}persist();renderOrder()};
+$('#oList').onclick=e=>{const t=e.target;
+ const wt=t.closest('button[data-wt]');if(wt){wOpen[wt.dataset.wt]=!wOpen[wt.dataset.wt];renderOrder();return}
+ const wa=t.closest('button[data-wa]');if(wa){const id=wa.dataset.wa,inp=wa.parentElement.querySelector('input'),g=Math.round(parseFloat(inp.value)*1000);if(!(g>0)||g>20000){inp.focus();return}if(!(ord.w[id]||[]).length)ord.e[id]=ord.q[id]||0;(ord.w[id]=ord.w[id]||[]).push(g);ord.q[id]=ord.w[id].reduce((a,b)=>a+b,0);persist();renderOrder();setTimeout(()=>document.querySelector(`#oList input[data-wi="${id}"]`)?.focus(),30);return}
+ const wx=t.closest('button[data-wx]');if(wx){const[id,k]=wx.dataset.wx.split(':');ord.w[id].splice(+k,1);if(ord.w[id].length)ord.q[id]=ord.w[id].reduce((a,b)=>a+b,0);else{delete ord.w[id];const e0=ord.e[id]||0;delete ord.e[id];if(e0)ord.q[id]=e0;else{delete ord.q[id];delete ord.ln[id]}}persist();renderOrder();return}
+ const b=t.closest('button[data-d]');if(!b)return;if((ord.w[b.closest('.it').dataset.id]||[]).length)return;const id=b.closest('.it').dataset.id,v=Math.max(0,(ord.q[id]||0)+ +b.dataset.d);if(v)ord.q[id]=v;else{delete ord.q[id];delete ord.ln[id]}persist();renderOrder()};
 $('#oList').onchange=e=>{if(e.target.dataset.ln){ord.ln[e.target.dataset.ln]=e.target.value;persist();renderSum()}};
 $('#oSearch').oninput=renderOrder;
 [['oFam','fam'],['oDate','date'],['oPlace','place'],['oName','name'],['oNote','note']].forEach(([id,k])=>{const el=$('#'+id);el.value=ord[k];el.onchange=el.oninput=()=>{ord[k]=el.value;persist();renderSum()}});
 $('#oCopy').onclick=async()=>{$('#oMsg').textContent=(await copyText(orderText(ord)))?'Order copied. Paste it into WhatsApp.':'Could not copy on this device.'};
-$('#oClear').onclick=()=>{if(!Object.keys(ord.q).length||confirm_()){ord.q={};ord.ln={};ord.note='';$('#oNote').value='';persist();renderOrder()}};
+$('#oClear').onclick=()=>{if(!Object.keys(ord.q).length||confirm_()){ord.q={};ord.ln={};ord.w={};ord.e={};ord.note='';$('#oNote').value='';persist();renderOrder()}};
 const confirm_=()=>{if($('#oClear').dataset.arm){delete $('#oClear').dataset.arm;$('#oClear').textContent='Clear';return true}$('#oClear').dataset.arm=1;$('#oClear').textContent='Tap again to clear';setTimeout(()=>{delete $('#oClear').dataset.arm;$('#oClear').textContent='Clear'},3000);return false};
 $('#oSave').onclick=async()=>{const key=ord.fam+'|'+ord.date,mine=ls.get('mine',{});if(Object.keys(ord.q).length)mine[key]={...JSON.parse(JSON.stringify(ord)),ts:Date.now()};else delete mine[key];ls.set('mine',mine);renderCosts();
  if(!DB||!UID){$('#oMsg').textContent='Saved on this device only. Use Copy or WhatsApp to send it.';return}
@@ -576,7 +598,7 @@ $('#oSave').onclick=async()=>{const key=ord.fam+'|'+ord.date,mine=ls.get('mine',
 
 $('#oReset').onclick=async()=>{const b=$('#oReset');if(!b.dataset.arm){b.dataset.arm=1;b.textContent='Tap again: delete saved order';setTimeout(()=>{delete b.dataset.arm;b.textContent='Reset this order'},4000);return}
  delete b.dataset.arm;b.textContent='Reset this order';const key=ord.fam+'|'+ord.date,mine=ls.get('mine',{});delete mine[key];ls.set('mine',mine);
- ord.q={};ord.ln={};ord.note='';ord.name='';$('#oNote').value='';$('#oName').value='';persist();renderOrder();renderCosts();
+ ord.q={};ord.ln={};ord.w={};ord.e={};ord.note='';ord.name='';$('#oNote').value='';$('#oName').value='';persist();renderOrder();renderCosts();
  if(!DB||!UID){$('#oMsg').textContent='Order reset on this device.';return}
  try{await DB.doc('orders/'+UID).set({orders:mine,ts:Date.now()});$('#oMsg').textContent='Order reset for everyone (saved list updated).'}catch(e){$('#oMsg').textContent='Reset on this device. The shared list could not be updated.'}};
 
@@ -747,7 +769,7 @@ function orderCanvas(){const c=calc(ord.q);if(!c.lines.length)return null;const 
  const T=(s,sz,wt,col,gap)=>{x.font=wt+' '+sz+'px system-ui,-apple-system,Segoe UI,Roboto,sans-serif';x.fillStyle=col;const words=String(s).split(' ');let line='';for(const w of words){const t=line?line+' '+w:w;if(x.measureText(t).width>W-2*P&&line){y+=sz*1.3;x.fillText(line,P,y);line=w}else line=t}y+=sz*1.3;x.fillText(line,P,y);y+=gap||0};
  x.fillStyle='#0a6577';x.fillRect(0,0,W,205);y=60;T('BARELANG SEAFOOD',54,800,'#fff',0);y+=0;T('Order for the waiter',34,500,'#cfe8ee',0);y=225;
  T(famName(ord.fam)+(ord.name?' ('+ord.name+')':''),44,700,'#10303a',4);T(ord.date+' · '+ord.place,34,500,'#5b7079',24);
- c.lines.forEach((l,i)=>{T((i+1)+'.  '+qtyLabel(l.i,l.q)+'  '+l.i.n,44,700,'#10303a',0);if(l.i.en)T(l.i.en,30,400,'#5b7079',0);const ln=(ord.ln||{})[l.i.id];if(ln)T('→ '+ln,32,600,'#ee6a35',0);y+=14;x.fillStyle='#e8e0cf';x.fillRect(P,y,W-2*P,2);y+=8});
+ c.lines.forEach((l,i)=>{T((i+1)+'.  '+qtyLabel(l.i,l.q,ord)+'  '+l.i.n,44,700,'#10303a',0);if(l.i.en)T(l.i.en,30,400,'#5b7079',0);const ln=(ord.ln||{})[l.i.id];if(ln)T('→ '+ln,32,600,'#ee6a35',0);y+=14;x.fillStyle='#e8e0cf';x.fillRect(P,y,W-2*P,2);y+=8});
  if(ord.note){y+=14;T('Notes: '+ord.note,36,600,'#10303a',10)}
  y+=20;T('Estimate: '+rpt(c.total)+' ('+sg(c.total)+')',42,800,'#0a6577',0);T('Seafood is charged by actual weight.',28,400,'#5b7079',30);
  const out=document.createElement('canvas');out.width=W;out.height=Math.ceil(y+20);out.getContext('2d').drawImage(cv,0,0);return out}
