@@ -1098,7 +1098,7 @@ if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWor
 <script>
 /* ---- version stamp + safety net for the top banner ---- */
 (function(){
- const V='v24 · 24 Nov 2026';
+ const V='v25 · 24 Nov 2026';
  const f=document.createElement('div');f.id='verStamp';f.className='noprint';f.style.cssText='text-align:center;font-size:12px;color:#5b7079;padding:18px 0 90px';f.textContent='App version '+V;document.body.appendChild(f);
  setTimeout(()=>{const n=document.getElementById('nowBar');if(n&&!n.querySelector('.wx')){const t=z=>new Date().toLocaleTimeString('en-GB',{timeZone:z,hour:'2-digit',minute:'2-digit'});n.innerHTML='<div style="background:#0a6577;color:#fff;border-radius:14px;padding:10px 14px;font-weight:700">'+new Date().toLocaleDateString('en-GB',{timeZone:'Asia/Singapore',weekday:'long',day:'numeric',month:'long',year:'numeric'})+' · Batam '+t('Asia/Jakarta')+' · Singapore '+t('Asia/Singapore')+'<div style="font-weight:400;font-size:12px;margin-top:3px">Weather is loading. Refresh the page if it does not appear.</div></div>'}},4000);
 })();
@@ -1155,22 +1155,35 @@ if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWor
 (function(){const h=document.querySelector('.hero');if(!h)return;const p=h.querySelector(':scope>p');if(p)p.textContent='HARRIS Resort Barelang Batam · 9–13 Dec 2026';const c=[...h.querySelectorAll('.chips .chip')].filter(x=>x.dataset.go);const t=['11 people','3 rooms','Ferry ✓'];c.forEach((x,i)=>x.textContent=t[i]||x.textContent)})();
 
 </script>
-<style>.ck{width:26px;height:26px;border-radius:50%;border:2px solid #b8c7cc;background:#fff;vertical-align:middle;margin-right:6px;padding:0;cursor:pointer;font-size:15px;line-height:20px;color:#fff}.ck.on{background:#1f9d55;border-color:#1f9d55}tr.pd{background:#f1faf4}tr.pd td.r .sgd{opacity:.7}.ai{display:block;margin:4px 0 0 auto;font-size:12px;color:#1f7a45}.ai input{width:96px;border:1px solid #bfe0cb;border-radius:8px;padding:5px 7px;font:600 13px system-ui;text-align:right}.pdsum td{font-size:13px;color:#1f7a45;font-weight:600}</style>
+<style>.ck{width:26px;height:26px;flex:none;border-radius:50%;border:2px solid #b8c7cc;background:#fff;padding:0;cursor:pointer;font-size:15px;line-height:20px;color:#fff}.ck.on{background:#1f9d55;border-color:#1f9d55}
+.fh{display:flex;justify-content:space-between;align-items:flex-end;gap:8px}.fh h3{margin:0}.fb{font-size:26px;font-weight:800;color:#0a4655;line-height:1}.fb small{display:block;font-size:12px;font-weight:600;color:#5d727a;text-align:right;margin-top:3px}
+.pg{height:8px;background:#e3ecee;border-radius:99px;overflow:hidden;margin:10px 0 2px}.pg i{display:block;height:100%;background:#1f9d55;border-radius:99px;transition:width .5s}.pgt{font-size:12px;color:#1f7a45;font-weight:600;margin-bottom:4px}
+.gh{margin:14px 0 2px;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#0a6577}
+.cr{display:flex;gap:10px;align-items:center;padding:9px 0;border-bottom:1px solid #e6eef0}.cr.pd{background:#f1faf4}.cr .rn{flex:1;min-width:0;font-weight:700;cursor:pointer}.cr .rn:after{content:' ▾';color:#9fb2b8;font-size:11px}.cr.op .rn:after{content:' ▴'}
+.cr .am{text-align:right;white-space:nowrap;font-weight:800}.cr .am span{font-weight:600;font-size:12px;color:#5d727a;margin-left:4px}
+.cd{display:none;font-size:12.5px;color:#5d727a;padding:0 0 9px 36px;border-bottom:1px solid #e6eef0;margin-top:-1px}.cr.op+.cd{display:block}.cd label{display:block;margin-top:6px;color:#1f7a45;font-weight:600}.cd input{width:110px;border:1px solid #bfe0cb;border-radius:8px;padding:5px 7px;font:600 13px system-ui;text-align:right}
+.rs{background:#fff4e8;border-left:4px solid #d9541e;border-radius:10px;padding:9px 12px;margin:10px 0 0;font-size:14px}.rs b{font-size:16px}
+.dpm{width:100%;border-collapse:collapse;margin-top:8px}.dpm td{padding:8px 0;border-bottom:1px solid #e6eef0}.dpm td.r{text-align:right;font-weight:700}</style>
 <script>
 (function(){
 const _r=renderCosts;
+const M=n=>n>=1e6?(Math.round(n/1e4)/100)+'m':Math.round(n/1e3)+'k',S=n=>'S$'+Math.round(n/FX.rate).toLocaleString('en-US'),amt=n=>'<div class="am">'+S(n)+'<span>'+M(n)+'</span></div>';
+const G=[['Pay Abah',['rdp']],['Pay at the resort on 9 Dec · room',['room']],['Already booked',['ferry','drv']],['On the spot / at check-out',['bf','act','cafe','food']]];
 renderCosts=function(){_r();
  const st=ls.get('cpaid',{});
- FAMS.forEach((f,i)=>{const card=document.querySelectorAll('#famCosts .card')[i];if(!card)return;
-  const v=costs(f.id).v,ks=CATS.filter(k=>k[0]!=='pers'&&(v[k[0]]>0||k[0]==='food'));
-  let paid=0,tot=0;
-  card.querySelectorAll('tbody tr').forEach((tr,j)=>{const k=ks[j];if(!k)return;const key=f.id+'.'+k[0],e=st[key],b=v[k[0]];tot+=b;
-   const td=tr.children[0],btn=document.createElement('button');btn.className='ck'+(e?' on':'');btn.dataset.k=key;btn.setAttribute('aria-label','Mark '+k[1]+' as paid');btn.textContent=e?'✓':'';td.prepend(btn);
-   if(e){const a=e.a>0?e.a:b;paid+=a;tr.classList.add('pd');
-    tr.children[1].insertAdjacentHTML('beforeend','<label class="ai">Actual IDR <input inputmode="numeric" data-a="'+key+'" placeholder="'+Math.round(b)+'" value="'+(e.a>0?e.a:'')+'"></label>')}});
-  const tf=card.querySelector('tfoot');if(tf&&paid>0)tf.insertAdjacentHTML('beforeend','<tr class="pdsum"><td>Paid so far</td><td class="r">'+rpt(paid)+'<br><span class="sgd">'+sg(paid)+'</span></td></tr>')})};
+ $('#famCosts').innerHTML=FAMS.map(f=>{const c=costs(f.id),v=c.v,ks=CATS.filter(k=>k[0]!=='pers'&&(v[k[0]]>0||k[0]==='food')),tot=ks.reduce((a,k)=>a+v[k[0]],0);
+  let paid=0;ks.forEach(k=>{const e=st[f.id+'.'+k[0]];if(e)paid+=e.a>0?e.a:v[k[0]]});
+  let h='<div class="card"><div class="fh"><h3>'+esc(f.name)+' <span class="tag c">'+f.room+'</span></h3><div class="fb">'+S(tot)+'<small>'+rpt(tot)+'</small></div></div><div class="pg"><i style="width:'+Math.min(100,paid/tot*100)+'%"></i></div><div class="pgt">'+(paid?'Paid '+S(paid)+' of '+S(tot):'Nothing ticked yet')+'</div>';
+  G.forEach(g=>{const rows=ks.filter(k=>g[1].includes(k[0]));if(!rows.length)return;h+='<div class="gh">'+g[0]+'</div>';
+   rows.forEach(k=>{const key=f.id+'.'+k[0],e=st[key],b=v[k[0]],nm=k[0]==='rdp'?'Room deposit share':k[0]==='bf'?'Breakfast':k[1];
+    h+='<div class="cr'+(e?' pd':'')+'"><button class="ck'+(e?' on':'')+'" data-k="'+key+'" aria-label="Mark '+esc(nm)+' as paid">'+(e?'✓':'')+'</button><div class="rn">'+esc(nm)+'</div>'+amt(b)+'</div><div class="cd">'+esc(c.det[k[0]]||'')+(e?'<label>Actual IDR <input inputmode="numeric" data-a="'+key+'" placeholder="'+Math.round(b)+'" value="'+(e.a>0?e.a:'')+'"></label>':'')+'</div>'});
+   if(g[1][0]==='room'){const bal=f.id==='A'?v.room/2:v.room;h+='<div class="rs">Bring to the resort on 9 Dec for the room: <b>'+S(bal)+'</b> · '+rpt(bal)+(f.id==='A'?'<br><small>The other half is already in the deposit Abah paid.</small>':'')+'</div>'}});
+  if(v.pers)h+='<p class="small" style="margin:10px 0 0"><b>Not in the family total:</b> '+esc(c.det.pers)+' = '+rp(v.pers)+', paid by Muhammad personally.</p>';
+  return h+'</div>'}).join('');
+ const tot=FAMS.reduce((a,f)=>a+accOf(f.id),0),dp=tot/2;
+ $('#dpCard').innerHTML='<div class="card"><h3>Room deposit paid by Abah</h3><ul class="pts"><li>Abah paid 50% up front: <b>'+S(dp)+'</b> ('+rpt(dp)+')</li><li>The other half is paid at check-in</li></ul><table class="dpm"><tbody>'+FAMS.map(f=>{const sh=accOf(f.id)/2;return'<tr><td><b>'+esc(f.name)+'</b></td><td class="r">'+(f.id==='A'?'Abah\'s own share<br><small>'+S(sh)+'</small>':S(sh)+'<br><small>'+rpt(sh)+'</small>')+'</td></tr>'}).join('')+'</tbody></table></div>'};
 const box=document.getElementById('famCosts');
-box.addEventListener('click',e=>{const b=e.target.closest('.ck');if(!b)return;const st=ls.get('cpaid',{});if(st[b.dataset.k])delete st[b.dataset.k];else st[b.dataset.k]={a:0};ls.set('cpaid',st);renderCosts()});
+box.addEventListener('click',e=>{const b=e.target.closest('.ck');if(b){const st=ls.get('cpaid',{});if(st[b.dataset.k])delete st[b.dataset.k];else st[b.dataset.k]={a:0};ls.set('cpaid',st);renderCosts();return}const n=e.target.closest('.rn');if(n)n.parentElement.classList.toggle('op')});
 box.addEventListener('change',e=>{const k=e.target.dataset.a;if(!k)return;const st=ls.get('cpaid',{});if(st[k]){st[k].a=Math.max(0,parseInt(String(e.target.value).replace(/\D/g,''))||0);ls.set('cpaid',st);renderCosts()}});
 renderCosts();
 })();
