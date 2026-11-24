@@ -383,7 +383,7 @@ html body{display:block!important}header.hero,#tabs,main{box-sizing:border-box;w
     <div id="oList"></div>
     <div class="card"><label>Notes for the restaurant (allergies, spice level, time to serve)</label><textarea id="oNote"></textarea></div>
     <div class="sum" id="oSum"></div>
-    <div class="row noprint" style="margin:8px 0"><div class="f"><label>Food budget for this order (IDR, optional)</label><input type="number" id="bud" step="50000" placeholder="e.g. 1500000"></div></div><div class="note hidden" id="budMsg"></div>
+    <div class="row noprint" style="margin:8px 0"><div class="f"><label>Food budget for this order (IDR, optional)</label><input type="number" id="bud" step="50000" placeholder="e.g. 1500000"></div><div class="f"><label>Same budget in SGD</label><input type="number" id="budS" step="10" inputmode="decimal" placeholder="e.g. 105"></div></div><div class="note hidden" id="budMsg"></div>
     <div class="row noprint"><button id="oSave">Save order</button><button class="ghost" id="oCopy">Copy order</button><button class="ghost" id="oPic">Save as picture</button><a class="btn wa" id="oWa" target="_blank" rel="noopener">Send by WhatsApp</a><button class="warn" id="oClear">Clear</button><button class="warn" id="oReset">Reset this order</button></div>
     <p class="small" id="oMsg"></p>
     <div class="note"><b>Please note</b><ul class="pts"><li>Seafood is sold by weight, so the final price follows the weight at the restaurant</li><li>Prices shown are estimates</li><li>Tax and service rates are set in the Info tab</li><li>Confirm the rates with the restaurant when you order</li></ul></div>
@@ -706,7 +706,10 @@ const _rc2=renderCosts;renderCosts=function(){_rc2();$('#waCosts').href='https:/
 let budWas=false;function budCheck(){const b=+$('#bud').value||0,t=calc(ord.q).total,m=$('#budMsg');if(!b||!t){m.classList.add('hidden');budWas=false;return}
  m.classList.remove('hidden');const over=t>b;m.innerHTML=over?`<b>Over budget</b> by ${rpt(t-b)} (${sg(t-b)})`:`Within budget · ${rpt(b-t)} (${sg(b-t)}) left`;m.style.borderLeftColor=over?'#b42318':'#1f9d55';
  if(over&&!budWas&&window.toast)toast('Over your food budget by '+rpt(t-b),false);budWas=over}
-$('#bud').value=ls.get('bud','')||'';$('#bud').addEventListener('input',()=>{ls.set('bud',$('#bud').value);budCheck()});
+$('#bud').value=ls.get('bud','')||'';
+const budSync=()=>{const v=+$('#bud').value;$('#budS').value=v?(Math.round(v/FX.rate*100)/100):''};budSync();
+$('#bud').addEventListener('input',()=>{ls.set('bud',$('#bud').value);budSync();budCheck()});
+$('#budS').addEventListener('input',()=>{const v=+$('#budS').value;$('#bud').value=v?Math.round(v*FX.rate/1000)*1000:'';ls.set('bud',$('#bud').value);budCheck()});
 const _rs3=renderSum;renderSum=function(){_rs3();budCheck()};
 /* easy-read mode */
 const zb=$('.zoom');zb.insertAdjacentHTML('beforeend','<button id="easy" aria-pressed="false">Easy read</button><button id="lang">BM</button>');
