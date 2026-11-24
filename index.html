@@ -216,7 +216,7 @@ html body{display:block!important}header.hero,#tabs,main{box-sizing:border-box;w
     <tr><td class="b">Deposit</td><td><ul class="pts"><li>IDR 250,000 per room per night</li><li>Held on Abah's credit card at check-in</li><li>3 rooms × 4 nights = IDR 3,000,000 held in total</li><li>Not a cost: each family pays its own charges directly</li></ul></td></tr>
     <tr><td class="b">Included</td><td><ul class="pts"><li>Welcome drink</li><li>Swimming pool</li><li>Dino Kids Club</li><li>Free Wi-Fi</li><li>21% government tax &amp; service charge on the room rate</li><li>Breakfast at HARRIS Café: <b>Villa only</b></li></ul></td></tr>
     <tr><td class="b">Booking terms</td><td><ul class="pts"><li>Non-refundable</li><li>No-show is charged 100%</li></ul></td></tr>
-    <tr><td class="b">Ferry fare</td><td><ul class="pts"><li>Majestic, Premium cabin, return</li><li>Ticket S$56 + surcharge S$11 per person</li><li>Terminal fees S$10 each way per person</li><li><b>S$87 per person</b> (S$348 for 4)</li><li>Kakak's and Samirah's families: booked. Abah, Mama and Nia: buying on Sat 28 Nov</li></ul></td></tr>
+    <tr><td class="b">Ferry fare</td><td><ul class="pts"><li>Majestic, Premium cabin, return</li><li>Ticket S$56 + surcharge S$11 per person</li><li>Terminal fees S$10 each way per person</li><li><b>S$87 per person</b> (S$348 for 4)</li><li>All 11 booked (24 Nov): Kakak's family, Samirah's family, and Abah, Mama and Nia</li></ul></td></tr>
     <tr><td class="b">Time zones</td><td><ul class="pts"><li>Batam (WIB) is 1 hour behind Singapore</li><li>Pick-up times are Batam time</li></ul></td></tr>
   </tbody></table></div>
   <div id="days"></div>
@@ -258,7 +258,7 @@ html body{display:block!important}header.hero,#tabs,main{box-sizing:border-box;w
   <p class="small mut">The invoice PDF has the bank details for payment. Ask Samirah for them; they are not shown here because this link is public.</p></div>
   <div class="card" id="travel"></div>
   <div class="card"><h3>Ferry · Majestic Fast Ferry</h3>
-  <p class="small mut" style="margin:0 0 8px">Booked: Kakak's family (23 Nov) and Samirah's family, 4 passengers (24 Nov, confirmed). Abah, Mama and Nia: to be bought on Sat 28 Nov. All Premium cabin.</p>
+  <p class="small mut" style="margin:0 0 8px">All tickets booked and confirmed. Kakak's family (23 Nov), Samirah's family (4 passengers) and Abah, Mama and Nia (3 passengers) on 24 Nov. All Premium cabin.</p>
   <b>Going · Wed 9 Dec 2026</b><ul class="pts"><li><b>Depart Tanah Merah 8:15am</b> (Singapore time)</li><li><b>Arrive Batam Centre 8:00am</b> (Batam time = 9:00am Singapore time)</li><li>Sailing about 45 minutes</li><li><b>Be at Tanah Merah by 6:45am</b> (90 minutes before). Departure gate closes 7:55am, no exception</li><li>Breakfast at the terminal first, if time permits</li><li>Driver meets us at 9:30am</li></ul>
   <b>Return · Sun 13 Dec 2026</b><ul class="pts"><li><b>Depart Batam Centre 1:00pm</b> (Batam time)</li><li><b>Arrive Tanah Merah 2:45pm</b> (Singapore time)</li><li>Be at Batam Centre by 11:30am (90 minutes before). Gate closes 12:40pm</li><li>Driver picks us up at the resort at 9:30am</li></ul>
   <ul class="pts small"><li>Bring passport (valid 6 months + 5 days) and the printed or saved itinerary</li><li>Show the itinerary at the counter to get the boarding pass</li><li>Batam is 1 hour behind Singapore</li></ul></div>
@@ -545,7 +545,7 @@ function costs(fid){const f=FAMS.find(x=>x.id===fid),pl=planOf(fid),det={};let a
  det.rdp=fid==='A'?'':ROOM[fid].n+': '+rpt(ROOM[fid].rate)+' × '+NIGHTS+' nights ÷ 2'+(bfH?' + extra breakfast ÷ 2 ('+rpt(bfH)+')':'')+'. Paid to Abah, who paid the booking deposit';
  if(fid!=='A'){det.room=det.room+'. Half is in the deposit above; this is the other half, paid at the resort';det.bf=det.bf+(bfH?' (half of the extra breakfast is in the deposit above)':'')}
  det.dep='IDR 250,000 × '+NIGHTS+' nights, collected by the resort at check-in';
- det.ferry=FERRYN[fid]+' tickets × S$'+FERRY_PP+' return (Premium cabin)'+(fid==='A'?'. Includes Nia\'s ticket, paid by Abah':fid==='C'?'. Nia\'s ticket is paid by Abah':'')+'. Estimate: tickets to be bought together on Sat 28 Nov';
+ det.ferry=FERRYN[fid]+' tickets × S$'+FERRY_PP+' return (Premium cabin)'+(fid==='A'?'. Includes Nia\'s ticket, paid by Abah':fid==='C'?'. Nia\'s ticket is paid by Abah':'')+'. Tickets booked';
  return{v:{cafe,ferry:FERRY_PP*FX.rate*FERRYN[fid],rdp:rmH+bfH,room:ROOM[fid].rate*NIGHTS-rmH,bf:bfn+extra-bfH,dep:0,drv:DRIVER_TOTAL/3,act,food,pers},det}}
 function slicePath(cx,cy,R,r,a0,a1){const p=(rad,a)=>[cx+rad*Math.cos(a),cy+rad*Math.sin(a)],l=a1-a0>Math.PI?1:0,[x0,y0]=p(R,a0),[x1,y1]=p(R,a1),[x2,y2]=p(r,a1),[x3,y3]=p(r,a0);return`M${x0} ${y0}A${R} ${R} 0 ${l} 1 ${x1} ${y1}L${x2} ${y2}A${r} ${r} 0 ${l} 0 ${x3} ${y3}Z`}
 function renderCosts(){renderDp();const per={};FAMS.forEach(f=>per[f.id]=costs(f.id));const sum=ids=>{const t={};CATS.forEach(c=>t[c[0]]=ids.reduce((a,i)=>a+per[i].v[c[0]],0));return t};
@@ -861,7 +861,7 @@ if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWor
   r1.push([{v:'TOTAL (IDR)',s:1},...cs]);
   r1.push([{v:'TOTAL (SGD)',s:1},...cs.map((c,i)=>({v:Math.round(c.v/rate),f:`ROUND(${col(i+1)}${tr}/$B$2,0)`,s:3}))]);
   r1.push([]);r1.push([{v:pers[1]+' (not shared, not in totals)'},...FAMS.map(f=>N(per[f.id].v.pers)),{v:Math.round(FAMS.reduce((a,f)=>a+per[f.id].v.pers,0)),f:`SUM(B${tr+3}:D${tr+3})`,s:2}]);
-  r1.push([]);r1.push(['Notes: prices include tax and service charge. Seafood is charged by actual weight. Ferry tickets are to be bought together on Sat 28 Nov. Change the rate in B2 and the SGD row updates.']);
+  r1.push([]);r1.push(['Notes: prices include tax and service charge. Seafood is charged by actual weight. Ferry tickets are booked (fare counted at S$87 per person). Change the rate in B2 and the SGD row updates.']);
   const r2=[[H('Family'),H('Item'),H('Amount (IDR)'),H('Details')]];
   FAMS.forEach(f=>CATS.forEach(c=>{const v=per[f.id].v[c[0]];if(v)r2.push([f.name,c[1],N(v),per[f.id].det[c[0]]||''])}));
   const r3=[[H('Who pays Abah'),H('Amount (IDR)'),H('Amount (SGD)'),H('Paid?')]],pd=ls.get('paid',{});
