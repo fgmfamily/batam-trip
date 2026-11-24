@@ -322,6 +322,7 @@ body.sub .hero .zoom.open{display:flex!important}
 #a2hs span{flex:1;min-width:180px}#a2hs button{border:0;border-radius:99px;padding:6px 14px;font:inherit;font-weight:700;font-size:13px;cursor:pointer;background:#0a6577;color:#fff}#a2hs .no{background:#e7f1f3;color:#0a6577}
 @media print{.hbtn{display:none}}
 </style>
+<style>#p-trip>.row.noprint{display:none}.hero>.htop{position:relative;z-index:20!important}#shMenu{position:absolute;right:0;top:44px;z-index:30;background:#fff!important;opacity:1!important;backdrop-filter:none!important;border-radius:14px;box-shadow:0 8px 28px rgba(0,0,0,.28);padding:6px;display:flex;flex-direction:column;min-width:210px}.hero #shMenu a,.hero #shMenu button{background:#fff!important;display:block;text-align:left;padding:12px 14px;border:0;background:none;color:#0a4655;font:600 15px system-ui;text-decoration:none;border-radius:10px;cursor:pointer}#shMenu a:active,#shMenu button:active{background:#e6f3f5}</style>
 </head>
 <body>
 <header class="hero">
@@ -832,10 +833,10 @@ const sg=new Date(Date.now()+8*36e5),dd=Math.round((Date.UTC(sg.getUTCFullYear()
 const cd=dd<0?`${-dd} day${-dd>1?'s':''} to go`:dd<=4?`Day ${dd+1} of 5`:'Trip complete';
 $('.hero .chips').insertAdjacentHTML('afterbegin',`<span class="chip pulse">${svg('clock')} ${cd}</span>`);
 const di=dd<0?0:Math.min(dd,4),big=dd<0?-dd:dd<=4?dd+1:'✓',lab=dd<0?(-dd===1?'day to go':'days to go'):dd<=4?'of 5 days':'home';
-const title=dd<0?'Next: '+DAYS[0].d+' · '+DAYS[0].t:dd<=4?'Today: '+DAYS[dd].d+' · '+DAYS[dd].t:'Welcome home!';
-const evs=dd>4?'':DAYS[di].e.slice(0,3).map(e=>`<li>${esc(e[0])}: ${esc(e[1])}</li>`).join('');
-const Q=[['tickets','ticket','Bookings'],['barelang','utensils','Order seafood'],['costs','pie','Costs by family'],['activities','bolt','Activities'],['harris','bed','Resort'],['files','file','Menus & files'],['tools','clock','Prayer times'],['tools','sun','Weather'],['fx','coin','Convert S$ ⇄ IDR'],['plan','copy','Copy plan']];
-$('#p-trip > h2').insertAdjacentHTML('afterend',`<div id="dash"><div class="dash"><div class="count"><b>${big}</b><span>${lab}</span></div><div><h3 class="display">${title}</h3><ul class="pts">${evs}</ul></div></div><div class="quick">${Q.map(q=>`<button class="q" data-go="${q[0]}"><span class="ic">${svg(q[1])}</span>${q[2]}</button>`).join('')}<a class="q" target="_blank" rel="noopener" href="https://wa.me/6282168280212"><span class="ic">${svg('phone')}</span>WhatsApp Devi</a><a class="q" target="_blank" rel="noopener" href="https://wa.me/6285363011991"><span class="ic">${svg('car')}</span>WhatsApp Donny</a></div></div>`);
+const title=dd<0?'Then: '+DAYS[0].d+' · '+DAYS[0].t:dd<=4?'Today: '+DAYS[dd].d+' · '+DAYS[dd].t:'Welcome home!';
+const evs=dd>4?'':DAYS[di].e.slice(dd<0?1:0,dd<0?4:3).map(e=>`<li>${esc(e[0])}: ${esc(e[1])}</li>`).join('');
+const Q=[['tickets','ticket','Bookings'],['barelang','utensils','Order seafood'],['costs','pie','Costs by family'],['activities','bolt','Activities'],['harris','bed','Resort'],['files','file','Menus & files']];
+$('#p-trip > h2').insertAdjacentHTML('afterend',`<div id="dash"><div class="dash"><div><h3 class="display">${title}</h3><ul class="pts">${evs}</ul></div></div><div class="quick">${Q.map(q=>`<button class="q" data-go="${q[0]}"><span class="ic">${svg(q[1])}</span>${q[2]}</button>`).join('')}<a class="q" target="_blank" rel="noopener" href="https://wa.me/6282168280212"><span class="ic">${svg('phone')}</span>WhatsApp Devi</a><a class="q" target="_blank" rel="noopener" href="https://wa.me/6285363011991"><span class="ic">${svg('car')}</span>WhatsApp Donny</a></div></div>`);
 $('#dash').onclick=e=>{const t=e.target.closest('[data-go]');if(!t)return;if(t.dataset.go==='plan')$('#copyPlan').click();else if(t.dataset.go==='fx')openFx();else{go(t.dataset.go);scrollTo({top:0,behavior:'smooth'})}};
 if(dd>=0&&dd<=4)$$('#days .day')[dd]?.classList.add('today');
 /* toasts */
@@ -1096,7 +1097,7 @@ if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWor
 <script>
 /* ---- version stamp + safety net for the top banner ---- */
 (function(){
- const V='v21 · 24 Nov 2026';
+ const V='v22 · 24 Nov 2026';
  const f=document.createElement('div');f.id='verStamp';f.className='noprint';f.style.cssText='text-align:center;font-size:12px;color:#5b7079;padding:18px 0 90px';f.textContent='App version '+V;document.body.appendChild(f);
  setTimeout(()=>{const n=document.getElementById('nowBar');if(n&&!n.querySelector('.wx')){const t=z=>new Date().toLocaleTimeString('en-GB',{timeZone:z,hour:'2-digit',minute:'2-digit'});n.innerHTML='<div style="background:#0a6577;color:#fff;border-radius:14px;padding:10px 14px;font-weight:700">'+new Date().toLocaleDateString('en-GB',{timeZone:'Asia/Singapore',weekday:'long',day:'numeric',month:'long',year:'numeric'})+' · Batam '+t('Asia/Jakarta')+' · Singapore '+t('Asia/Singapore')+'<div style="font-weight:400;font-size:12px;margin-top:3px">Weather is loading. Refresh the page if it does not appear.</div></div>'}},4000);
 })();
@@ -1114,7 +1115,12 @@ if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWor
  /* top row: title + share + Aa */
  const top=document.createElement('div');top.className='htop noprint';h1.before(top);top.appendChild(h1);
  const share=document.createElement('button');share.className='hbtn';share.setAttribute('aria-label','Share by WhatsApp');share.innerHTML=sv('<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/>');
- share.onclick=()=>window.open('https://wa.me/?text='+encodeURIComponent('Batam Family Trip app (9–13 Dec 2026): '+location.origin+location.pathname),'_blank');
+ share.onclick=e=>{e.stopPropagation();let m=document.getElementById('shMenu');if(m){m.remove();return}
+  m=document.createElement('div');m.id='shMenu';m.className='noprint';
+  m.innerHTML='<a target="_blank" rel="noopener" href="https://wa.me/?text='+encodeURIComponent('Batam Family Trip app (9–13 Dec 2026): '+location.origin+location.pathname)+'">Send app link by WhatsApp</a><a target="_blank" rel="noopener" href="'+(document.getElementById('waPlan').href||'#')+'">Send plan by WhatsApp</a><button id="shCp">Copy plan as text</button>';
+  top.appendChild(m);
+  m.querySelector('#shCp').onclick=()=>{document.getElementById('copyPlan').click();m.querySelector('#shCp').textContent='Copied ✓';setTimeout(()=>m.remove(),900)};
+  setTimeout(()=>document.addEventListener('click',function f(ev){if(!m.contains(ev.target)){m.remove()}document.removeEventListener('click',f)}),0)};
  const aa=document.createElement('button');aa.className='hbtn';aa.setAttribute('aria-label','Text size and language');aa.innerHTML='<span style="font-weight:800;font-size:14px">Aa</span>';
  aa.onclick=()=>zoom.classList.toggle('open');
  top.append(share,aa);top.after(zoom);
@@ -1134,7 +1140,7 @@ if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWor
  /* chips: remove old countdown chip, make the rest tappable */
  hero.querySelectorAll('.chip.pulse').forEach(c=>c.remove());
  const map=['people','harris','tickets'];chips.querySelectorAll('.chip').forEach((c,i)=>{if(map[i]){c.dataset.go=map[i]}});
- if(fx){fx.classList.add('chip');chips.prepend(fx)}
+ if(fx){fx.classList.add('chip');chips.prepend(fx)}chips.querySelectorAll('.chip').forEach(c=>{if(c!==fx)c.remove()});
  chips.addEventListener('click',e=>{const c=e.target.closest('[data-go]');if(c)go(c.dataset.go)});
  const _rf=renderFx;renderFx=function(){const el=document.getElementById('fxLine');if(el)el.textContent='S$1 = IDR '+FX.rate.toLocaleString('en-US')+(/live/i.test(FX.date||'')?' · live':'')};renderFx();
  /* add to home screen hint (once) */
