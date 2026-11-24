@@ -253,6 +253,9 @@ html body{display:block!important}header.hero,#tabs,main{box-sizing:border-box;w
 
 <section class="panel" id="p-transport"><h2>Transport</h2>
   <div class="card"><table><thead><tr><th>Date</th><th>Time</th><th>Trip</th><th class="r">Price</th></tr></thead><tbody id="trBody"></tbody><tfoot><tr><td colspan="3">Total driver cost</td><td class="r" id="trTot"></td></tr></tfoot></table></div>
+  <div class="card"><h3>Driver booking · confirmed invoice</h3>
+  <ul class="pts"><li><b>Trip ID: JW-321</b> (invoice issued to Mrs Samirah, Pick N Go)</li><li>Vehicle: Hiace (older model)</li><li>Wed 9 Dec · Batam Centre to HARRIS Barelang · IDR 350,000</li><li>Fri 11 Dec · Full day, 12 hours · IDR 1,100,000</li><li>Sun 13 Dec · HARRIS Barelang to Batam Centre · IDR 350,000</li><li><b>Total: IDR 1,800,000</b> (S$<span id="drvSg"></span>)</li><li>Share: IDR 600,000 per family (3 families)</li><li>Quote this Trip ID if you need to call the driver company</li></ul>
+  <p class="small mut">The invoice PDF has the bank details for payment. Ask Samirah for them; they are not shown here because this link is public.</p></div>
   <div class="card" id="travel"></div>
   <div class="card"><h3>Ferry · Majestic Fast Ferry</h3>
   <p class="small mut" style="margin:0 0 8px">Booked: Kakak's family (23 Nov) and Samirah's family, 4 passengers (24 Nov, confirmed). Abah, Mama and Nia: to be bought on Sat 28 Nov. All Premium cabin.</p>
@@ -875,5 +878,6 @@ if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWor
   m.textContent='Excel file saved: Batam-Trip-Costs.xlsx (3 sheets: Costs by family, Details, Pay Abah). Totals use formulas.'}catch(e){m.textContent='Could not make the Excel file: '+e.message}};
 })();
 </script>
+<script>(function(){const e=document.getElementById('drvSg');if(e&&typeof FX!=='undefined')e.textContent=Math.round(1800000/FX.rate).toLocaleString('en-US')})();</script>
 </body>
 </html>
