@@ -193,6 +193,44 @@ html body{display:block!important}header.hero,#tabs,main{box-sizing:border-box;w
 @media(prefers-reduced-motion:reduce){.wx .ic,.wx .fd{animation:none}}
 @media print{#nowBar{display:none!important}}
 </style>
+<style>
+#bkRoot .stat{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+#bkRoot .stat span{background:#e4f5ea;color:#17683a;border-radius:99px;padding:4px 12px;font-weight:700;font-size:13px;animation:bkin .5s both}
+#bkRoot h3.sec{margin:18px 0 8px;font-size:17px;display:flex;align-items:center;gap:8px}
+.tk{position:relative;background:#fff;border-radius:18px;box-shadow:0 6px 20px rgba(10,60,80,.12);margin:0 0 14px;overflow:hidden;animation:bkin .5s both;border:1px solid #e3dccb}
+.tk:before,.tk:after{content:"";position:absolute;top:92px;width:18px;height:18px;border-radius:50%;background:var(--bg,#f5f1e8);border:1px solid #e3dccb}
+.tk:before{left:-10px}.tk:after{right:-10px}
+.tk .hd{display:flex;justify-content:space-between;align-items:center;gap:8px;background:linear-gradient(120deg,#0a6577,#1b8aa0);color:#fff;padding:10px 16px;font-size:12px;letter-spacing:.06em;font-weight:700}
+.tk .hd i{font-style:normal;background:rgba(255,255,255,.25);border-radius:99px;padding:2px 10px}
+.tk .id{display:block;width:100%;text-align:left;border:0;background:none;font:inherit;cursor:pointer;padding:12px 16px 10px;border-bottom:2px dashed #e3dccb}
+.tk .id small{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:#6b7c84}
+.tk .id b{font-size:28px;letter-spacing:2px;color:#0a6577;font-variant-numeric:tabular-nums}
+.tk .id em{font-style:normal;font-size:12px;color:#ee6a35;font-weight:700;margin-left:10px}
+.tk .bd{padding:12px 16px}
+.tk .who{font-weight:700;font-size:15px}.tk .pax{display:flex;flex-wrap:wrap;gap:5px;margin:6px 0 10px}
+.tk .pax span{background:#f1ece0;border-radius:99px;padding:2px 10px;font-size:12.5px}
+.tk .leg{display:grid;grid-template-columns:1fr 70px 1fr;align-items:center;gap:6px;margin:8px 0}
+.tk .leg .p b{display:block;font-size:20px;font-variant-numeric:tabular-nums}.tk .leg .p span{font-size:12px;color:#5b7079}
+.tk .leg .p:last-child{text-align:right}
+.tk .leg .ln{position:relative;height:2px;background:repeating-linear-gradient(90deg,#9db8c0 0 6px,transparent 6px 11px)}
+.tk .leg .ln svg{position:absolute;top:-11px;left:0;width:22px;height:22px;stroke:#0a6577;fill:none;stroke-width:1.8;animation:bksail 3s ease-in-out infinite}
+@keyframes bksail{0%{left:0}50%{left:calc(100% - 22px)}100%{left:0}}
+.tk .dl{font-size:12px;font-weight:700;color:#0a6577;margin-top:10px;text-transform:uppercase;letter-spacing:.05em}
+.tk .acts{display:flex;flex-wrap:wrap;gap:8px;padding:0 16px 14px}
+.tk .acts button,.tk .acts label{border:0;border-radius:99px;padding:7px 14px;font:inherit;font-size:13px;font-weight:700;cursor:pointer;background:#e7f1f3;color:#0a6577}
+.tk .acts .pri{background:#0a6577;color:#fff}.tk .acts .rm{background:#fdecea;color:#b3261e}
+.tk .acts label input{display:none}
+.tk .tl{list-style:none;margin:0;padding:0}.tk .tl li{position:relative;padding:0 0 10px 22px;font-size:14px}
+.tk .tl li:before{content:"";position:absolute;left:3px;top:6px;width:9px;height:9px;border-radius:50%;background:#ee6a35}
+.tk .tl li:not(:last-child):after{content:"";position:absolute;left:7px;top:16px;bottom:-2px;width:2px;background:#e3dccb}
+.tk .tl b{display:inline-block;min-width:96px}
+.bkrules{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin:0 0 6px}
+.bkrules div{background:#fff7e6;border-left:4px solid #e0a100;border-radius:10px;padding:8px 10px;font-size:13px}
+.bknote{font-size:12.5px;color:#5b7079;margin:6px 0 0}
+@keyframes bkin{from{opacity:0;transform:translateY(12px)}}
+@media(max-width:480px){.tk .id b{font-size:23px}.tk .leg{grid-template-columns:1fr 44px 1fr}}
+@media print{.tk .acts{display:none}}
+</style>
 </head>
 <body>
 <header class="hero">
@@ -229,6 +267,7 @@ html body{display:block!important}header.hero,#tabs,main{box-sizing:border-box;w
   </tbody></table></div>
 </section>
 
+<section class="panel" id="p-tickets"><h2>Bookings</h2><div id="bkRoot"></div></section>
 <section class="panel" id="p-costs"><h2>Costs by family</h2>
   <div class="note" id="fxNote"></div>
   <div class="tiles" id="tiles"></div>
@@ -429,7 +468,7 @@ function calc(q){const lines=items().filter(i=>q[i.id]>0).map(i=>({i,q:q[i.id],t
 const qtyLabel=(i,q)=>i.u==='g'?q+' g':'× '+q;
 
 /* ---------- tabs ---------- */
-const TABS=[['trip','Trip plan'],['costs','Costs by family'],['people','People & rooms'],['activities','Activities'],['transport','Transport'],['harris','HARRIS Resort'],['barelang','Barelang Seafood'],['tools','Trip tools'],['files','Files'],['info','Info']];
+const TABS=[['trip','Trip plan'],['tickets','Bookings'],['costs','Costs by family'],['people','People & rooms'],['activities','Activities'],['transport','Transport'],['harris','HARRIS Resort'],['barelang','Barelang Seafood'],['tools','Trip tools'],['files','Files'],['info','Info']];
 $('#tabs').innerHTML=TABS.map(t=>`<button data-t="${t[0]}">${t[1]}</button>`).join('');
 function go(t){if(!TABS.some(x=>x[0]===t))t='trip';$$('.panel').forEach(p=>p.classList.toggle('on',p.id==='p-'+t));$$('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));try{history.replaceState(null,'','#'+t)}catch(e){}}
 $('#tabs').onclick=e=>{const b=e.target.closest('button');if(b){go(b.dataset.t);scrollTo(0,0)}};
@@ -689,8 +728,9 @@ document.addEventListener('load',e=>{if(e.target&&e.target.tagName==='IMG')e.tar
 <script>
 (()=>{
 const IC={map:'<path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3z"/><path d="M9 3v15M15 6v15"/>',pie:'<path d="M12 3a9 9 0 1 0 9 9h-9z"/><path d="M15 3.5A9 9 0 0 1 20.5 9H15z"/>',users:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.5 3-6 6.5-6s6.5 2.5 6.5 6"/><circle cx="17" cy="9" r="2.5"/><path d="M17 14c2.5 0 4.5 1.8 4.5 4.5"/>',bolt:'<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',car:'<path d="M5 16l1.5-5.5A2 2 0 0 1 8.4 9h7.2a2 2 0 0 1 1.9 1.5L19 16"/><rect x="3" y="16" width="18" height="4" rx="1.5"/><path d="M7 18h.01M17 18h.01"/>',bed:'<path d="M3 18V7M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-8v5"/><circle cx="6.5" cy="11" r="1.6"/>',utensils:'<path d="M6 3v8a2 2 0 0 0 2 2v8M10 3v8a2 2 0 0 1-2 2M17 3c-2 2-2.5 5-2.5 8H17v10"/>',file:'<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>',info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/>',phone:'<path d="M6.5 3h3l1.5 4-2 1.5a11 11 0 0 0 5.5 5.5L16 12l4 1.5v3a2 2 0 0 1-2 2A15 15 0 0 1 4.5 5a2 2 0 0 1 2-2z"/>',copy:'<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',check:'<circle cx="12" cy="12" r="9"/><path d="M8 12.5l3 3 5-6"/>',x:'<path d="M6 6l12 12M18 6L6 18"/>',list:'<path d="M9 6h11M9 12h11M9 18h11M4 6h.01M4 12h.01M4 18h.01"/>',sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',coin:'<circle cx="12" cy="12" r="9"/><path d="M14.5 9.2c-.6-.8-1.5-1.2-2.5-1.2-1.4 0-2.5.8-2.5 2s1 1.7 2.5 2 2.5.8 2.5 2-1.1 2-2.5 2c-1 0-1.9-.4-2.5-1.2M12 6.5V8M12 16v1.5"/>',ship:'<path d="M3 18c2 1.5 4 1.5 6 0s4-1.5 6 0 4 1.5 6 0M5 14l1-6h12l1 6zM12 8V4h3"/>'};
+IC.ticket='<path d="M3 8a2 2 0 0 0 0 8v2h18v-2a2 2 0 0 1 0-8V6H3z"/><path d="M14 6v12" stroke-dasharray="2 2"/>';
 const svg=k=>`<svg class="i" viewBox="0 0 24 24" aria-hidden="true">${IC[k]}</svg>`;
-const TI={trip:'map',costs:'pie',people:'users',activities:'bolt',transport:'car',harris:'bed',barelang:'utensils',tools:'list',files:'file',info:'info'};
+const TI={tickets:'ticket',trip:'map',costs:'pie',people:'users',activities:'bolt',transport:'car',harris:'bed',barelang:'utensils',tools:'list',files:'file',info:'info'};
 $$('#tabs button').forEach(b=>{b.innerHTML=svg(TI[b.dataset.t])+'<span>'+b.textContent+'</span>'});
 Object.entries(TI).forEach(([t,k])=>{const h=$('#p-'+t+' > h2');if(h)h.innerHTML=`<span class="ic">${svg(k)}</span><span>${h.textContent}</span>`});
 $('.hero h1').insertAdjacentHTML('afterbegin',svg('ship'));
@@ -701,7 +741,7 @@ $('.hero .chips').insertAdjacentHTML('afterbegin',`<span class="chip pulse">${sv
 const di=dd<0?0:Math.min(dd,4),big=dd<0?-dd:dd<=4?dd+1:'✓',lab=dd<0?(-dd===1?'day to go':'days to go'):dd<=4?'of 5 days':'home';
 const title=dd<0?'Next: '+DAYS[0].d+' · '+DAYS[0].t:dd<=4?'Today: '+DAYS[dd].d+' · '+DAYS[dd].t:'Welcome home!';
 const evs=dd>4?'':DAYS[di].e.slice(0,3).map(e=>`<li>${esc(e[0])}: ${esc(e[1])}</li>`).join('');
-const Q=[['barelang','utensils','Order seafood'],['costs','pie','Costs by family'],['activities','bolt','Activities'],['harris','bed','Resort'],['files','file','Menus & files'],['tools','clock','Prayer times'],['tools','sun','Weather'],['fx','coin','Convert S$ ⇄ IDR'],['plan','copy','Copy plan']];
+const Q=[['tickets','ticket','Bookings'],['barelang','utensils','Order seafood'],['costs','pie','Costs by family'],['activities','bolt','Activities'],['harris','bed','Resort'],['files','file','Menus & files'],['tools','clock','Prayer times'],['tools','sun','Weather'],['fx','coin','Convert S$ ⇄ IDR'],['plan','copy','Copy plan']];
 $('#p-trip > h2').insertAdjacentHTML('afterend',`<div id="dash"><div class="dash"><div class="count"><b>${big}</b><span>${lab}</span></div><div><h3 class="display">${title}</h3><ul class="pts">${evs}</ul></div></div><div class="quick">${Q.map(q=>`<button class="q" data-go="${q[0]}"><span class="ic">${svg(q[1])}</span>${q[2]}</button>`).join('')}<a class="q" target="_blank" rel="noopener" href="https://wa.me/6282168280212"><span class="ic">${svg('phone')}</span>WhatsApp Devi</a><a class="q" target="_blank" rel="noopener" href="https://wa.me/6285363011991"><span class="ic">${svg('car')}</span>WhatsApp Donny</a></div></div>`);
 $('#dash').onclick=e=>{const t=e.target.closest('[data-go]');if(!t)return;if(t.dataset.go==='plan')$('#copyPlan').click();else if(t.dataset.go==='fx')openFx();else{go(t.dataset.go);scrollTo({top:0,behavior:'smooth'})}};
 if(dd>=0&&dd<=4)$$('#days .day')[dd]?.classList.add('today');
@@ -734,7 +774,7 @@ const _go=go;go=function(t){_go(t);const nav=$('#tabs'),b=nav.querySelector('but
  $$('.panel.on .card,.panel.on .tile,.panel.on .day,.panel.on .q').forEach((el,i)=>{el.style.setProperty('--d',Math.min(i,10)*45+'ms');el.classList.remove('rv');void el.offsetWidth;el.classList.add('rv')});updateBar()};
 
 /* Malay / English */
-const BM={'Trip plan':'Rancangan perjalanan','Costs by family':'Kos mengikut keluarga','People & rooms':'Orang & bilik','Activities':'Aktiviti','Transport':'Pengangkutan','HARRIS Resort':'Resort HARRIS','Trip tools':'Alat perjalanan','Files':'Fail','Info':'Maklumat','Files & downloads':'Fail & muat turun','Info & updates':'Maklumat & kemas kini','Order seafood':'Pesan makanan laut','Resort':'Resort','Menus & files':'Menu & fail','Prayer times':'Waktu solat','Copy plan':'Salin pelan','Save order':'Simpan pesanan','Copy order':'Salin pesanan','Send by WhatsApp':'Hantar melalui WhatsApp','Send plan by WhatsApp':'Hantar pelan melalui WhatsApp','Send cost summary by WhatsApp':'Hantar ringkasan kos melalui WhatsApp','Text size':'Saiz teks','Easy read':'Mudah baca','Who pays what':'Siapa bayar apa','Packing checklist':'Senarai bawaan','Weather':'Cuaca','Money tips':'Tip wang','Emergency numbers':'Nombor kecemasan','Before you leave':'Sebelum bertolak','Prayer times · Batam':'Waktu solat · Batam','Room deposit paid by Abah':'Deposit bilik dibayar oleh Abah'};
+const BM={'Bookings':'Tempahan','Trip plan':'Rancangan perjalanan','Costs by family':'Kos mengikut keluarga','People & rooms':'Orang & bilik','Activities':'Aktiviti','Transport':'Pengangkutan','HARRIS Resort':'Resort HARRIS','Trip tools':'Alat perjalanan','Files':'Fail','Info':'Maklumat','Files & downloads':'Fail & muat turun','Info & updates':'Maklumat & kemas kini','Order seafood':'Pesan makanan laut','Resort':'Resort','Menus & files':'Menu & fail','Prayer times':'Waktu solat','Copy plan':'Salin pelan','Save order':'Simpan pesanan','Copy order':'Salin pesanan','Send by WhatsApp':'Hantar melalui WhatsApp','Send plan by WhatsApp':'Hantar pelan melalui WhatsApp','Send cost summary by WhatsApp':'Hantar ringkasan kos melalui WhatsApp','Text size':'Saiz teks','Easy read':'Mudah baca','Who pays what':'Siapa bayar apa','Packing checklist':'Senarai bawaan','Weather':'Cuaca','Money tips':'Tip wang','Emergency numbers':'Nombor kecemasan','Before you leave':'Sebelum bertolak','Prayer times · Batam':'Waktu solat · Batam','Room deposit paid by Abah':'Deposit bilik dibayar oleh Abah'};
 const BMR=Object.fromEntries(Object.entries(BM).map(([a,b])=>[b,a]));
 function applyLang(bm){const M=bm?BM:BMR;$$('#tabs span,h2 > span:last-child,.q,h3,.card button,.btn,.zoom span,.zoom button').forEach(el=>{const node=[...el.childNodes].reverse().find(n=>n.nodeType===3&&n.textContent.trim());if(!node)return;const k=node.textContent.trim();if(M[k])node.textContent=node.textContent.replace(k,M[k])});
  $('#lang').textContent=bm?'EN':'BM';document.documentElement.lang=bm?'ms':'en';ls.set('bm',bm)}
@@ -879,5 +919,61 @@ if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWor
 })();
 </script>
 <script>(function(){const e=document.getElementById('drvSg');if(e&&typeof FX!=='undefined')e.textContent=Math.round(1800000/FX.rate).toLocaleString('en-US')})();</script>
+<script>
+/* ---- Bookings wallet ---- */
+(function(){
+ const root=document.getElementById('bkRoot');if(!root)return;
+ const esc=x=>String(x).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+ const FER=[{id:'OB1XLAHC',who:'Kakak & family',pax:['Kakak','Abg Hairul','Sarah','Khalid'],on:'23 Nov'},{id:'OBVIRLXU',who:'Samirah & family',pax:['Samirah','Muhammad','Adam','Ammar'],on:'24 Nov'},{id:'OB5QYBOC',who:'Abah, Mama & Nia',pax:['Abah','Mama','Nia'],on:'24 Nov'}];
+ const shipSvg='<svg viewBox="0 0 24 24"><path d="M3 15l2 4h14l2-4z"/><path d="M6 15V10h9l3 5M10 10V6h3v4"/></svg>';
+ const ferryCard=(b,i)=>`<div class="tk" style="animation-delay:${i*90}ms"><div class="hd"><span>MAJESTIC FAST FERRY · PREMIUM</span><i>Confirmed</i></div>
+ <button class="id" data-copy="${b.id}"><small>Booking ID · booked ${b.on}</small><b>${b.id}</b><em>Tap to copy</em></button>
+ <div class="bd"><div class="who">${esc(b.who)} · ${b.pax.length} passengers</div><div class="pax">${b.pax.map(p=>'<span>'+esc(p)+'</span>').join('')}</div>
+ <div class="dl">Going · Wed 9 Dec 2026</div><div class="leg"><div class="p"><b>08:15</b><span>Tanah Merah · SG time</span></div><div class="ln">${shipSvg}</div><div class="p"><b>08:00</b><span>Batam Centre · Batam time</span></div></div>
+ <div class="dl">Return · Sun 13 Dec 2026</div><div class="leg"><div class="p"><b>13:00</b><span>Batam Centre · Batam time</span></div><div class="ln">${shipSvg}</div><div class="p"><b>14:45</b><span>Tanah Merah · SG time</span></div></div></div>
+ <div class="acts"><button class="pri" data-pic="${b.id}">Save ticket picture</button><button data-copy="${b.id}">Copy ID</button><span id="att-${b.id}"></span></div></div>`;
+ const DRV=[['Wed 9 Dec','Batam Centre → HARRIS Barelang','IDR 350,000'],['Fri 11 Dec','Full day, 12 hours (shooting range + mall)','IDR 1,100,000'],['Sun 13 Dec','HARRIS Barelang → Batam Centre','IDR 350,000']];
+ const drvCard=`<div class="tk"><div class="hd"><span>DRIVER · HIACE (OLDER MODEL)</span><i>Invoice issued</i></div>
+ <button class="id" data-copy="JW-321"><small>Trip ID</small><b>JW-321</b><em>Tap to copy</em></button>
+ <div class="bd"><div class="who">Billed to Mrs Samirah (Pick N Go)</div><ul class="tl" style="margin-top:10px">${DRV.map(d=>`<li><b>${d[0]}</b>${d[1]}<br><span style="color:#5b7079;font-size:12.5px">${d[2]}</span></li>`).join('')}</ul>
+ <div class="who">Total IDR 1,800,000 · about S$<span id="bkDrvSg"></span></div><div class="bknote">IDR 600,000 per family. Bank details are on the invoice PDF: ask Samirah.</div></div>
+ <div class="acts"><button class="pri" data-pic="JW-321">Save driver picture</button><button data-copy="JW-321">Copy Trip ID</button><span id="att-JW-321"></span></div></div>`;
+ const resCard=`<div class="tk"><div class="hd"><span>HARRIS RESORT BARELANG BATAM</span><i>Confirmed</i></div>
+ <button class="id" data-copy="100991"><small>Resort confirmation no. · under Mrs Samirah</small><b>100991</b><em>Tap to copy</em></button>
+ <div class="bd"><ul class="tl"><li><b>Check-in</b>Wed 9 Dec · from 3:00pm (early check-in requested)</li><li><b>Check-out</b>Sun 13 Dec · 12:00 noon</li><li><b>Rooms</b>Sea View (Abah &amp; Mama) · Suite (Kakak) · Villa (Samirah)</li><li><b>Resort phone</b>+62 778 409 1111</li></ul></div>
+ <div class="acts"><button data-copy="100991">Copy number</button><span id="att-100991"></span></div></div>`;
+ root.innerHTML=`<div class="stat"><span>✓ Ferry: 3 of 3 booked</span><span>✓ Driver: invoice ready</span><span>✓ Resort: confirmed</span></div>
+ <h3 class="sec">Ferry tickets</h3><div class="bkrules"><div><b>Be early:</b> at the terminal 90 minutes before. Gate closes 20 minutes before departure, no exception.</div><div><b>Bring:</b> passport valid 6 months + 5 days, and your itinerary. Exchange it for the boarding pass at the counter.</div><div><b>Time:</b> Batam is 1 hour behind Singapore.</div></div>
+ ${FER.map(ferryCard).join('')}<h3 class="sec">Driver</h3>${drvCard}<h3 class="sec">Resort</h3>${resCard}
+ <p class="bknote">Your ticket PDF has passport numbers, so it is not on this public page. Use <b>Attach my ticket</b> to keep your own copy on this phone only. It works offline and is never uploaded.</p>`;
+ const sg=document.getElementById('bkDrvSg');if(sg&&typeof FX!=='undefined')sg.textContent=Math.round(1800000/FX.rate).toLocaleString('en-US');
+ /* local-only attachments (IndexedDB) */
+ const DB_=()=>new Promise((res,rej)=>{const r=indexedDB.open('batamTickets',1);r.onupgradeneeded=()=>r.result.createObjectStore('f');r.onsuccess=()=>res(r.result);r.onerror=()=>rej(r.error)});
+ const idb=async(m,k,v)=>{const d=await DB_();return new Promise((res,rej)=>{const t=d.transaction('f',m==='get'?'readonly':'readwrite'),o=t.objectStore('f'),q=m==='put'?o.put(v,k):m==='del'?o.delete(k):o.get(k);q.onsuccess=()=>res(q.result);q.onerror=()=>rej(q.error)})};
+ async function att(id){const w=document.getElementById('att-'+id);if(!w)return;let f=null;try{f=await idb('get',id)}catch(e){}
+  w.innerHTML=f?`<button class="pri" data-open="${id}">Open my ticket</button> <button class="rm" data-rm="${id}">Remove</button>`:`<label>Attach my ticket<input type="file" accept="application/pdf,image/*" data-att="${id}"></label>`}
+ ['OB1XLAHC','OBVIRLXU','OB5QYBOC','JW-321','100991'].forEach(att);
+ /* picture of a booking (no passport data) */
+ function pic(id){const b=FER.find(x=>x.id===id),W=1080,cv=document.createElement('canvas');cv.width=W;cv.height=1500;const x=cv.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,W,1500);let y=0;
+  const T=(s,sz,wt,col,xx)=>{x.font=wt+' '+sz+'px system-ui,-apple-system,Segoe UI,Roboto,sans-serif';x.fillStyle=col;y+=sz*1.25;x.fillText(s,xx||56,y)};
+  x.fillStyle='#0a6577';x.fillRect(0,0,W,170);y=40;T(b?'MAJESTIC FAST FERRY · PREMIUM':'DRIVER · HIACE',40,800,'#fff');y+=4;T(b?'Ticket summary':'Driver booking',34,500,'#cfe8ee');y=190;
+  T(b?'Booking ID':'Trip ID',30,600,'#5b7079');T(id,110,800,'#0a6577');y+=10;
+  if(b){T(b.who+' · '+b.pax.length+' passengers',40,700,'#10303a');T(b.pax.join(', '),34,400,'#5b7079');y+=30;
+   T('GOING · Wed 9 Dec 2026',32,800,'#ee6a35');T('Tanah Merah 08:15 (Singapore time)',42,700,'#10303a');T('Batam Centre 08:00 (Batam time)',42,700,'#10303a');y+=30;
+   T('RETURN · Sun 13 Dec 2026',32,800,'#ee6a35');T('Batam Centre 13:00 (Batam time)',42,700,'#10303a');T('Tanah Merah 14:45 (Singapore time)',42,700,'#10303a');y+=30;
+   T('Be at the terminal 90 min before. Gate closes 20 min before.',30,500,'#5b7079');T('Bring passport and itinerary for the boarding pass.',30,500,'#5b7079')}
+  else{T('Billed to Mrs Samirah (Pick N Go)',38,700,'#10303a');y+=24;DRV.forEach(d=>{T(d[0]+' · '+d[2],40,700,'#10303a');T(d[1],32,400,'#5b7079');y+=18});y+=10;T('Total IDR 1,800,000',46,800,'#0a6577');T('IDR 600,000 per family',34,500,'#5b7079')}
+  const o=document.createElement('canvas');o.width=W;o.height=Math.ceil(y+50);o.getContext('2d').drawImage(cv,0,0);return o}
+ async function savePic(id){const cv=pic(id),blob=await new Promise(r=>cv.toBlob(r,'image/png')),name='ticket-'+id+'.png';let ok=0;
+  try{if(typeof DLS!=='undefined'&&DLS){await DLS.save({filename:name,data:blob});ok=1}}catch(e){try{await DLS.save({filename:name,data:new Uint8Array(await blob.arrayBuffer())});ok=1}catch(e2){}}
+  if(!ok){const v=document.getElementById('picView')||Object.assign(document.createElement('div'),{id:'picView'});v.innerHTML='<div class="pin"><p>Press and hold the picture to save it, or take a screenshot.</p><img alt="Ticket picture"><button id="picX">Close</button></div>';v.querySelector('img').src=cv.toDataURL('image/png');document.body.appendChild(v);v.classList.add('on');v.onclick=e=>{if(e.target===v||e.target.id==='picX')v.classList.remove('on')}}}
+ root.addEventListener('click',async e=>{const c=e.target.closest('[data-copy]'),p=e.target.closest('[data-pic]'),o=e.target.closest('[data-open]'),r=e.target.closest('[data-rm]');
+  if(c){const ok=await copyText(c.dataset.copy);const em=c.querySelector('em')||c;if(c.querySelector('em')){em.textContent=ok?'Copied ✓':'Press and hold to copy';setTimeout(()=>em.textContent='Tap to copy',1800)}else{const t=c.textContent;c.textContent=ok?'Copied ✓':'Not copied';setTimeout(()=>c.textContent=t,1800)}}
+  if(p)savePic(p.dataset.pic);
+  if(o){const f=await idb('get',o.dataset.open);if(f)window.open(URL.createObjectURL(f),'_blank')}
+  if(r&&confirm('Remove your saved copy from this phone?')){await idb('del',r.dataset.rm);att(r.dataset.rm)}});
+ root.addEventListener('change',async e=>{const i=e.target.closest('[data-att]');if(!i||!i.files[0])return;const f=i.files[0];if(f.size>8*1024*1024){alert('File too big (max 8 MB).');return}try{await idb('put',i.dataset.att,f);att(i.dataset.att)}catch(x){alert('Could not save on this phone.')}});
+})();
+</script>
 </body>
 </html>
