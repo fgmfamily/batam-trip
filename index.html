@@ -169,7 +169,7 @@ img:not(.ld){background:linear-gradient(90deg,#e9e3d3 25%,#f6f2e7 50%,#e9e3d3 75
 .wx .t sup{font-size:12px;letter-spacing:0;font-weight:700}
 .wx .d{font-size:13px;font-weight:700;line-height:1.2}.wx .s{font-size:11.5px;opacity:.95;line-height:1.2}
 .wx .tm{display:flex;gap:6px;margin-left:auto;align-items:center}
-.wx .ck{cursor:pointer;text-align:center;background:rgba(255,255,255,.16);border-radius:10px;padding:3px 9px;transition:transform .2s,background .2s;line-height:1.15}
+.wx .ck{cursor:pointer;text-align:center;background:rgba(255,255,255,.16);border-radius:10px;padding:3px 7px;transition:transform .2s,background .2s;line-height:1.15}
 .wx .ck:hover,.wx .ck:active{transform:scale(1.07);background:rgba(255,255,255,.28)}
 .wx .ck b{display:block;font-size:15px;font-variant-numeric:tabular-nums}
 .wx .ck span{font-size:9.5px;text-transform:uppercase;letter-spacing:.05em;opacity:.95}
@@ -291,6 +291,36 @@ html body{display:block!important}header.hero,#tabs,main{box-sizing:border-box;w
 .it .wi button{border:0;background:#0a6577;color:#fff;border-radius:10px;padding:6px 14px;font-weight:700;cursor:pointer}
 .it .wp small{display:block;margin-top:4px;color:#5b7079;font-size:11.5px}
 .it .wtot{margin-top:6px;font-weight:800;color:#0a6577}
+</style>
+<style>
+.hero{padding:12px 14px 12px!important;background-position:center}
+.hero>*:not(.htint){position:relative;z-index:1}
+.hero .htint{position:absolute;inset:0;pointer-events:none;transition:background 3s;z-index:0}
+.htop{display:flex;align-items:center;gap:8px}
+.htop h1{flex:1;margin:0!important;font-size:22px!important;line-height:1.15}
+.hero .hbtn{background:rgba(255,255,255,.2)!important;color:#fff!important}.hero .hbtn:hover{background:rgba(255,255,255,.34)!important}
+.hbtn{width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.2);color:#fff;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0;transition:transform .2s,background .2s}
+.hbtn:hover{background:rgba(255,255,255,.34);transform:scale(1.08)}
+.hbtn svg{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.hero>p{font-size:13px!important;margin:4px 0 0!important;opacity:.95}
+.hrow{display:flex;gap:10px;align-items:stretch;margin-top:10px}
+.hring{position:relative;width:66px;height:66px;flex:none;cursor:pointer}
+.hring svg{display:block}
+.hring b{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:21px;line-height:1}
+.hring b small{font-size:9.5px;font-weight:600;opacity:.9;margin-top:1px}
+.hero #nextStrip{flex:1;margin:0!important;background:rgba(255,255,255,.18)!important;border:0!important;border-radius:12px!important;color:#fff!important;padding:7px 10px!important;font-size:13px!important;cursor:pointer;display:flex;flex-direction:column;justify-content:center}
+.hero #nextStrip .nl{background:none!important;color:#ffd9bf!important;padding:0!important;font-size:11px!important;text-transform:uppercase;letter-spacing:.06em;margin:0!important}
+.hero #nextStrip .nt{color:#fff!important;opacity:.85}
+.hero #nowBar{max-width:none;margin:10px 0 0;padding:0}
+.hero .chips{margin-top:10px!important;gap:6px!important}
+.hero .chips .chip,.hero .fxline.chip{font-size:12.5px!important;padding:3px 10px!important;cursor:pointer}
+.hero .zoom{display:none!important;margin-top:8px}
+.hero .zoom.open{display:flex!important;flex-wrap:wrap;gap:6px;align-items:center}
+body.sub .hero .hrow,body.sub .hero #nowBar{display:none!important}
+body.sub .hero .zoom.open{display:flex!important}
+#a2hs{background:#fff;border:1px solid #e3dccb;border-left:5px solid #0a6577;border-radius:14px;padding:10px 14px;margin:0 0 12px;font-size:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+#a2hs span{flex:1;min-width:180px}#a2hs button{border:0;border-radius:99px;padding:6px 14px;font:inherit;font-weight:700;font-size:13px;cursor:pointer;background:#0a6577;color:#fff}#a2hs .no{background:#e7f1f3;color:#0a6577}
+@media print{.hbtn{display:none}}
 </style>
 </head>
 <body>
@@ -894,9 +924,9 @@ if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWor
  let cv,ctx,parts=[],pk='',day=true,flash=0;
  function build(){
   const d=W&&W.days&&W.days[sel],cur=W&&W.cur,show=sel===0&&cur?{c:cur.c,t:cur.t,day:cur.day}:d?{c:d.c,t:Math.round((d.hi+d.lo)/2),day:true}:null;
-  let h=`<div class="wx${cmp?' cmp':''}" id="wxBox"><canvas></canvas><div class="in"><div class="top"><div class="big"><div class="ic">${show?ICO(show.c,show.day):''}</div><div><div class="t">${show?show.t:'--'}<sup>°C</sup> <span class="d">${show?WN[show.c]||'':(navigator.onLine?'Loading…':'Needs internet')}</span></div><div class="s">Batam weather · ${d?(sel===0?'Today':d.d)+' · '+d.lo+'–'+d.hi+'°C · Rain '+d.p+'%':'Batam'}${sel===0&&cur&&cur.fl!=null?' · Feels '+cur.fl+'°':''}</div></div></div>
+  let h=`<div class="wx${cmp?' cmp':''}" id="wxBox"><canvas></canvas><div class="in"><div class="top"><div class="big"><div class="ic">${show?ICO(show.c,show.day):''}</div><div><div class="t">${show?show.t:'--'}<sup>°C</sup> <span class="d">${show?WN[show.c]||'':(navigator.onLine?'Loading…':'Needs internet')}</span></div><div class="s">Batam · ${d?d.lo+'–'+d.hi+'°C · Rain '+d.p+'%':'weather'}</div></div></div>
   <div class="tm"><div class="ck" data-z="Asia/Jakarta"><b id="ct1"></b><span>Batam</span></div><div class="ck" data-z="Asia/Singapore"><b id="ct2"></b><span>Singapore</span></div><button class="tg" id="wxTg">${cmp?'More ▾':'Less ▴'}</button></div></div>
-  <div class="dateln"><span id="wxDate">${dateOf()}</span><span class="pill">${cd()}</span><span class="pill" id="wxPr"></span><span class="pill">Batam is 1 hour behind</span></div>`;
+  <div class="dateln"><span id="wxDate">${dateOf()}</span><span class="pill" id="wxPr"></span></div>`;
   if(W&&W.days)h+='<div class="fc">'+W.days.map((x,i)=>`<button class="fd${i===sel?' on':''}" data-i="${i}" style="animation-delay:${i*70}ms"><b>${i===0?'Today':x.d}</b>${ICO(x.c,true)}${x.lo}–${x.hi}°C<br>Rain ${x.p}%</button>`).join('')+'</div>';
   if(d&&d.hr){const hh=d.hr;h+='<div class="wxh">'+hh.map((p,i)=>`<i data-h="${i}" style="height:${Math.max(6,p.p*.56)}px"></i>`).join('')+'</div><div class="hn" id="wxHn">Tap a bar: rain chance by hour (Batam time)</div>'}
   h+='<div class="pr" id="wxPrRow"></div>';
@@ -1066,10 +1096,57 @@ if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWor
 <script>
 /* ---- version stamp + safety net for the top banner ---- */
 (function(){
- const V='v19 · 24 Nov 2026';
+ const V='v21 · 24 Nov 2026';
  const f=document.createElement('div');f.id='verStamp';f.className='noprint';f.style.cssText='text-align:center;font-size:12px;color:#5b7079;padding:18px 0 90px';f.textContent='App version '+V;document.body.appendChild(f);
  setTimeout(()=>{const n=document.getElementById('nowBar');if(n&&!n.querySelector('.wx')){const t=z=>new Date().toLocaleTimeString('en-GB',{timeZone:z,hour:'2-digit',minute:'2-digit'});n.innerHTML='<div style="background:#0a6577;color:#fff;border-radius:14px;padding:10px 14px;font-weight:700">'+new Date().toLocaleDateString('en-GB',{timeZone:'Asia/Singapore',weekday:'long',day:'numeric',month:'long',year:'numeric'})+' · Batam '+t('Asia/Jakarta')+' · Singapore '+t('Asia/Singapore')+'<div style="font-weight:400;font-size:12px;margin-top:3px">Weather is loading. Refresh the page if it does not appear.</div></div>'}},4000);
 })();
+</script>
+<script>
+/* ---- merged header ---- */
+(function(){
+ const hero=document.querySelector('.hero');if(!hero||hero.dataset.m)return;hero.dataset.m=1;
+ const h1=hero.querySelector('h1'),chips=hero.querySelector('.chips'),fx=document.getElementById('fxLine'),zoom=hero.querySelector('.zoom'),nowBar=document.getElementById('nowBar'),ns=document.getElementById('nextStrip');
+ const sv=p=>`<svg viewBox="0 0 24 24">${p}</svg>`;
+ /* tint layer that follows Batam time of day */
+ const tint=document.createElement('div');tint.className='htint';hero.prepend(tint);
+ function setTint(){const h=+new Intl.DateTimeFormat('en-GB',{timeZone:'Asia/Jakarta',hour:'numeric',hour12:false}).format(new Date())%24;tint.style.background=h>=5&&h<7?'rgba(255,150,90,.30)':h>=17&&h<19?'rgba(255,100,110,.30)':(h>=19||h<5)?'rgba(8,16,60,.42)':'rgba(0,0,0,0)'}
+ setTint();setInterval(setTint,6e4);
+ /* top row: title + share + Aa */
+ const top=document.createElement('div');top.className='htop noprint';h1.before(top);top.appendChild(h1);
+ const share=document.createElement('button');share.className='hbtn';share.setAttribute('aria-label','Share by WhatsApp');share.innerHTML=sv('<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/>');
+ share.onclick=()=>window.open('https://wa.me/?text='+encodeURIComponent('Batam Family Trip app (9–13 Dec 2026): '+location.origin+location.pathname),'_blank');
+ const aa=document.createElement('button');aa.className='hbtn';aa.setAttribute('aria-label','Text size and language');aa.innerHTML='<span style="font-weight:800;font-size:14px">Aa</span>';
+ aa.onclick=()=>zoom.classList.toggle('open');
+ top.append(share,aa);top.after(zoom);
+ /* ring + next up */
+ const row=document.createElement('div');row.className='hrow noprint';
+ const ring=document.createElement('div');ring.className='hring';row.appendChild(ring);
+ const T0=Date.UTC(2026,11,8,16,0),now=Date.now(),left=Math.ceil((T0-now)/864e5);
+ let num,lab,frac;
+ if(left>0){num=left;lab=left===1?'day to go':'days to go';frac=1-Math.min(left,30)/30}else{const n=Math.min(5,Math.floor((now-T0)/864e5)+1);if(now-T0>5*864e5){num='✓';lab='done';frac=1}else{num=n;lab='of 5 days';frac=n/5}}
+ ring.innerHTML=`<svg width="66" height="66" viewBox="0 0 66 66"><circle cx="33" cy="33" r="28" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="5"/><circle id="hArc" cx="33" cy="33" r="28" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-dasharray="176" stroke-dashoffset="176" transform="rotate(-90 33 33)" style="transition:stroke-dashoffset 1.4s cubic-bezier(.2,.8,.2,1)"/></svg><b>${num}<small>${lab}</small></b>`;
+ setTimeout(()=>{const a=document.getElementById('hArc');if(a)a.style.strokeDashoffset=176*(1-frac)},400);
+ if(ns)row.appendChild(ns);
+ const p=hero.querySelector(':scope>p');(p||top).after(row);
+ row.onclick=()=>go('trip');
+ /* weather + clocks + solat card moves in */
+ if(nowBar)row.after(nowBar);
+ /* chips: remove old countdown chip, make the rest tappable */
+ hero.querySelectorAll('.chip.pulse').forEach(c=>c.remove());
+ const map=['people','harris','tickets'];chips.querySelectorAll('.chip').forEach((c,i)=>{if(map[i]){c.dataset.go=map[i]}});
+ if(fx){fx.classList.add('chip');chips.prepend(fx)}
+ chips.addEventListener('click',e=>{const c=e.target.closest('[data-go]');if(c)go(c.dataset.go)});
+ const _rf=renderFx;renderFx=function(){const el=document.getElementById('fxLine');if(el)el.textContent='S$1 = IDR '+FX.rate.toLocaleString('en-US')+(/live/i.test(FX.date||'')?' · live':'')};renderFx();
+ /* add to home screen hint (once) */
+ let dp=null;addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;show()});
+ const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone;let shown=0;
+ function show(){if(shown||standalone||localStorage.getItem('a2hsSeen'))return;shown=1;const h=document.querySelector('#p-trip>h2');if(!h)return;const ios=/iphone|ipad|ipod/i.test(navigator.userAgent);
+  h.insertAdjacentHTML('afterend',`<div id="a2hs" class="noprint"><span><b>Keep it on your phone.</b> ${ios?'Tap Share, then Add to Home Screen. It then opens fast and works offline.':'Add it to your home screen. It then opens fast and works offline.'}</span>${dp?'<button id="a2Y">Add</button>':''}<button class="no" id="a2N">Got it</button></div>`);
+  const d=document.getElementById('a2hs');document.getElementById('a2N').onclick=()=>{localStorage.setItem('a2hsSeen','1');d.remove()};const y=document.getElementById('a2Y');if(y)y.onclick=async()=>{dp.prompt();await dp.userChoice;localStorage.setItem('a2hsSeen','1');d.remove()}}
+ setTimeout(show,1500);
+})();
+(function(){const h=document.querySelector('.hero');if(!h)return;const p=h.querySelector(':scope>p');if(p)p.textContent='HARRIS Resort Barelang Batam · 9–13 Dec 2026';const c=[...h.querySelectorAll('.chips .chip')].filter(x=>x.dataset.go);const t=['11 people','3 rooms','Ferry ✓'];c.forEach((x,i)=>x.textContent=t[i]||x.textContent)})();
+
 </script>
 </body>
 </html>
